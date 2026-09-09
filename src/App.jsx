@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate, useSearchParams } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import AEmcomjunto from './pages/AEmcomjunto.jsx'
 import OQueFazemos from './pages/OQueFazemos.jsx'
@@ -7,6 +7,14 @@ import PesquisaClinica from './pages/PesquisaClinica.jsx'
 import Blog from './pages/Blog.jsx'
 import BlogPost from './pages/BlogPost.jsx'
 import NotFound from './pages/NotFound.jsx'
+
+// URL antiga dos posts (/blog-post?post=slug) — mantida funcionando via
+// redirect client-side para a URL nova (/blog/slug), que é a oficial.
+function BlogPostRedirect() {
+  const [searchParams] = useSearchParams()
+  const slug = searchParams.get('post')
+  return <Navigate to={slug ? '/blog/' + encodeURIComponent(slug) : '/blog'} replace />
+}
 
 /* Rotas da aplicação, espelhando a estrutura de URLs do site estático
    original (cada pasta com index.html virou uma rota de mesmo nome).
@@ -22,7 +30,8 @@ export default function App() {
       <Route path="/varejo" element={<Varejo />} />
       <Route path="/pesquisa-clinica" element={<PesquisaClinica />} />
       <Route path="/blog" element={<Blog />} />
-      <Route path="/blog-post" element={<BlogPost />} />
+      <Route path="/blog/:slug" element={<BlogPost />} />
+      <Route path="/blog-post" element={<BlogPostRedirect />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   )

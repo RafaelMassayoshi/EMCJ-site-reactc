@@ -15,7 +15,8 @@ const ROUTES = [
   ['varejo', '/varejo'],
   ['pesquisa-clinica', '/pesquisa-clinica'],
   ['blog', '/blog'],
-  ['blog-post', '/blog-post?post=inexistente'],
+  ['blog-post', '/blog/inexistente'],
+  ['blog-post-old-url', '/blog-post?post=inexistente'],
   ['not-found', '/rota-que-nao-existe'],
 ]
 

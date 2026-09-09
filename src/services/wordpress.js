@@ -110,5 +110,5 @@ export function imagemDestacada(post, tamanho) {
 }
 
 export function linkDoPost(post) {
-  return '/blog-post?post=' + encodeURIComponent(post.slug)
+  return '/blog/' + encodeURIComponent(post.slug)
 }

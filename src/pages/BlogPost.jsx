@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import MainLayout from '../layouts/MainLayout.jsx'
 import useReveal from '../hooks/useReveal.js'
 import * as WP from '../services/wordpress.js'
@@ -14,13 +14,12 @@ import '../styles/components/footer.css'
 import '../styles/pages/blog-post.css'
 
 /* ==========================================================================
-   POST ÚNICO DO BLOG — lê ?post=<slug> na URL, busca o post na REST API do
+   POST ÚNICO DO BLOG — lê o slug em /blog/:slug, busca o post na REST API do
    WordPress e preenche o artigo, igual a js/pages/blog-post.js. Também
    busca até 3 posts relacionados (mesma categoria) para "Continue lendo".
    ========================================================================== */
 export default function BlogPost() {
-  const [searchParams] = useSearchParams()
-  const slug = searchParams.get('post')
+  const { slug } = useParams()
 
   const [post, setPost] = useState()
   const [relacionados, setRelacionados] = useState([])
@@ -31,7 +30,7 @@ export default function BlogPost() {
     const metaDesc = document.querySelector('meta[name="description"]')
     if (metaDesc) metaDesc.setAttribute('content', 'Publicação do blog da Emcomjunto.')
     const canonicalTag = document.getElementById('canonicalTag')
-    if (canonicalTag) canonicalTag.setAttribute('href', 'https://emcomjunto.com.br/blog-post')
+    if (canonicalTag) canonicalTag.setAttribute('href', 'https://emcomjunto.com.br/blog')
 
     if (!slug) {
       setNaoEncontrado(true)
@@ -52,11 +51,11 @@ export default function BlogPost() {
 
         document.title = WP.textoLimpo(p.title.rendered) + ' — Blog Emcomjunto'
         if (metaDesc) metaDesc.setAttribute('content', WP.textoLimpo(p.excerpt.rendered).slice(0, 160))
-        // A <link rel="canonical"> genérica aponta para /blog-post (o slug só
+        // A <link rel="canonical"> genérica aponta para /blog (o slug só
         // existe em runtime) — corrige para a URL exata deste post assim que
         // ele carrega, para não indexar todo post como se fosse a mesma página.
         if (canonicalTag) {
-          canonicalTag.setAttribute('href', window.location.origin + '/blog-post?post=' + encodeURIComponent(p.slug))
+          canonicalTag.setAttribute('href', window.location.origin + WP.linkDoPost(p))
         }
 
         const cat = WP.categoriaDoPost(p)
@@ -104,7 +103,7 @@ export default function BlogPost() {
             <ul className="post-relacionados-lista" id="postRelacionadosLista">
               {relacionados.map((p) => (
                 <li key={p.id}>
-                  <a href={'/blog-post?post=' + encodeURIComponent(p.slug)}>{WP.textoLimpo(p.title.rendered)}</a>
+                  <a href={WP.linkDoPost(p)}>{WP.textoLimpo(p.title.rendered)}</a>
                 </li>
               ))}
             </ul>
