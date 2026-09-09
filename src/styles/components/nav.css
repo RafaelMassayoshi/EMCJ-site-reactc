@@ -1,0 +1,146 @@
+/* ==========================================================================
+   LOGO DO HEADER
+   ---------------------------------------------------------------------------
+   Bug pré-existente no CSS original: só havia regra de tamanho para
+   .logo-header dentro de @media (max-width:900px/600px) — sem base para
+   desktop, o <img> (3227×1598px de origem) renderizava no tamanho
+   intrínseco, e as duas variantes (--white/--blue) ficavam empilhadas ao
+   mesmo tempo, gigantes e sobrepostas. pesquisa-clinica.css já tinha a
+   base correta (ver .pagina-pesquisa-clinica .logo-header); esta seção
+   aplica o mesmo padrão aqui, para todas as larguras de tela.
+   ========================================================================== */
+.logo{display:flex;align-items:center}
+.logo-header{height:44px;width:auto;object-fit:contain;transition:height .4s var(--ease),opacity .2s ease}
+.nav.solida .logo-header{height:38px}
+.logo-header--blue{display:none}
+.nav.solida .logo-header--white{display:none}
+.nav.solida .logo-header--blue{display:block}
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+
+@media (max-width: 900px) {
+
+  .logo {
+    width: 150px;
+    max-width: 150px;
+    height: 40px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-header {
+    height: 36px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .logo {
+    width: 125px;
+    max-width: 125px;
+    height: 36px;
+  }
+
+  .logo-header {
+    height: 30px;
+    max-width: 125px;
+  }
+
+  /* Logo branca */
+  .logo-header--white {
+    display: block;
+  }
+
+  /* Logo azul */
+  .logo-header--blue {
+    display: none;
+  }
+
+  /* Após rolagem */
+  .nav.solida .logo-header--white {
+    display: none;
+  }
+
+  .nav.solida .logo-header--blue {
+    display: block;
+  }
+
+}
+
+/* ==========================================================================
+   NAV — usado por home, o-que-fazemos, a-emcomjunto, blog, varejo
+   ========================================================================== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:88px;display:flex;align-items:center;
+  transition:background .4s var(--ease),height .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease);
+  border-bottom:1px solid transparent}
+.nav.solida{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);height:72px;
+  border-bottom-color:var(--n-200);box-shadow:0 1px 24px rgba(3,21,38,.05)}
+.nav .shell{display:flex;align-items:center;gap:var(--esp-6);width:100%}
+.logo svg{height:44px;width:auto;transition:height .4s var(--ease)}
+.nav.solida .logo svg{height:38px}
+.nav-links{display:flex;align-items:center;gap:var(--esp-6);margin-left:auto}
+.nav-links a{position:relative;font-size:16px;color:#fff;opacity:.82;padding-block:6px;transition:opacity .25s var(--ease),color .4s var(--ease)}
+.nav.solida .nav-links a{color:var(--n-900);opacity:.72}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--luminoso-500);transition:right .35s var(--ease)}
+.nav-links a:hover{opacity:1}
+.nav-links a:hover::after{right:0}
+.nav .btn{height:44px;padding-inline:24px;font-size:14px}
+.nav-btn{display:none;width:44px;height:44px;border:1px solid rgba(255,255,255,.3);border-radius:var(--r-md);
+  margin-left:auto;align-items:center;justify-content:center}
+.nav.solida .nav-btn{border-color:var(--n-300)}
+.nav-btn i{display:block;width:16px;height:1px;background:#fff;position:relative;transition:background .2s}
+.nav.solida .nav-btn i,.nav.solida .nav-btn i::before,.nav.solida .nav-btn i::after{background:var(--n-900)}
+.nav-btn i::before,.nav-btn i::after{content:"";position:absolute;left:0;width:16px;height:1px;background:#fff;transition:transform .3s var(--ease)}
+.nav-btn i::before{top:-5px} .nav-btn i::after{top:5px}
+.nav-btn[aria-expanded="true"] i{background:transparent!important}
+.nav-btn[aria-expanded="true"] i::before{transform:translateY(5px) rotate(45deg)}
+.nav-btn[aria-expanded="true"] i::after{transform:translateY(-5px) rotate(-45deg)}
+.progresso{position:fixed;top:0;left:0;height:2px;width:100%;z-index:110}
+.progresso i{display:block;height:100%;width:0;background:var(--luminoso-500)}
+
+/* ---------- Dropdown "Quem assessoramos" (blog, varejo) ----------
+   Abre no ponteiro e no foco de teclado, sem JS: :focus-within cobre a
+   navegação por Tab. No mobile vira lista recuada. Ao acrescentar mercado
+   novo (Varejo, ESG), basta mais um <a> em .nav-sub. */
+.nav-item{position:relative;display:flex;align-items:center;gap:7px}
+.nav-item>.chev{width:10px;height:10px;flex:none;color:#fff;opacity:.7;
+  transition:transform .3s var(--ease),color .4s var(--ease)}
+.nav.solida .nav-item>.chev{color:var(--n-900);opacity:.6}
+.nav-item:hover>.chev,.nav-item:focus-within>.chev{transform:rotate(180deg);opacity:1}
+.nav-sub{position:absolute;top:calc(100% + 14px);left:-16px;min-width:250px;padding:8px;
+  background:rgba(3,21,38,.97);backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.14);border-radius:var(--r-md);
+  box-shadow:0 20px 44px rgba(3,21,38,.44);
+  opacity:0;visibility:hidden;transform:translateY(-8px);
+  transition:opacity .28s var(--ease),transform .28s var(--ease),visibility .28s}
+.nav-item:hover>.nav-sub,.nav-item:focus-within>.nav-sub{opacity:1;visibility:visible;transform:none}
+.nav-sub a,.nav.solida .nav-sub a{display:block;padding:11px 14px;border-radius:8px;
+  font-size:15px;color:rgba(255,255,255,.86);opacity:1}
+.nav-sub a::after{display:none}
+.nav-sub a:hover,.nav.solida .nav-sub a:hover{background:rgba(255,255,255,.09);color:#fff}
+.nav-sub small{display:block;margin-top:3px;font-size:12px;line-height:1.4;color:var(--n-400)}
+
+@media (max-width:900px){
+  .nav{height:72px}
+  .nav-links{position:fixed;inset:0;flex-direction:column;align-items:flex-start;justify-content:center;gap:var(--esp-5);
+    padding:110px var(--gutter) 48px;height:100dvh;background:rgba(3,21,38,.97);backdrop-filter:blur(20px);
+    transform:translateY(-100%);transition:transform .5s var(--suave);margin:0}
+  .nav-links.aberto{transform:translateY(0)}
+  .nav-links a,.nav.solida .nav-links a{color:#fff;font-size:24px;font-weight:300;opacity:.9}
+  .nav-btn{display:flex} .nav .btn{display:none}
+  .nav-item{flex-direction:column;align-items:flex-start;gap:0;width:100%}
+  .nav-item>.chev{display:none}
+  .nav-sub{position:static;min-width:0;opacity:1;visibility:visible;transform:none;
+    padding:0 0 0 20px;background:none;border:0;box-shadow:none;backdrop-filter:none}
+  .nav-sub a,.nav.solida .nav-sub a{font-size:18px;opacity:.72;padding:10px 0}
+  .nav-sub small{display:none}
+}

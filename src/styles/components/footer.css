@@ -1,0 +1,59 @@
+/* ==========================================================================
+   RODAPÉ — usado por home, o-que-fazemos, a-emcomjunto, blog, varejo.
+   (pesquisa-clinica.html tem rodapé próprio, ver css/random/.)
+   ========================================================================== */
+.rodape{position:relative;overflow:hidden;padding-block:clamp(76px,8.6vw,120px) 40px;
+  background:radial-gradient(120% 100% at 78% 8%,var(--marca-900) 0%,var(--petroleo) 42%,var(--profundo-900) 100%)}
+
+/* Newsletter */
+.newsletter{margin-top:clamp(56px,6.4vw,88px);border:1px solid rgba(255,255,255,.15);border-radius:var(--r-lg);
+  padding:clamp(26px,3vw,36px);background:rgba(255,255,255,.045);backdrop-filter:blur(12px);
+  display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,4vw,56px);align-items:start}
+.newsletter .kicker{color:var(--luminoso-500)}
+.newsletter h3{margin-top:var(--esp-3);font-weight:300;font-size:clamp(21px,2.08vw,30px);line-height:1.2;
+  letter-spacing:-.02em;color:#fff;max-width:18ch}
+.newsletter .sub{margin-top:var(--esp-3);font-size:14px;line-height:1.6;color:var(--n-400);max-width:44ch}
+.news-campos{display:grid;grid-template-columns:1fr 1fr;gap:var(--esp-3)}
+.news-campos input{font-family:var(--display);font-size:15px;color:#fff;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.18);border-radius:var(--r-md);padding:14px 16px;width:100%;
+  transition:border-color .25s var(--ease),background .25s var(--ease),box-shadow .25s var(--ease)}
+.news-campos input::placeholder{color:rgba(255,255,255,.42)}
+.news-campos input:focus{outline:none;background:rgba(255,255,255,.1);border-color:var(--luminoso-500);
+  box-shadow:0 0 0 3px rgba(65,175,255,.2)}
+.consenti{display:flex;align-items:flex-start;gap:12px;margin-top:var(--esp-4);cursor:pointer}
+.consenti input{position:absolute;opacity:0;width:0;height:0}
+.consenti .marca-cx{width:18px;height:18px;border-radius:5px;border:1px solid rgba(255,255,255,.3);flex:none;
+  margin-top:1px;position:relative;transition:background .25s var(--ease),border-color .25s var(--ease)}
+.consenti .marca-cx::after{content:"";position:absolute;left:5.5px;top:2px;width:5px;height:9px;
+  border-right:1.6px solid var(--profundo-900);border-bottom:1.6px solid var(--profundo-900);
+  transform:rotate(45deg) scale(0);transition:transform .22s var(--ease)}
+.consenti input:checked + .marca-cx{background:var(--luminoso-500);border-color:var(--luminoso-500)}
+.consenti input:checked + .marca-cx::after{transform:rotate(45deg) scale(1)}
+.consenti input:focus-visible + .marca-cx{outline:2px solid var(--luminoso-500);outline-offset:3px}
+.consenti span.txt{font-size:13px;line-height:1.55;color:var(--n-400)}
+.newsletter .btn{margin-top:var(--esp-5)}
+
+/* Mapa do site */
+.rodape-grade{margin-top:clamp(56px,7vw,96px);padding-top:var(--esp-6);border-top:1px solid rgba(255,255,255,.14);
+  display:grid;grid-template-columns:minmax(0,1.6fr) repeat(3,minmax(0,1fr));gap:32px}
+.rodape-marca svg.logo-pe{height:56px;width:auto}
+.rodape-marca p{margin-top:var(--esp-4);font-size:14px;color:var(--n-300);max-width:30ch}
+.sociais{display:flex;gap:10px;margin-top:var(--esp-5)}
+.social{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);
+  display:grid;place-items:center;color:var(--n-300);
+  transition:border-color .3s var(--ease),color .3s var(--ease),background .3s var(--ease),transform .3s var(--ease)}
+.social svg{width:17px;height:17px}
+.social:hover{color:#fff;border-color:var(--luminoso-500);background:rgba(65,175,255,.14);transform:translateY(-3px)}
+.rodape-col .kicker{color:var(--luminoso-500);margin-bottom:var(--esp-4)}
+.rodape-col li{margin-bottom:10px}
+.rodape-col a{font-size:14px;color:var(--n-300);transition:color .25s var(--ease)}
+.rodape-col a:hover{color:#fff}
+.rodape-base{margin-top:clamp(48px,5.6vw,72px);font-size:14px;color:var(--n-400)}
+
+@media (max-width:900px){
+  .rodape-topo{grid-template-columns:1fr;align-items:start}
+  .rodape-grade,.newsletter{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .news-campos{grid-template-columns:1fr}
+}

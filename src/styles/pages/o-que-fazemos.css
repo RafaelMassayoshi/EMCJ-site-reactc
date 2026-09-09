@@ -1,0 +1,359 @@
+/* ==========================================================================
+   O QUE FAZEMOS — estilos exclusivos desta página.
+   O trilho "as sete frentes" (.trilho/.via-btn/.trilho-palco/.via-painel)
+   é o componente partilhado em css/components/trilho.css — não repetido aqui.
+   ========================================================================== */
+
+/* Hero-diagnóstico: duas colunas, a afirmação à esquerda e a sonda à direita.
+   O kicker vem antes do filete, como no Figma. */
+.pagina-o-que-fazemos .hero .kicker{margin-bottom:var(--esp-3)}
+.pagina-o-que-fazemos .hero .filete{margin-bottom:var(--esp-6)}
+.pagina-o-que-fazemos .hero--diag{min-height:clamp(620px,80vh,860px);
+  padding-block:clamp(112px,12vw,152px) clamp(56px,6vw,88px)}
+.pagina-o-que-fazemos .hero--diag .hero-conteudo{padding-top:0}
+.pagina-o-que-fazemos .hero-grade{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  gap:clamp(36px,5vw,80px);align-items:start;align-content:start}
+.pagina-o-que-fazemos .hero-grade > *{max-width:none}
+/* Ancorada no topo: a coluna de texto não se mexe quando a sonda cresce
+   ao abrir a segunda e a terceira pergunta. */
+.pagina-o-que-fazemos .hero--diag{align-items:flex-start}
+.pagina-o-que-fazemos .hero-dizer{align-self:start}
+.pagina-o-que-fazemos .silaba{color:var(--luminoso-500);padding-inline:.04em}
+.pagina-o-que-fazemos .hero-texto{display:grid;gap:var(--esp-5)}
+.pagina-o-que-fazemos .hero-texto .hero-lead{margin:0}
+.pagina-o-que-fazemos .hero-texto b{font-weight:500;color:#fff}
+.pagina-o-que-fazemos .hero--diag h1{max-width:22ch;margin-bottom:var(--esp-6)}
+.pagina-o-que-fazemos .hero--diag .hero-lead{max-width:46ch}
+
+/* A aurora anima background-position, nunca transform. A intensidade e a
+   velocidade sobem a cada resposta, via data-etapa no <section>. */
+.pagina-o-que-fazemos .hero-aurora{position:absolute;inset:-30% -20%;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(38% 42% at 22% 30%,rgba(65,175,255,.34),transparent 62%),
+    radial-gradient(34% 38% at 78% 62%,rgba(32,109,167,.34),transparent 64%),
+    radial-gradient(30% 34% at 52% 88%,rgba(196,126,110,.16),transparent 66%);
+  background-size:190% 190%,180% 180%,170% 170%;
+  background-position:12% 22%,84% 70%,50% 96%;
+  opacity:.42;filter:blur(28px);
+  transition:opacity 1.1s var(--ease),filter 1.1s var(--ease);
+  animation:aurora 26s ease-in-out infinite alternate}
+@keyframes aurora{
+  0%{background-position:12% 22%,84% 70%,50% 96%}
+  50%{background-position:34% 44%,58% 40%,28% 70%}
+  100%{background-position:6% 60%,92% 32%,66% 88%}
+}
+.pagina-o-que-fazemos .hero--diag[data-etapa="1"] .hero-aurora{opacity:.58;filter:blur(24px);animation-duration:20s}
+.pagina-o-que-fazemos .hero--diag[data-etapa="2"] .hero-aurora{opacity:.74;filter:blur(20px);animation-duration:15s}
+.pagina-o-que-fazemos .hero--diag[data-etapa="3"] .hero-aurora{opacity:.92;filter:blur(16px);animation-duration:11s}
+.pagina-o-que-fazemos .hero-oque-fazemos{
+  background-image: url("/assets/images/background-hero-oque-fazemos.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* A sonda: painel de vidro com as três perguntas */
+.pagina-o-que-fazemos .sonda{position:relative;z-index:2;padding:clamp(26px,3vw,40px);border-radius:24px;
+  background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.13);
+  backdrop-filter:blur(14px)}
+.pagina-o-que-fazemos .sonda-cab{font-weight:500;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--luminoso-500);margin-bottom:var(--esp-6)}
+.pagina-o-que-fazemos .passo{border:0;padding:0;margin:0;min-inline-size:0}
+.pagina-o-que-fazemos .passo + .passo,
+.pagina-o-que-fazemos .sonda-fim{margin-top:clamp(24px,2.6vw,32px);padding-top:clamp(22px,2.4vw,28px);
+  border-top:1px solid rgba(255,255,255,.12)}
+.pagina-o-que-fazemos .passo[hidden],
+.pagina-o-que-fazemos .sonda-fim[hidden]{display:none}
+.pagina-o-que-fazemos .passo legend{display:flex;align-items:baseline;gap:12px;padding:0;width:100%}
+.pagina-o-que-fazemos .passo-n{flex:none;font-family:var(--acento-f);font-style:italic;font-weight:600;
+  font-size:22px;line-height:1;color:var(--luminoso-300)}
+.pagina-o-que-fazemos .passo-p{font-weight:400;font-size:clamp(17px,1.5vw,20px);line-height:1.3;
+  letter-spacing:-.01em;color:#fff}
+.pagina-o-que-fazemos .passo-dica{margin-top:10px;font-size:12.5px;color:var(--n-400)}
+.pagina-o-que-fazemos .passo:not([hidden]),
+.pagina-o-que-fazemos .sonda-fim:not([hidden]){animation:sobe .5s var(--ease) both}
+@keyframes sobe{from{opacity:0;translate:0 10px}to{opacity:1;translate:0 0}}
+.pagina-o-que-fazemos .sonda-fim p{font-size:15px;line-height:1.6;color:var(--n-300);max-width:52ch}
+.pagina-o-que-fazemos .sonda-fim .btn{margin-top:var(--esp-5)}
+.pagina-o-que-fazemos .sonda-vivo{position:absolute;width:1px;height:1px;overflow:hidden;
+  clip-path:inset(50%);white-space:nowrap}
+
+/* ---------- O percurso (a "corrente") ----------
+   Um único valor, --p (0 a 1), estica o fio e acende os marcos. */
+.pagina-o-que-fazemos .corrente{margin-top:clamp(44px,5vw,76px);padding-top:clamp(32px,3.4vw,44px);
+  border-top:1px solid var(--n-200);--p:0}
+.pagina-o-que-fazemos .corrente-caixa{position:relative}
+.pagina-o-que-fazemos .fio-vert{position:absolute;left:calc(100% / 14);right:calc(100% / 14);top:8px;
+  height:2px;background:var(--n-200);border-radius:2px;overflow:hidden}
+.pagina-o-que-fazemos .fio-vert i{display:block;height:100%;width:calc(var(--p) * 100%);
+  background:var(--marca-600);border-radius:2px}
+.pagina-o-que-fazemos .corrente-marcos{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:clamp(10px,1.4vw,20px);list-style:none;margin:0;padding:0}
+.pagina-o-que-fazemos .marco{position:relative;padding-top:34px;text-align:center}
+.pagina-o-que-fazemos .marco .ponto{position:absolute;left:50%;top:0;translate:-50% 0;
+  width:18px;height:18px;border-radius:50%;background:#fff;
+  border:2px solid var(--n-200);
+  transition:border-color .45s var(--ease),background .45s var(--ease),box-shadow .45s var(--ease)}
+.pagina-o-que-fazemos .marco .n{display:block;font-family:var(--acento-f);font-style:italic;font-weight:600;
+  font-size:clamp(15px,1.4vw,18px);line-height:1;color:var(--n-300);
+  transition:color .45s var(--ease)}
+.pagina-o-que-fazemos .marco .rot{display:block;margin-top:8px;font-weight:400;
+  font-size:clamp(14px,1.35vw,18px);line-height:1.25;letter-spacing:-.01em;
+  color:var(--n-300);transition:color .45s var(--ease)}
+.pagina-o-que-fazemos .marco.on .ponto{border-color:var(--marca-600);background:var(--marca-600);
+  box-shadow:0 0 0 6px rgba(31,136,214,.14)}
+.pagina-o-que-fazemos .marco.on .n{color:var(--marca-700)}
+.pagina-o-que-fazemos .marco.on .rot{color:var(--n-900)}
+
+@media (max-width:900px){
+  .pagina-o-que-fazemos .fio-vert{left:7px;right:auto;top:10px;bottom:10px;width:2px;height:auto}
+  .pagina-o-que-fazemos .fio-vert i{width:100%;height:calc(var(--p) * 100%)}
+  .pagina-o-que-fazemos .corrente-marcos{grid-template-columns:1fr;gap:clamp(20px,4vw,28px)}
+  .pagina-o-que-fazemos .marco{display:grid;grid-template-columns:16px minmax(0,1fr);
+    column-gap:18px;align-items:start;padding-top:0;text-align:left}
+  .pagina-o-que-fazemos .marco .ponto{position:static;grid-row:1 / span 2;translate:none;
+    width:16px;height:16px;margin-top:3px}
+  .pagina-o-que-fazemos .marco .rot{font-size:clamp(19px,4.6vw,23px);margin-top:7px}
+}
+@media (prefers-reduced-motion:reduce){
+  .pagina-o-que-fazemos .marco .ponto,
+.pagina-o-que-fazemos .marco .n,
+.pagina-o-que-fazemos .marco .rot{transition:none}
+}
+
+/* ---------- ∴ · FAIXA MANIFESTO + ciclo horizontal ---------- */
+.pagina-o-que-fazemos .manifesto{text-align:center}
+.pagina-o-que-fazemos .manifesto h2{max-width:28ch;margin-inline:auto;color:#fff}
+.pagina-o-que-fazemos .manifesto .apoio{max-width:58ch;margin:var(--esp-6) auto 0;color:var(--n-300)}
+.pagina-o-que-fazemos .manifesto .ciclo{text-align:center}
+.pagina-o-que-fazemos .ciclo{margin-top:clamp(36px,4vw,56px)}
+.pagina-o-que-fazemos .ciclo-elos{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;
+  gap:clamp(6px,.9vw,12px);list-style:none;margin:0;padding:0}
+.pagina-o-que-fazemos .elo{flex:none;padding:11px clamp(12px,1.5vw,22px);border-radius:999px;white-space:nowrap;
+  font-weight:500;font-size:clamp(12px,1.25vw,16px);line-height:1.2;color:var(--n-300);
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
+  animation:pulso 7.2s linear infinite;animation-delay:calc(var(--i) * 1.2s)}
+@keyframes pulso{
+  0%,   100%{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);color:var(--n-300)}
+  6%       {background:rgba(65,175,255,.22);border-color:var(--luminoso-500);color:#fff}
+  17%      {background:rgba(65,175,255,.10);border-color:rgba(65,175,255,.42);color:#fff}
+  30%,  99%{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);color:var(--n-300)}
+}
+@media (max-width:760px){
+  .pagina-o-que-fazemos .ciclo-elos{justify-content:flex-start;overflow-x:auto;scrollbar-width:none;
+    padding-inline:var(--gutter);margin-inline:calc(-1 * var(--gutter))}
+  .pagina-o-que-fazemos .ciclo-elos::-webkit-scrollbar{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .pagina-o-que-fazemos .elo{animation:none;background:rgba(255,255,255,.05)}
+}
+
+/* ---------- ∪ · O QUE MUDA NA PRÁTICA ---------- */
+.pagina-o-que-fazemos .praticas{margin-top:clamp(40px,5vw,72px);display:grid;gap:16px}
+.pagina-o-que-fazemos .pratica{display:grid;grid-template-columns:220px minmax(0,1fr) minmax(0,1.15fr);
+  gap:clamp(20px,2.6vw,40px);padding:clamp(24px,2.6vw,32px);
+  border:1px solid var(--n-200);border-radius:20px;background:#fff;
+  transition:border-color .4s var(--ease),transform .4s var(--ease)}
+.pagina-o-que-fazemos .pratica:hover{border-color:var(--marca-300);transform:translateY(-2px)}
+.pagina-o-que-fazemos .pratica-icone{width:26px;height:26px;color:var(--marca-600)}
+.pagina-o-que-fazemos .pratica-icone path,
+.pagina-o-que-fazemos .pratica-icone circle,
+.pagina-o-que-fazemos .pratica-icone line{fill:none;stroke:currentColor;
+  stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.pagina-o-que-fazemos .pratica h3{margin-top:var(--esp-5);font-weight:400;font-size:clamp(20px,1.9vw,25px);
+  line-height:1.2;letter-spacing:-.02em;color:var(--n-900)}
+.pagina-o-que-fazemos .pratica-gloss{margin-top:10px;font-size:13.5px;line-height:1.5;color:var(--n-500);max-width:30ch}
+.pagina-o-que-fazemos .pratica .rot{font-weight:500;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase}
+.pagina-o-que-fazemos .pratica .sep .rot{color:var(--n-500)}
+.pagina-o-que-fazemos .pratica .emcj .rot{color:var(--marca-600)}
+.pagina-o-que-fazemos .pratica .sep p{margin-top:12px;font-size:14.5px;line-height:1.6;color:var(--n-500)}
+.pagina-o-que-fazemos .pratica .emcj p{margin-top:12px;font-size:15.5px;line-height:1.6;color:var(--n-900)}
+
+/* ---------- Sub-bloco: um segundo assunto dentro da mesma seção ---------- */
+.pagina-o-que-fazemos .subbloco{margin-top:clamp(56px,6.5vw,96px);padding-top:clamp(34px,3.6vw,48px);
+  border-top:1px solid var(--n-200)}
+.pagina-o-que-fazemos .sub-titulo{font-weight:300;font-size:clamp(27px,3vw,40px);line-height:1.12;
+  letter-spacing:-.03em;color:var(--n-900);max-width:26ch}
+.pagina-o-que-fazemos .sub-lead{margin-top:var(--esp-5);font-size:clamp(15px,1.35vw,17px);line-height:1.65;
+  color:var(--n-600);max-width:70ch}
+
+/* ---------- ƒ · O QUE DEFINE O ESCOPO ---------- */
+.pagina-o-que-fazemos .escopo{margin-top:clamp(32px,3.6vw,48px);display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(24px,2.8vw,40px)}
+.pagina-o-que-fazemos .fator{padding-top:var(--esp-5);border-top:1px solid var(--n-200)}
+.pagina-o-que-fazemos .fator .n{font-family:var(--acento-f);font-style:italic;font-weight:600;font-size:30px;
+  line-height:1;color:var(--marca-700)}
+.pagina-o-que-fazemos .fator h4{margin-top:12px;font-weight:500;font-size:clamp(18px,1.6vw,21px);
+  line-height:1.25;letter-spacing:-.02em;color:var(--n-900)}
+.pagina-o-que-fazemos .fator p{margin-top:10px;font-size:15px;line-height:1.65;color:var(--n-600);max-width:46ch}
+
+/* ---------- As entregas concretas (acordeão) ---------- */
+.pagina-o-que-fazemos .entregas{margin-top:clamp(32px,3.6vw,48px);display:grid;align-items:start;
+  grid-template-columns:1fr 1fr;gap:12px clamp(20px,2.4vw,32px)}
+.pagina-o-que-fazemos .entrega{border:1px solid var(--n-200);border-radius:16px;background:#fff;
+  transition:border-color .4s var(--ease)}
+.pagina-o-que-fazemos .entrega:has(.entrega-cab[aria-expanded="true"]){border-color:var(--marca-300)}
+.pagina-o-que-fazemos .entrega-cab{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  width:100%;padding:clamp(16px,1.8vw,22px);background:none;border:0;cursor:pointer;
+  text-align:left;border-radius:16px}
+.pagina-o-que-fazemos .entrega-cab:focus-visible{outline:2px solid var(--marca-600);outline-offset:2px}
+.pagina-o-que-fazemos .entrega-nome{font-weight:500;font-size:clamp(15.5px,1.4vw,18px);line-height:1.25;
+  letter-spacing:-.01em;color:var(--n-900)}
+.pagina-o-que-fazemos .entrega-mais{position:relative;flex:none;width:20px;height:20px;
+  transition:rotate .35s var(--ease)}
+.pagina-o-que-fazemos .entrega-mais::before,
+.pagina-o-que-fazemos .entrega-mais::after{content:"";position:absolute;
+  left:50%;top:50%;background:var(--marca-600);border-radius:2px}
+.pagina-o-que-fazemos .entrega-mais::before{width:13px;height:1.6px;margin:-.8px 0 0 -6.5px}
+.pagina-o-que-fazemos .entrega-mais::after{width:1.6px;height:13px;margin:-6.5px 0 0 -.8px}
+.pagina-o-que-fazemos .entrega-cab[aria-expanded="true"] .entrega-mais{rotate:135deg}
+.pagina-o-que-fazemos .entrega-corpo{padding:0 clamp(16px,1.8vw,22px) clamp(18px,2vw,24px)}
+.pagina-o-que-fazemos .entrega-corpo[hidden]{display:none}
+.pagina-o-que-fazemos .entrega-corpo p{font-size:15px;line-height:1.65;color:var(--n-600)}
+.pagina-o-que-fazemos .entrega-corpo .para{display:block;margin-bottom:8px;font-weight:500;font-size:11.5px;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--marca-700)}
+.pagina-o-que-fazemos .entregas-fecho{margin:clamp(40px,4.4vw,64px) auto 0;padding-top:clamp(28px,3vw,40px);
+  border-top:1px solid var(--n-200);max-width:34ch;text-align:center;
+  font-weight:300;font-size:clamp(21px,2.2vw,28px);line-height:1.3;
+  letter-spacing:-.02em;color:var(--n-900)}
+.pagina-o-que-fazemos .entregas-fecho .ac{font-size:clamp(29px,3.1vw,39px)}
+
+/* ---------- ∈ · O QUE FICA COM VOCÊ ---------- */
+.pagina-o-que-fazemos .ativos{margin-top:clamp(36px,4vw,56px);display:grid;grid-template-columns:1fr 1fr;
+  gap:0 clamp(24px,3vw,48px)}
+.pagina-o-que-fazemos .ativos li{display:flex;align-items:flex-start;gap:14px;padding-block:16px;
+  border-bottom:1px solid rgba(255,255,255,.12);font-size:15.5px;line-height:1.5;color:#fff}
+.pagina-o-que-fazemos .ativos li::before{content:"";flex:none;width:6px;height:6px;margin-top:8px;border-radius:50%;
+  background:var(--luminoso-500)}
+
+/* ---------- Δ · PROVA: fita de cases ---------- */
+.pagina-o-que-fazemos .cases{margin-top:clamp(36px,4vw,56px)}
+.pagina-o-que-fazemos .cases-topo{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding-bottom:var(--esp-5)}
+.pagina-o-que-fazemos .cases-cont{font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--n-500)}
+.pagina-o-que-fazemos .cases-setas{display:flex;gap:8px}
+/* .seta-btn: valores finais já consolidados (o original repetia a regra com
+   42px e depois 44px — a segunda vencia a cascata; aqui fica só o resultado). */
+.pagina-o-que-fazemos .seta-btn{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--n-200);background:#fff;color:var(--n-900);cursor:pointer;
+  transition:border-color .3s var(--ease),color .3s var(--ease),background .3s var(--ease)}
+.pagina-o-que-fazemos .seta-btn svg{width:16px;height:16px}
+.pagina-o-que-fazemos .seta-btn:hover:not(:disabled){border-color:var(--marca-600);color:var(--marca-700);background:var(--marca-50)}
+.pagina-o-que-fazemos .seta-btn:focus-visible{outline:2px solid var(--marca-600);outline-offset:2px}
+.pagina-o-que-fazemos .seta-btn:disabled{opacity:.35;cursor:default}
+
+.pagina-o-que-fazemos .fita{display:grid;grid-auto-flow:column;grid-auto-columns:100%;align-items:start;
+  gap:clamp(16px,2vw,28px);overflow-x:auto;scroll-snap-type:x mandatory;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.pagina-o-que-fazemos .fita::-webkit-scrollbar{display:none}
+.pagina-o-que-fazemos .fita:focus-visible{outline:2px solid var(--marca-600);outline-offset:4px;border-radius:24px}
+.pagina-o-que-fazemos .caso{position:relative;scroll-snap-align:start;overflow:hidden;
+  padding:clamp(28px,3.4vw,48px);border-radius:24px;
+  border:1px solid var(--n-200);background:#fff}
+.pagina-o-que-fazemos .caso::before{content:"";position:absolute;right:-12%;top:-30%;width:52%;aspect-ratio:1;
+  border-radius:50%;background:var(--glow);opacity:.10;filter:blur(60px);pointer-events:none}
+.pagina-o-que-fazemos .caso > *{position:relative}
+.pagina-o-que-fazemos .caso-topo{display:flex;align-items:flex-start;justify-content:space-between;
+  gap:clamp(16px,2.4vw,32px)}
+.pagina-o-que-fazemos .caso-logo{flex:none;display:grid;place-items:center;width:clamp(104px,11vw,140px);
+  height:clamp(44px,4.6vw,58px);border-radius:10px;
+  border:1px dashed var(--n-300);background:var(--n-50)}
+.pagina-o-que-fazemos .caso-logo span{font-weight:500;font-size:11px;letter-spacing:.04em;
+  color:var(--n-500);text-align:center;padding-inline:8px;line-height:1.2}
+.pagina-o-que-fazemos .caso-logo img{max-width:100%;max-height:100%;object-fit:contain}
+.pagina-o-que-fazemos .caso-mercado{font-weight:500;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--marca-700)}
+.pagina-o-que-fazemos .caso h3{margin-top:var(--esp-5);font-weight:300;font-size:clamp(25px,2.9vw,38px);
+  line-height:1.12;letter-spacing:-.03em;color:var(--n-900);max-width:20ch}
+.pagina-o-que-fazemos .caso-txt{margin-top:var(--esp-5);font-size:clamp(15px,1.35vw,17px);line-height:1.65;
+  color:var(--n-600);max-width:64ch}
+.pagina-o-que-fazemos .caso-nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(16px,2vw,28px);list-style:none;margin:clamp(28px,3vw,40px) 0 0;padding:0}
+.pagina-o-que-fazemos .caso-nums li{padding-top:var(--esp-4);border-top:1px solid var(--n-200)}
+.pagina-o-que-fazemos .caso-nums b{display:block;font-weight:300;font-size:clamp(26px,3vw,40px);line-height:1;
+  letter-spacing:-.03em;color:var(--n-900)}
+.pagina-o-que-fazemos .caso-nums span{display:block;margin-top:8px;font-size:13.5px;line-height:1.4;color:var(--n-500)}
+.pagina-o-que-fazemos .caso-fonte{margin-top:clamp(22px,2.4vw,30px);font-size:13px;line-height:1.6;color:var(--n-500)}
+.pagina-o-que-fazemos .caso .btn{margin-top:var(--esp-6)}
+.pagina-o-que-fazemos .pendente{display:inline-block;font-size:.96em;font-weight:500;color:var(--terra-600);
+  border-bottom:1px dashed var(--terra-400);padding-bottom:1px}
+
+@media (max-width:900px){
+  .pagina-o-que-fazemos .caso-nums{grid-template-columns:1fr 1fr}
+  .pagina-o-que-fazemos .caso h3{max-width:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .pagina-o-que-fazemos .cases-pista{scroll-behavior:auto}
+}
+
+/* ---------- → · DIAGNÓSTICO E CONTATO (painel escuro) ---------- */
+.pagina-o-que-fazemos .diag{margin-top:clamp(40px,5vw,64px);display:flex;justify-content:center}
+.pagina-o-que-fazemos .diag .painel{width:100%;max-width:820px}
+.pagina-o-que-fazemos .painel{position:relative;border-radius:24px;padding:clamp(28px,3.2vw,44px);
+  background:linear-gradient(165deg,#071C31,#031526 62%,#05233D);
+  border:1px solid rgba(65,175,255,.16);color:#fff}
+.pagina-o-que-fazemos .painel::before{content:"";position:absolute;inset:-14%;z-index:-1;border-radius:40px;
+  background:radial-gradient(60% 50% at 50% 60%,rgba(65,175,255,.30),transparent 70%);
+  filter:blur(38px)}
+.pagina-o-que-fazemos .grupo + .grupo{margin-top:clamp(30px,3.2vw,42px)}
+.pagina-o-que-fazemos .grupo-cab{display:flex;align-items:baseline;gap:14px;padding-bottom:14px;
+  border-bottom:1px solid rgba(65,175,255,.26)}
+.pagina-o-que-fazemos .grupo-cab .n{font-family:var(--acento-f);font-style:italic;font-weight:600;font-size:24px;
+  line-height:1;color:var(--luminoso-500)}
+.pagina-o-que-fazemos .grupo-cab .t{font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#fff}
+.pagina-o-que-fazemos .linha-campos{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.2vw,28px)}
+.pagina-o-que-fazemos .painel .campo{margin-top:var(--esp-5)}
+.pagina-o-que-fazemos .painel .campo label,
+.pagina-o-que-fazemos .painel .grupo > label{display:block;font-weight:500;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--luminoso-500)}
+.pagina-o-que-fazemos .painel input[type=text],
+.pagina-o-que-fazemos .painel input[type=email],
+.pagina-o-que-fazemos .painel input[type=tel],
+.pagina-o-que-fazemos .painel input[type=url],
+.pagina-o-que-fazemos .painel textarea{width:100%;margin-top:10px;padding:8px 0;
+  font-family:inherit;font-size:15.5px;color:#fff;background:transparent;border:0;
+  border-bottom:1px solid rgba(255,255,255,.20);border-radius:0;
+  transition:border-color .3s var(--ease)}
+.pagina-o-que-fazemos .painel textarea{padding:14px;border:1px solid rgba(255,255,255,.20);border-radius:12px;
+  min-height:118px;resize:vertical;line-height:1.6}
+.pagina-o-que-fazemos .painel input::placeholder,
+.pagina-o-que-fazemos .painel textarea::placeholder{color:rgba(255,255,255,.38)}
+.pagina-o-que-fazemos .painel input:focus,
+.pagina-o-que-fazemos .painel textarea:focus{outline:0;border-color:var(--luminoso-500)}
+.pagina-o-que-fazemos .rot-legenda{display:block;font-weight:500;font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--luminoso-500)}
+.pagina-o-que-fazemos .pilulas{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.pagina-o-que-fazemos .pilulas label{position:relative;display:inline-flex}
+.pagina-o-que-fazemos .pilulas input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+.pagina-o-que-fazemos .pilulas span{padding:9px 17px;border-radius:999px;font-size:14px;color:var(--n-300);
+  border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.04);
+  transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease)}
+.pagina-o-que-fazemos .pilulas input:hover + span{border-color:rgba(255,255,255,.42);color:#fff}
+.pagina-o-que-fazemos .pilulas input:focus-visible + span{outline:2px solid var(--luminoso-500);outline-offset:2px}
+.pagina-o-que-fazemos .pilulas input:checked + span{background:var(--marca-600);border-color:var(--marca-600);color:#fff}
+.pagina-o-que-fazemos .painel .consenti{margin-top:clamp(26px,2.8vw,34px)}
+.pagina-o-que-fazemos .painel .consenti .txt{color:var(--n-300);font-size:13.5px;line-height:1.6}
+.pagina-o-que-fazemos .painel-acoes{display:flex;flex-wrap:wrap;align-items:center;gap:var(--esp-5);
+  margin-top:clamp(26px,2.8vw,34px)}
+.pagina-o-que-fazemos .painel-acoes .form-nota{font-size:13.5px;color:var(--n-300)}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width:1180px){
+  .pagina-o-que-fazemos .pratica{grid-template-columns:180px minmax(0,1fr) minmax(0,1.15fr)}
+  .pagina-o-que-fazemos .hero-grade{grid-template-columns:1fr;gap:clamp(32px,4vw,48px)}
+}
+@media (max-width:900px){
+  .pagina-o-que-fazemos .pratica{grid-template-columns:1fr}
+  .pagina-o-que-fazemos .escopo,
+.pagina-o-que-fazemos .ativos,
+.pagina-o-que-fazemos .linha-campos,
+.pagina-o-que-fazemos .entregas{grid-template-columns:1fr}
+  .pagina-o-que-fazemos .ativos li:last-child{border-bottom:0}
+  .pagina-o-que-fazemos .pratica h3{margin-top:var(--esp-3)}
+}
+@media (prefers-reduced-motion:reduce){
+  .pagina-o-que-fazemos .hero-aurora{animation:none}
+  .pagina-o-que-fazemos .passo:not([hidden]),
+.pagina-o-que-fazemos .sonda-fim:not([hidden]){animation:none}
+}

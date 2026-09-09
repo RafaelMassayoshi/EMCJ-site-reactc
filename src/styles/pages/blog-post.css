@@ -1,0 +1,63 @@
+/* ==========================================================================
+   POST ÚNICO DO BLOG — página nova (não existe no site original).
+   Reaproveita tokens, tipografia e componentes do sistema EMCJ; aqui só o
+   que é específico da leitura de um post.
+   ========================================================================== */
+.pagina-blog-post .post-secao{padding-top:calc(88px + clamp(40px,5vw,64px))}
+.pagina-blog-post .post-shell{max-width:min(100%, 880px)}
+
+.pagina-blog-post .post-volta{margin-bottom:clamp(28px,3vw,40px)}
+.pagina-blog-post .post-volta a{display:inline-flex;align-items:center;gap:8px;font-weight:500;font-size:14px;color:var(--marca-700);
+  transition:color .25s var(--ease)}
+.pagina-blog-post .post-volta a:hover{color:var(--marca-900)}
+
+.pagina-blog-post .post-meta-topo{display:flex;flex-wrap:wrap;align-items:center;gap:9px;font-size:13px;color:var(--n-500)}
+.pagina-blog-post .post-meta-topo .ed-nome{font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--tema,var(--marca-700))}
+.pagina-blog-post .post-meta-topo .ponto{width:3px;height:3px;border-radius:50%;background:currentColor;opacity:.55;flex:none}
+
+.pagina-blog-post .post-titulo{margin-top:var(--esp-4);font-weight:300;font-size:clamp(30px,4.2vw,52px);line-height:1.08;
+  letter-spacing:-.03em;color:var(--n-900);max-width:22ch}
+
+.pagina-blog-post .post-arte{margin-top:clamp(28px,3.2vw,40px);border-radius:20px;overflow:hidden;aspect-ratio:16/9;
+  background:linear-gradient(135deg,var(--n-50),rgba(181,219,248,.5) 74%)}
+.pagina-blog-post .post-arte img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Corpo do post: HTML vindo direto do WordPress (Gutenberg/clássico).
+   Regras conservadoras o bastante para não quebrar blocos comuns. */
+.pagina-blog-post .post-corpo{margin-top:clamp(32px,3.6vw,48px);font-size:clamp(16px,1.25vw,18px);line-height:1.75;color:var(--n-600)}
+.pagina-blog-post .post-corpo > * + *{margin-top:var(--esp-5)}
+.pagina-blog-post .post-corpo h2{font-weight:400;font-size:clamp(23px,2vw,30px);line-height:1.2;letter-spacing:-.02em;color:var(--n-900);
+  margin-top:clamp(40px,4.4vw,56px)}
+.pagina-blog-post .post-corpo h3{font-weight:500;font-size:clamp(19px,1.6vw,23px);line-height:1.25;letter-spacing:-.02em;color:var(--n-900);
+  margin-top:clamp(32px,3.6vw,44px)}
+.pagina-blog-post .post-corpo p{color:var(--n-600)}
+.pagina-blog-post .post-corpo a{color:var(--marca-700);text-decoration:underline;text-underline-offset:2px}
+.pagina-blog-post .post-corpo ul,
+.pagina-blog-post .post-corpo ol{padding-left:1.3em;list-style:revert}
+.pagina-blog-post .post-corpo li + li{margin-top:8px}
+.pagina-blog-post .post-corpo blockquote{margin:0;padding-left:20px;border-left:2px solid var(--marca-300);
+  font-style:italic;color:var(--n-900)}
+.pagina-blog-post .post-corpo img,
+.pagina-blog-post .post-corpo figure img{width:100%;height:auto;border-radius:14px;display:block}
+.pagina-blog-post .post-corpo figure{margin:0}
+.pagina-blog-post .post-corpo figcaption{margin-top:8px;font-size:13px;color:var(--n-500)}
+.pagina-blog-post .post-corpo hr{border:0;border-top:1px solid var(--n-200);margin-block:var(--esp-6)}
+.pagina-blog-post .post-corpo table{width:100%;border-collapse:collapse;font-size:15px}
+.pagina-blog-post .post-corpo th,
+.pagina-blog-post .post-corpo td{padding:10px 12px;border:1px solid var(--n-200);text-align:left}
+
+.pagina-blog-post .post-fonte{margin-top:clamp(40px,4.4vw,56px);padding-top:var(--esp-5);border-top:1px solid var(--n-200);
+  font-size:13px;color:var(--n-500)}
+.pagina-blog-post .post-fonte a{color:var(--marca-700)}
+
+.pagina-blog-post .post-newsletter-lembrete{margin-top:clamp(56px,6vw,80px);padding-top:clamp(32px,3.6vw,48px);
+  border-top:1px solid var(--n-200)}
+.pagina-blog-post .post-newsletter-lembrete .kicker{color:var(--marca-700)}
+.pagina-blog-post .post-relacionados-lista{margin-top:var(--esp-4);display:grid;gap:10px}
+.pagina-blog-post .post-relacionados-lista a{display:block;padding:14px 0;border-top:1px solid var(--n-200);
+  font-size:15.5px;color:var(--n-900);transition:color .25s var(--ease)}
+.pagina-blog-post .post-relacionados-lista a:hover{color:var(--marca-700)}
+
+@media (max-width:620px){
+  .pagina-blog-post .post-secao{padding-top:calc(72px + clamp(28px,6vw,44px))}
+}

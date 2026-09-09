@@ -1,0 +1,79 @@
+
+
+/* ---------- Tipografia (valores exatos do Figma em ≥1440) ---------- */
+.d76{font-weight:300;font-size:clamp(38px,5.28vw,76px);line-height:1.04;letter-spacing:-.03em}
+.d64{font-weight:300;font-size:clamp(33px,4.44vw,64px);line-height:1.06;letter-spacing:-.03em}
+.d56{font-weight:300;font-size:clamp(30px,3.9vw,56px);line-height:1.08;letter-spacing:-.03em}
+.d40{font-weight:400;font-size:clamp(26px,2.78vw,40px);line-height:1.14;letter-spacing:-.025em}
+.ac{font-family:var(--acento-f);font-style:italic;font-weight:600;letter-spacing:-.015em;line-height:1}
+.ac101{font-size:clamp(50px,7.01vw,101px)}
+.ac90{font-size:clamp(44px,6.25vw,90px)}
+.ac74{font-size:clamp(38px,5.14vw,74px)}
+.ac53{font-size:clamp(30px,3.68vw,53px)}
+.kicker{font-weight:500;font-size:12px;line-height:1.35;letter-spacing:.08em;text-transform:uppercase}
+.lead{font-size:clamp(16px,1.25vw,18px);line-height:1.6}
+.txt14{font-size:14px;line-height:1.6}
+
+/* claro */
+.claro h2,.claro h3,.claro .ac{color:var(--n-900)}
+.claro .lead,.claro p{color:var(--n-600)}
+/* escuro */
+.escuro{color:var(--n-300)}
+.escuro h2,.escuro h3,.escuro .ac{color:#fff}
+.escuro .kicker{color:var(--luminoso-500)}
+
+/* ---------- Cabeçalho de seção com símbolo ---------- */
+.simbolo-linha{display:flex;align-items:center;gap:var(--esp-5);margin-bottom:clamp(32px,4vw,56px)}
+.simbolo{font-size:clamp(30px,2.78vw,40px);font-weight:400;line-height:1;color:var(--marca-700)}
+.regua{width:28px;height:1px;background:var(--marca-300);flex:none}
+.simbolo-linha .kicker{color:var(--n-600)}
+.escuro .simbolo{color:var(--luminoso-300)}
+.escuro .simbolo-linha .kicker{color:var(--luminoso-500)}
+.escuro .regua{background:var(--marca-700)}
+
+.cab2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,400px);gap:clamp(32px,5vw,96px);align-items:start}
+.cab2 .apoio{padding-top:.6em}
+
+/* ---------- Blocos ---------- */
+.secao{position:relative}
+.bloco{padding-block:clamp(72px,8.3vw,120px)}
+.fundo-branco{background:var(--n-0)}
+.fundo-cinza{background:var(--n-50)}
+.fundo-escuro{background:linear-gradient(140deg,var(--profundo-900) 0%,var(--petroleo) 62%,var(--marca-900) 100%);position:relative;overflow:hidden}
+.fundo-escuro::after{content:"";position:absolute;right:-8%;bottom:-40%;width:820px;height:820px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(65,175,255,.26),rgba(65,175,255,.08) 50%,transparent 100%);pointer-events:none}
+
+/* ---------- Estados de carregamento / vazio / erro (dados buscados por fetch) ----------
+   Usado por blog.html e blog-post.html (posts vêm da REST API do WordPress). */
+.blog-carregando,.blog-vazio{font-size:15px;line-height:1.6;color:var(--n-500)}
+.escuro .blog-carregando,.escuro .blog-vazio{color:var(--n-300)}
+.blog-erro{font-size:15px;line-height:1.6;color:var(--terra-600);max-width:60ch}
+.escuro .blog-erro{color:var(--terra-300)}
+
+/* ==========================================================================
+   REVELAÇÃO (scroll-reveal)
+   ========================================================================== */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .8s var(--suave),transform .8s var(--suave)}
+.rv.dentro{opacity:1;transform:none}
+.esc > *{opacity:0;transform:translateY(16px);transition:opacity .7s var(--suave),transform .7s var(--suave)}
+.esc.dentro > *{opacity:1;transform:none}
+.esc.dentro > *:nth-child(1){transition-delay:.04s} .esc.dentro > *:nth-child(2){transition-delay:.10s}
+.esc.dentro > *:nth-child(3){transition-delay:.16s} .esc.dentro > *:nth-child(4){transition-delay:.22s}
+.esc.dentro > *:nth-child(5){transition-delay:.28s} .esc.dentro > *:nth-child(6){transition-delay:.34s}
+.esc.dentro > *:nth-child(7){transition-delay:.40s} .esc.dentro > *:nth-child(n+8){transition-delay:.46s}
+
+/* ==========================================================================
+   RESPONSIVO — regras que se aplicam aos utilitários globais acima
+   ========================================================================== */
+@media (max-width:1180px){
+  :root{--gutter:56px}
+}
+@media (max-width:900px){
+  :root{--gutter:24px}
+  .cab2{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv,.esc > *{opacity:1;transform:none}
+}
+

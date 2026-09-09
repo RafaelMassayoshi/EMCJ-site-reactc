@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Fallback de SPA: qualquer caminho que não seja um arquivo ou pasta
+# existente (ex.: /varejo, /blog-post) é servido pelo index.html, que
+# carrega o React e o react-router-dom resolve a rota no navegador.
+# Mesma regra final que já estava preparada (desativada) em ___.htaccess,
+# na raiz do site estático original.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]

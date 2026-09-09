@@ -1,0 +1,137 @@
+/* ==========================================================================
+   HOME — estilos exclusivos desta página.
+   (tokens, reset, tipografia, nav, hero, cartões, esteira, formulário,
+   rodapé e revelação vêm de css/variables.css, css/reset.css, css/global.css
+   e css/components/*.css)
+   ========================================================================== */
+
+/* ---------- U · MERCADO — a tensão entre as duas áreas ---------- */
+.pagina-home .mercado{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:clamp(36px,5vw,80px);align-items:center}
+.pagina-home .lados{position:relative;display:grid;gap:20px}
+.pagina-home .lados::before{content:"";position:absolute;inset:-8% -6%;z-index:0;pointer-events:none;border-radius:var(--r-lg);
+  background-image:radial-gradient(circle at center, rgba(128,192,239,.5) 2px, transparent 2.5px);
+  background-size:52px 52px;
+  -webkit-mask-image:radial-gradient(115% 115% at 50% 50%,#000 42%,transparent 100%);
+  mask-image:radial-gradient(115% 115% at 50% 50%,#000 42%,transparent 100%)}
+.pagina-home .lado{position:relative;z-index:1;background:#fff;border:1px solid var(--n-200);border-radius:var(--r-lg);
+  padding:28px 30px;transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease)}
+.pagina-home .lado:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(3,21,38,.09);border-color:var(--marca-300)}
+.pagina-home .lado .kicker{color:var(--marca-700)}
+.pagina-home .lado p{margin-top:var(--esp-4);font-size:16px;line-height:1.65;color:var(--n-600)}
+.pagina-home .lado--b{margin-left:clamp(0px,6vw,64px)}
+.pagina-home .lados .entre{position:relative;z-index:1;display:flex;align-items:center;gap:14px;
+  font-size:14px;color:var(--n-500);padding-left:6px}
+.pagina-home .lados .entre span{width:36px;height:1px;background:var(--marca-300);flex:none}
+.pagina-home .mercado .paragrafos p + p{margin-top:var(--esp-5)}
+
+.pagina-home .hero-home {
+  background-image: url("/assets/images/background-hero-home.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ---------- ⊂ · O QUE FAZEMOS — bento com borrões de degradê ---------- */
+.pagina-home .bento{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr) minmax(0,1fr);
+  grid-auto-rows:minmax(230px,auto);gap:20px;margin-top:clamp(40px,5vw,72px)}
+.pagina-home .cartao--grande{grid-row:span 2;justify-content:space-between}
+.pagina-home .cartao--grande .kicker{color:#fff}
+.pagina-home .cartao--grande .conteudo{display:flex;flex-direction:column;gap:var(--esp-4)}
+.pagina-home .cartao--grande h3{font-weight:300;font-size:clamp(26px,2.92vw,42px);line-height:1.12;letter-spacing:-.025em;max-width:14ch}
+.pagina-home .cartao--grande .txt{margin-top:var(--esp-2);max-width:38ch}
+
+/* ---------- Σ · COMBINAÇÃO — declaração central + contador ---------- */
+.pagina-home .combinacao{text-align:center;max-width:960px;margin-inline:auto}
+.pagina-home .combinacao .simbolo-linha{justify-content:center;margin-bottom:clamp(28px,3.4vw,44px)}
+.pagina-home .combinacao h2{max-width:16ch;margin-inline:auto}
+.pagina-home .combinacao h2 .ac{display:inline-block;transform:translateY(.07em)}
+.pagina-home .combinacao .explica{margin-top:clamp(24px,3vw,40px);max-width:70ch;margin-inline:auto;
+  font-size:clamp(17px,1.39vw,20px);line-height:1.65;color:var(--n-300)}
+.pagina-home .combo-metrica{margin-top:clamp(36px,4.4vw,60px);
+  display:flex;flex-direction:column;align-items:center;gap:var(--esp-4)}
+.pagina-home .combo-metrica .valor{font-family:var(--acento-f);font-style:italic;font-weight:600;
+  font-size:clamp(86px,15vw,216px);line-height:.86;letter-spacing:-.02em;color:#fff;
+  text-shadow:0 0 60px rgba(65,175,255,.34)}
+.pagina-home .combo-metrica .rotulo{font-weight:300;font-size:clamp(19px,2.08vw,30px);line-height:1.25;letter-spacing:-.02em;
+  color:#fff;max-width:22ch}
+.pagina-home .combo-metrica .nota{font-size:14px;color:var(--n-400);max-width:52ch}
+
+/* ---------- Δ · JORNADA — abas ---------- */
+.pagina-home .jornada{margin-top:clamp(40px,5vw,72px)}
+.pagina-home .jornada-abas{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--n-200)}
+.pagina-home .jornada-abas button{padding:24px 20px 24px 0;text-align:left;border-top:2px solid transparent;margin-top:-1px;
+  transition:border-color .35s var(--ease)}
+.pagina-home .jornada-abas .n{font-family:var(--acento-f);font-style:italic;font-weight:600;font-size:34px;line-height:1;
+  color:var(--n-300);transition:color .35s var(--ease)}
+.pagina-home .jornada-abas .t{display:block;margin-top:10px;font-weight:500;font-size:18px;color:var(--n-500);transition:color .35s var(--ease)}
+.pagina-home .jornada-abas button[aria-selected="true"]{border-top-color:var(--marca-600)}
+.pagina-home .jornada-abas button[aria-selected="true"] .n{color:var(--marca-700)}
+.pagina-home .jornada-abas button[aria-selected="true"] .t,
+.pagina-home .jornada-abas button:hover .t{color:var(--n-900)}
+.pagina-home .jornada-painel{margin-top:clamp(28px,3.4vw,44px);max-width:900px}
+.pagina-home .jornada-painel p{font-size:clamp(18px,1.67vw,24px);line-height:1.5;font-weight:300;color:var(--n-900)}
+.pagina-home .jornada-painel[hidden]{display:none}
+
+/* ---------- ∞ · CAMINHOS — trilha contínua entre os cinco pontos ---------- */
+.pagina-home .caminhos{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:clamp(36px,5vw,80px);
+  align-items:center;margin-top:clamp(32px,4vw,56px)}
+.pagina-home .caminhos h2{max-width:19ch}
+.pagina-home .caminhos h2 .ac{display:block;margin-top:.06em}
+.pagina-home .caminhos .explica{margin-top:clamp(24px,3vw,40px);max-width:62ch}
+.pagina-home .trilha-caixa{position:relative}
+.pagina-home .trilha{width:100%;height:auto;overflow:visible}
+.pagina-home .trilha .via{fill:none;stroke:var(--n-200);stroke-width:1.5}
+.pagina-home .trilha .via-viva{fill:none;stroke:var(--marca-600);stroke-width:1.5;stroke-linecap:round;
+  stroke-dasharray:1000;stroke-dashoffset:1000;transition:stroke-dashoffset 2.6s var(--suave)}
+.pagina-home .trilha-caixa.dentro .via-viva{stroke-dashoffset:0}
+.pagina-home .trilha .ponto circle{fill:#fff;stroke:var(--n-300);stroke-width:1.5;transition:fill .5s var(--ease),stroke .5s var(--ease),r .5s var(--ease)}
+.pagina-home .trilha .ponto text{font-family:var(--display);font-size:12px;font-weight:500;letter-spacing:.08em;
+  fill:var(--n-500);transition:fill .5s var(--ease)}
+.pagina-home .trilha .ponto.on circle{fill:var(--marca-600);stroke:var(--marca-600);r:9}
+.pagina-home .trilha .ponto.on text{fill:var(--n-900)}
+.pagina-home .trilha .halo{fill:var(--marca-600);opacity:.16}
+.pagina-home .trilha .viajante{fill:var(--luminoso-500)}
+.pagina-home .trilha .viajante-anel{fill:none;stroke:var(--luminoso-500);stroke-width:1.5;opacity:.55}
+
+/* ---------- ∩ · MERCADOS — só o que diverge do card compartilhado ---------- */
+.pagina-home .mercados{margin-top:clamp(40px,5vw,72px)}
+.pagina-home .cartao--mercado .kicker{color:var(--glow)}
+.pagina-home .cartao--mercado h3{margin-top:var(--esp-4);font-weight:500;font-size:clamp(22px,2vw,26px);line-height:1.2}
+
+/* ---------- PARCEIROS — cabeçalho + esteira sobre fundo claro ---------- */
+.pagina-home .parceiros-cab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:clamp(28px,5vw,80px);align-items:end}
+.pagina-home .slot-logo{background:var(--n-0);border:1px solid var(--n-200)}
+.pagina-home .slot-logo:hover{border-color:var(--marca-300);box-shadow:0 16px 34px rgba(3,21,38,.08)}
+.pagina-home .slot-logo span{color:var(--n-400)}
+
+/* ---------- ∈ · DECISÃO — layout com comparativo + formulário ---------- */
+.pagina-home .decisao{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:clamp(40px,5vw,72px);
+  align-items:start;margin-top:clamp(36px,4.4vw,60px)}
+
+/* ---------- RODAPÉ — bloco topo exclusivo da home ---------- */
+.pagina-home .rodape-topo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:end}
+.pagina-home .rodape h2 .ac{display:block;margin-top:.04em}
+.pagina-home .rodape-lead{color:var(--n-300);font-size:clamp(16px,1.25vw,18px);line-height:1.65;max-width:520px}
+.pagina-home .rodape .btn{margin-top:clamp(28px,3.2vw,44px)}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width:1180px){
+  .pagina-home .bento{grid-template-columns:1fr 1fr}
+  .pagina-home .cartao--grande{grid-row:auto;grid-column:1/-1;min-height:300px}
+  .pagina-home .caminhos,
+.pagina-home .decisao,
+.pagina-home .parceiros-cab{grid-template-columns:1fr}
+  .pagina-home .jornada-abas{grid-template-columns:1fr 1fr}
+  .pagina-home .trilha-caixa{max-width:520px;margin-inline:auto}
+}
+@media (max-width:900px){
+  .pagina-home .mercado{grid-template-columns:1fr}
+  .pagina-home .vertentes{aspect-ratio:1/.8}
+}
+@media (max-width:620px){
+  .pagina-home .jornada-abas,
+.pagina-home .bento{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .pagina-home .trilha .via-viva{stroke-dashoffset:0}
+}
