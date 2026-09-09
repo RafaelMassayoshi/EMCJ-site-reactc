@@ -1,7 +1,6 @@
 /* Porta de js/components/esteira.js: gera os slots de logo e duplica a
-   fita para o loop sem emenda. Usada em A Emcomjunto ("Empresas clientes");
-   a home tinha essa seção comentada (desativada) no HTML original e a
-   varejo não usa esteira — nenhuma das duas renderiza este componente. */
+   fita para o loop sem emenda. Usada em A Emcomjunto ("Empresas clientes")
+   e na home ("Empresas parceiras"); varejo não usa esteira. */
 export default function Esteira({ count = 9, label = 'Empresas parceiras' }) {
   const slots = Array.from({ length: count }, (_, i) => (
     <div className="slot-logo" key={i}>

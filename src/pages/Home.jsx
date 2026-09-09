@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import MainLayout from '../layouts/MainLayout.jsx'
 import CountUp from '../components/CountUp.jsx'
+import Esteira from '../components/Esteira.jsx'
 import FormStatus from '../components/FormStatus.jsx'
 import useDocumentMeta from '../hooks/useDocumentMeta.js'
 import useReveal from '../hooks/useReveal.js'
@@ -401,8 +402,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Seção de parceiros: comentada/desativada no HTML original (a
-          esteira de logos não era exibida na home) — preservada assim. */}
+      {/* ============================= ∪ · PARCEIROS ============================= */}
+      <section className="secao bloco claro fundo-branco">
+        <div className="shell">
+          <div className="simbolo-linha rv">
+            <span className="simbolo">∪</span><span className="regua"></span><span className="kicker">Parceiros</span>
+          </div>
+          <div className="parceiros-cab rv">
+            <h2 className="d56">Empresas que já caminharam <span className="ac ac74">com a gente.</span></h2>
+            <p className="lead">Operações de indústria, varejo, tecnologia e saúde que passaram pela nossa estrutura comercial.</p>
+          </div>
+        </div>
+
+        <Esteira label="Empresas parceiras" />
+      </section>
 
       {/* ============================= → · JORNADA ============================= */}
       <section className="secao bloco claro fundo-cinza" id="a-emcomjunto">

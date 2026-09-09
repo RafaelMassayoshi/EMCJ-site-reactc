@@ -151,7 +151,12 @@
   transition:opacity .25s var(--ease),color .4s var(--ease)}
 .pagina-pesquisa-clinica .nav-links a:hover{opacity:1}
 .pagina-pesquisa-clinica .nav.solida .nav-links a{color:var(--tx2)}
-.pagina-pesquisa-clinica .nav.solida .nav-links a:hover{color:var(--rx-purple)}
+/* Mesmo comportamento de hover do Varejo (opacidade + sublinhado que desliza,
+   sem trocar a cor do texto) — só a cor do sublinhado muda entre as páginas.
+   .nav-links a::after vem do componente compartilhado (nav.css) e usa
+   --luminoso-500 (azul) por padrão; varejo.css remapeia essa variável para
+   laranja, aqui o sublinhado vira o roxo da marca Random. */
+.pagina-pesquisa-clinica .nav-links a::after{background:var(--rx-purple)}
 .pagina-pesquisa-clinica .nav-btn{display:none;width:40px;height:40px;margin-left:auto;position:relative}
 .pagina-pesquisa-clinica .nav-btn i,
 .pagina-pesquisa-clinica .nav-btn::before,
