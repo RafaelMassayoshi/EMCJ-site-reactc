@@ -586,14 +586,9 @@
 .pagina-home .bc-fita{display:flex;align-items:center;width:max-content;gap:clamp(32px,3.4vw,52px);
   padding-right:clamp(32px,3.4vw,52px);animation:desliza 30s linear infinite;will-change:transform}
 .pagina-home .bc-esteira:hover .bc-fita{animation-play-state:paused}
-.pagina-home .bc-logo{flex:none;display:inline-flex;align-items:center;white-space:nowrap;color:var(--n-600);
-  font-size:20px;line-height:1;letter-spacing:-.01em;opacity:.78;transition:opacity .3s var(--ease),color .3s var(--ease)}
-.pagina-home .bc-logo:hover{opacity:1;color:var(--n-900)}
-.pagina-home .bc-logo--peso{font-weight:500;letter-spacing:.01em}
-.pagina-home .bc-logo--leve{font-weight:300;letter-spacing:.02em}
-.pagina-home .bc-logo--duas{flex-direction:column;align-items:flex-start;gap:2px;font-size:15px}
-.pagina-home .bc-logo--duas b{font-weight:500}
-.pagina-home .bc-logo--duas span{font-weight:300}
+.pagina-home .bc-logo{flex:none;display:block;height:28px;width:auto;object-fit:contain;
+  opacity:.78;transition:opacity .3s var(--ease)}
+.pagina-home .bc-logo:hover{opacity:1}
 .pagina-home .bc-numeros{position:relative;padding-left:clamp(20px,2.6vw,36px);border-left:1px solid var(--n-200);min-width:230px}
 .pagina-home .bc-palco{display:grid}
 .pagina-home .bc-num{grid-area:1/1;display:flex;flex-direction:column;gap:4px;opacity:0;transform:translateY(10px);

@@ -7,17 +7,15 @@ import { useEffect, useState } from 'react'
    (prefixo .barra-clientes).
    ========================================================================== */
 
-/* TODO(dev): trocar os nomes em texto pelos arquivos de logo reais
-   (SVG ou PNG monocromático em /public/assets/logos/), mantendo `nome`
-   como alt. Enquanto o arquivo não existir, o nome aparece como texto.
-   Gmar Ambiental: exibir só com autorização confirmada da empresa. */
 const CLIENTES = [
-  { nome: 'CEMEC', estilo: 'peso' },
-  { nome: 'CEPHO', estilo: 'peso' },
-  { nome: 'CEON+', estilo: 'leve' },
-  { nome: 'Placar', estilo: 'peso' },
-  { nome: 'Gmar Ambiental', estilo: 'duas' },
-  { nome: 'MMC Saúde', estilo: 'duas' },
+  { nome: 'Deiton', arquivo: 'Logo-3.png' },
+  { nome: 'BR Trials', arquivo: 'Logo-BR-Trials-colorido-sem-fundo.png' },
+  { nome: 'CEPHO', arquivo: 'cepho-logo.png' },
+  { nome: 'IEP São Lucas', arquivo: 'cropped-logo-header-iep.png' },
+  { nome: 'Gmar Ambiental', arquivo: 'logo-gmar-att.png' },
+  { nome: 'MMC Saúde', arquivo: 'logo-mmc.png' },
+  { nome: 'CEON+', arquivo: 'logo.png.webp' },
+  { nome: 'Neoband', arquivo: 'logoNeoband2026.png' },
 ]
 
 /* Só números de operação real, com fonte no posicionamento da EMCJ:
@@ -30,17 +28,15 @@ const NUMEROS = [
   { valor: '4.500', rotulo: 'leads em 28 meses numa operação de varejo' },
 ]
 
-function Logo({ nome, estilo }) {
-  if (estilo === 'duas') {
-    const [a, ...b] = nome.split(' ')
-    return (
-      <span className="bc-logo bc-logo--duas">
-        <b>{a}</b>
-        <span>{b.join(' ')}</span>
-      </span>
-    )
-  }
-  return <span className={'bc-logo bc-logo--' + estilo}>{nome}</span>
+function Logo({ nome, arquivo }) {
+  return (
+    <img
+      className="bc-logo"
+      src={'/assets/images/clientes/' + arquivo}
+      alt={nome}
+      loading="lazy"
+    />
+  )
 }
 
 export default function BarraClientes() {
