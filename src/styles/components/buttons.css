@@ -1,0 +1,16 @@
+/* ---------- Botões (raio 8, altura 58 — do Figma) ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:58px;padding-inline:32px;
+  border-radius:var(--r-md);font-weight:500;font-size:16px;border:1px solid transparent;white-space:nowrap;
+  transition:background .28s var(--ease),border-color .28s var(--ease),transform .28s var(--ease),box-shadow .28s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn--primario{background:var(--marca-600);color:#fff}
+.btn--primario:hover{background:var(--marca-700);box-shadow:0 12px 30px rgba(31,136,214,.28)}
+.btn--texto{color:var(--luminoso-500);padding-inline:0;height:auto}
+.claro .btn--texto{color:var(--marca-700)}
+.btn--texto:hover{transform:none}
+.seta{display:inline-block;transition:transform .28s var(--ease)}
+.btn:hover .seta,.card-link:hover .seta{transform:translateX(5px)}
+
+/* Botão contornado para fundo claro — usado por o-que-fazemos (fita de cases) */
+.btn--contorno{background:#fff;color:var(--n-900);border:1px solid var(--n-200)}
+.btn--contorno:hover{border-color:var(--marca-600);color:var(--marca-700);background:var(--marca-50)}

@@ -1,0 +1,52 @@
+/* ==========================================================================
+   CARTÕES — superfície com borrão de degradê que segue o ponteiro.
+   Usada por home ("O que fazemos", bento), a-emcomjunto ("Marcas") e nos
+   cards de mercado (.cartao--mercado) em ambas + varejo.
+   ========================================================================== */
+.cartao{position:relative;overflow:hidden;isolation:isolate;border-radius:20px;padding:clamp(26px,2.6vw,34px);
+  display:flex;flex-direction:column;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);
+  transition:border-color .45s var(--ease),background .45s var(--ease),transform .45s var(--ease)}
+.cartao:hover{border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.06);transform:translateY(-4px)}
+.cartao .kicker{position:relative;z-index:1;color:var(--terra-300)}
+.cartao h3{position:relative;z-index:1;color:#fff}
+.cartao .txt{position:relative;z-index:1;margin-top:var(--esp-4);font-size:clamp(15px,1.25vw,17px);
+  line-height:1.6;color:var(--n-300)}
+
+/* O borrão: posicionador segue o ponteiro, o miolo faz a deriva contínua */
+.borrao{position:absolute;z-index:0;left:var(--gx,52%);top:var(--gy,66%);
+  width:var(--gw,118%);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none;
+  transition:left .9s var(--ease),top .9s var(--ease),width .6s var(--ease),opacity .5s var(--ease);
+  opacity:var(--go,.42)}
+.borrao i{display:block;width:100%;height:100%;border-radius:50%;
+  background:radial-gradient(closest-side,var(--glow) 0%,transparent 72%);
+  filter:blur(26px);will-change:transform}
+.cartao:hover .borrao{--go:.62;--gw:132%}
+.deriva-1 i{animation:deriva1 15s ease-in-out infinite}
+.deriva-2 i{animation:deriva2 12s ease-in-out infinite}
+.deriva-3 i{animation:deriva3 17s ease-in-out infinite}
+.deriva-4 i{animation:deriva4 13.5s ease-in-out infinite}
+.deriva-5 i{animation:deriva5 19s ease-in-out infinite}
+@keyframes deriva1{0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(9%,-11%) scale(1.1)} 66%{transform:translate(-8%,7%) scale(.94)}}
+@keyframes deriva2{0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-13%,10%) scale(1.14)}}
+@keyframes deriva3{0%,100%{transform:translate(0,0) scale(1.04)} 40%{transform:translate(11%,9%) scale(.92)} 75%{transform:translate(-6%,-12%) scale(1.12)}}
+@keyframes deriva4{0%,100%{transform:translate(0,0) scale(.96)} 50%{transform:translate(10%,-9%) scale(1.16)}}
+@keyframes deriva5{0%,100%{transform:translate(0,0) scale(1)} 30%{transform:translate(-11%,-8%) scale(1.08)} 70%{transform:translate(8%,11%) scale(.95)}}
+
+/* ---------- Cartão de mercado — parte comum entre home e a-emcomjunto ----------
+   h3 (tamanho/decoração) e .kicker mudam por página: ver css/pages/*.css. */
+.cartao--mercado{min-height:400px;justify-content:space-between;text-decoration:none}
+.cartao--mercado .txt{flex:1}
+.cartao--mercado .card-link{position:relative;z-index:1;margin-top:var(--esp-6);padding-top:var(--esp-5);
+  border-top:1px solid rgba(255,255,255,.14);font-weight:500;font-size:15px;color:#fff;
+  display:flex;align-items:center;gap:8px}
+.cartao--mercado:hover .card-link .seta{transform:translateX(5px)}
+
+/* ---------- Grade de mercados — só o grid; margin-top varia por página ---------- */
+.mercados{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+
+@media (max-width:1180px){
+  .mercados{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .borrao i{animation:none}
+}

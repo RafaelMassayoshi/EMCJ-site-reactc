@@ -1,0 +1,78 @@
+/* ==========================================================================
+   HERO — casco reutilizado por home, o-que-fazemos, a-emcomjunto, varejo
+   ========================================================================== */
+.hero{position:relative;min-height:900px;display:flex;align-items:center;overflow:hidden;
+  background:
+    radial-gradient(78% 62% at 84% 30%, rgba(65,175,255,.30) 0%, rgba(65,175,255,.08) 44%, transparent 78%),
+    radial-gradient(56% 48% at 96% 88%, rgba(46,161,240,.20) 0%, transparent 72%),
+    radial-gradient(60% 50% at 8% 6%, rgba(24,61,89,.55) 0%, transparent 70%),
+    linear-gradient(140deg, var(--profundo-900) 0%, var(--petroleo) 58%, var(--marca-900) 100%)}
+.hero-brilho{position:absolute;right:6%;top:50%;width:min(46vw,720px);aspect-ratio:1;/*transform:translateY(-50%)*/left: 50%;
+  border-radius:50%;pointer-events:none;will-change:transform;
+  background:radial-gradient(closest-side,rgba(158,209,255,.24),rgba(87,158,240,.09) 46%,transparent 100%)}
+.hero-scrim{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(3,21,38,.88) 0%,rgba(3,21,38,.52) 44%,rgba(3,21,38,0) 78%)}
+
+/* Vertentes flutuantes (home, varejo) */
+.vertentes{position:absolute;left: 53%;top:50%;transform:translateY(-50%);
+  width:min(46%,600px);aspect-ratio:1/.92;pointer-events:none;z-index:1}
+.vertentes .fios{position:absolute;inset:0;width:100%;height:100%}
+.vertentes .fios line{stroke:rgba(65,175,255,.34);stroke-width:1;stroke-dasharray:5 7;
+  animation:corre 9s linear infinite}
+.vertentes .fios circle{fill:rgba(158,209,255,.55)}
+.vertentes .nucleo{fill:none;stroke:rgba(65,175,255,.22);stroke-width:1}
+@keyframes corre{to{stroke-dashoffset:-96}}
+.vertente{position:absolute;display:flex;align-items:center;gap:12px;padding:16px 24px;border-radius:var(--r-md);
+  background:rgba(255,255,255,.07);border:1px solid rgba(65,175,255,.34);backdrop-filter:blur(12px);
+  color:#fff;font-weight:500;font-size:clamp(15px,1.25vw,18px);letter-spacing:-.01em;white-space:nowrap;
+  box-shadow:0 18px 44px rgba(3,21,38,.34);will-change:transform;
+  opacity:0;transform:translateY(14px);
+  transition:opacity .9s var(--suave),transform .9s var(--suave)}
+.vertente::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--luminoso-500);flex:none;
+  box-shadow:0 0 0 4px rgba(65,175,255,.16)}
+.vertente i{position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(120deg,rgba(255,255,255,.10),transparent 55%)}
+.v-mkt{left:2%;top:6%} .v-tec{right:0;top:40%} .v-vnd{left:14%;bottom:4%}
+.pronto .vertente{opacity:1;transform:none}
+.pronto .v-mkt{transition-delay:.20s;animation:flutua-a 7.5s ease-in-out 1.3s infinite}
+.pronto .v-tec{transition-delay:.40s;animation:flutua-b 8.6s ease-in-out 1.5s infinite}
+.pronto .v-vnd{transition-delay:.60s;animation:flutua-c 9.4s ease-in-out 1.7s infinite}
+@keyframes flutua-a{0%,100%{transform:translate(0,0)} 50%{transform:translate(10px,-16px)}}
+@keyframes flutua-b{0%,100%{transform:translate(0,0)} 50%{transform:translate(-14px,12px)}}
+@keyframes flutua-c{0%,100%{transform:translate(0,0)} 50%{transform:translate(12px,14px)}}
+
+/* Logo no centro do círculo (home, o-que-fazemos, a-emcomjunto, varejo) */
+.marca-nucleo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:23%;max-width:112px;opacity:0;transition:opacity 1s var(--ease) .9s}
+.pronto .marca-nucleo{opacity:1}
+.marca-nucleo svg{width:100%;height:auto;
+  filter:drop-shadow(0 0 22px rgba(65,175,255,.42)) drop-shadow(0 0 6px rgba(3,21,38,.55))}
+.marca-nucleo::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:210%;aspect-ratio:1;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(3,21,38,.72),rgba(3,21,38,.28) 55%,transparent 100%)}
+.marca-nucleo svg{position:relative;z-index:1}
+
+/* O texto ocupa a coluna da esquerda; a largura vive nos filhos, não no .shell */
+.hero-conteudo{position:relative;z-index:2;padding-top:88px;width:100%}
+.hero-conteudo > *{max-width:640px}
+.hero .filete{width:56px;height:1px;background:var(--luminoso-500);margin-bottom:var(--esp-5)}
+.hero .kicker{color:var(--luminoso-500);margin-bottom:var(--esp-6)}
+.hero h1{color:#fff;margin-bottom:var(--esp-6);max-width:15ch}
+.hero h1 .ac{display:inline-block;transform:translateY(.06em)}
+.hero-lead{color:var(--n-300);max-width:560px;font-size:clamp(16px,1.25vw,18px);line-height:1.7}
+.hero-acoes{display:flex;flex-wrap:wrap;align-items:center;gap:var(--esp-6);margin-top:clamp(36px,4.4vw,64px)}
+
+@media (max-width:900px){
+  .hero{min-height:auto;padding-block:120px 72px;flex-direction:column;align-items:stretch}
+  .vertentes{position:relative;right:auto;top:auto;transform:none;width:100%;max-width:460px;
+    margin:48px auto 0;order:2}
+  .hero-conteudo{order:1;padding-top:0}
+  .hero-brilho{right:-20%;opacity:.7}
+}
+@media (max-width:620px){
+  .hero-acoes .btn--primario{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .vertente{opacity:1}
+  .vertentes .fios line{animation:none}
+}

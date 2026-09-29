@@ -1,0 +1,295 @@
+/* ==========================================================================
+   A EMCOMJUNTO — estilos exclusivos desta página.
+   ========================================================================== */
+
+/* Diagrama de conjuntos do hero (institucional) — substitui o .fios de
+   home/varejo pelo Venn de três círculos. Regra respeitada: o traçado anima
+   stroke-dashoffset no <circle>, a deriva anima transform no <g> pai. */
+.pagina-a-emcomjunto .venn{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.pagina-a-emcomjunto .venn .halo-centro{fill:url(#brilhoCentro)}
+.pagina-a-emcomjunto .venn .conjunto{transform-box:view-box;transform-origin:300px 276px}
+.pagina-a-emcomjunto .venn .conjunto circle{fill:rgba(65,175,255,.05);stroke:rgba(65,175,255,.40);stroke-width:1.4;
+  stroke-dasharray:1000;stroke-dashoffset:1000;
+  transition:stroke-dashoffset 2.2s var(--suave),fill .9s var(--ease)}
+.pagina-a-emcomjunto .pronto .venn .conjunto circle{stroke-dashoffset:0}
+.pagina-a-emcomjunto .pronto .venn .c-mkt circle{transition-delay:.15s}
+.pagina-a-emcomjunto .pronto .venn .c-tec circle{transition-delay:.40s}
+.pagina-a-emcomjunto .pronto .venn .c-vnd circle{transition-delay:.65s}
+.pagina-a-emcomjunto .pronto .venn .c-mkt{animation:respira-a 11s ease-in-out 2.4s infinite}
+.pagina-a-emcomjunto .pronto .venn .c-tec{animation:respira-b 12.6s ease-in-out 2.7s infinite}
+.pagina-a-emcomjunto .pronto .venn .c-vnd{animation:respira-c 13.8s ease-in-out 3s infinite}
+@keyframes respira-a{0%,100%{transform:translate(0,0)} 50%{transform:translate(0,-9px)}}
+@keyframes respira-b{0%,100%{transform:translate(0,0)} 50%{transform:translate(8px,6px)}}
+@keyframes respira-c{0%,100%{transform:translate(0,0)} 50%{transform:translate(-8px,6px)}}
+.pagina-a-emcomjunto .venn text{font-family:var(--display);font-size:15px;font-weight:500;letter-spacing:.08em;
+  fill:rgba(255,255,255,.82);text-anchor:middle;
+  opacity:0;transition:opacity .8s var(--ease)}
+.pagina-a-emcomjunto .pronto .venn text{opacity:1}
+.pagina-a-emcomjunto .pronto .venn .t-mkt{transition-delay:1.4s}
+.pagina-a-emcomjunto .pronto .venn .t-tec{transition-delay:1.6s}
+.pagina-a-emcomjunto .pronto .venn .t-vnd{transition-delay:1.8s}
+/* A logo mora na interseção tripla, menor que o núcleo da home. */
+.pagina-a-emcomjunto .hero .marca-nucleo{width:18%;max-width:94px}
+.pagina-a-emcomjunto .hero .marca-nucleo::before{width:170%;
+  background:radial-gradient(closest-side,rgba(3,21,38,.60),rgba(3,21,38,.20) 58%,transparent 100%)}
+.pagina-a-emcomjunto .hero h1{max-width:18ch}
+
+.pagina-a-emcomjunto .hero-quem-somos {
+  background-image: url("/assets/images/background-hero-quem-somos.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+
+/* ---------- Cartão de mercado — só o que diverge do card compartilhado ---------- */
+.pagina-a-emcomjunto .cartao--mercado h3{position:relative;z-index:1;font-weight:500;font-size:clamp(24px,2.2vw,30px);
+  line-height:1.2;letter-spacing:-.02em}
+.pagina-a-emcomjunto .cartao--mercado h3::after{content:"";display:block;width:28px;height:1px;background:var(--glow);
+  margin-top:var(--esp-4)}
+.pagina-a-emcomjunto .cartao--mercado .txt{margin-top:var(--esp-5)}
+.pagina-a-emcomjunto .mercados{margin-top:clamp(48px,5.6vw,80px)}
+/* Esteira sobre fundo escuro ("∩ Mercados") */
+.pagina-a-emcomjunto .esteira{
+  display: none;
+}
+.pagina-a-emcomjunto .slot-logo{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(14px)}
+.pagina-a-emcomjunto .slot-logo:hover{border-color:rgba(65,175,255,.5);background:rgba(255,255,255,.09)}
+.pagina-a-emcomjunto .slot-logo span{color:rgba(255,255,255,.45)}
+
+/* ==========================================================================
+   ≡ · DEFINIÇÃO — verbete da assessoria comercial criativa
+   ========================================================================== */
+.pagina-a-emcomjunto .definicao-grade{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);
+  gap:clamp(36px,5vw,80px);align-items:start}
+.pagina-a-emcomjunto .definicao-grade .paragrafos p + p{margin-top:var(--esp-5)}
+/* Grafia silábica da marca: os pontos são decoração, ficam fora da leitura assistiva */
+.pagina-a-emcomjunto .silaba{color:var(--marca-700);padding-inline:.04em}
+.pagina-a-emcomjunto .verbete{position:relative;background:#fff;border:1px solid var(--n-200);border-radius:var(--r-lg);
+  padding:clamp(26px,3vw,36px);box-shadow:0 18px 44px rgba(3,21,38,.05)}
+.pagina-a-emcomjunto .verbete::before{content:"≡";position:absolute;right:clamp(22px,2.4vw,30px);top:clamp(18px,2vw,24px);
+  font-family:var(--acento-f);font-style:italic;font-size:44px;line-height:1;color:var(--marca-200)}
+.pagina-a-emcomjunto .verbete .termo{font-weight:400;font-size:clamp(21px,1.94vw,26px);line-height:1.2;
+  letter-spacing:-.02em;color:var(--n-900);max-width:14ch}
+.pagina-a-emcomjunto .verbete .classe{margin-top:var(--esp-2);font-size:14px;font-style:italic;
+  font-family:var(--acento-f);color:var(--marca-700)}
+.pagina-a-emcomjunto .verbete ol{margin-top:clamp(20px,2.4vw,28px);counter-reset:acepcao;border-top:1px solid var(--n-200)}
+.pagina-a-emcomjunto .verbete li{counter-increment:acepcao;display:grid;grid-template-columns:22px 1fr;gap:14px;
+  padding-block:var(--esp-4);border-bottom:1px solid var(--n-200);font-size:15.5px;line-height:1.6;color:var(--n-600)}
+.pagina-a-emcomjunto .verbete li::before{content:counter(acepcao) ".";font-weight:500;font-size:13px;color:var(--marca-700);padding-top:3px}
+
+/* ==========================================================================
+   Δ · JORNADA — as quatro camadas, ampliadas
+   ========================================================================== */
+.pagina-a-emcomjunto .camadas{margin-top:clamp(40px,5vw,72px);display:grid;gap:16px}
+.pagina-a-emcomjunto .camada{position:relative;display:grid;grid-template-columns:96px minmax(0,1fr);gap:clamp(20px,2.6vw,36px);
+  padding:clamp(26px,2.8vw,34px);border-radius:20px;
+  background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);
+  transition:border-color .45s var(--ease),background .45s var(--ease),transform .45s var(--ease)}
+.pagina-a-emcomjunto .camada:hover{border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.06);transform:translateY(-3px)}
+.pagina-a-emcomjunto .camada:nth-child(2){margin-left:clamp(0px,2.2vw,32px)}
+.pagina-a-emcomjunto .camada:nth-child(3){margin-left:clamp(0px,4.4vw,64px)}
+.pagina-a-emcomjunto .camada:nth-child(4){margin-left:clamp(0px,6.6vw,96px)}
+.pagina-a-emcomjunto .camada-n{font-family:var(--acento-f);font-style:italic;font-weight:600;font-size:clamp(46px,4.2vw,60px);
+  line-height:.9;color:var(--luminoso-300)}
+.pagina-a-emcomjunto .pilha{display:flex;gap:4px;margin-top:var(--esp-4)}
+.pagina-a-emcomjunto .pilha i{width:14px;height:3px;border-radius:2px;background:rgba(255,255,255,.16)}
+.pagina-a-emcomjunto .pilha i.on{background:var(--luminoso-500)}
+.pagina-a-emcomjunto .camada h3{font-weight:500;font-size:clamp(20px,1.8vw,24px);line-height:1.2;letter-spacing:-.02em}
+.pagina-a-emcomjunto .camada .txt{margin-top:var(--esp-3);font-size:clamp(15px,1.25vw,17px);line-height:1.6;color:var(--n-300);max-width:62ch}
+.pagina-a-emcomjunto .camada .mostrou{margin-top:var(--esp-5);padding-top:var(--esp-4);border-top:1px solid rgba(255,255,255,.12);
+  font-size:15px;line-height:1.6;color:var(--n-300);max-width:62ch}
+.pagina-a-emcomjunto .camada .mostrou .rot{display:block;margin-bottom:6px;font-weight:500;font-size:11.5px;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--terra-300)}
+.pagina-a-emcomjunto .camada--hoje{background:rgba(65,175,255,.09);border-color:rgba(65,175,255,.30)}
+.pagina-a-emcomjunto .camada--hoje .mostrou .rot{color:var(--luminoso-500)}
+
+/* Marcador de pendência — o que ainda depende de material ou autorização */
+.pagina-a-emcomjunto .pendente{display:inline-block;font-size:.86em;font-weight:500;color:var(--terra-600);
+  border-bottom:1px dashed var(--terra-400);padding-bottom:1px}
+
+/* ==========================================================================
+   ƒ · PRINCÍPIOS — quatro princípios, cada um com seu desenho.
+   O SVG só anima quando o painel está ativo, então nunca há dois
+   movimentos disputando o mesmo elemento.
+   ========================================================================== */
+.pagina-a-emcomjunto .regras{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,4.4vw,64px);
+  align-items:center;margin-top:clamp(40px,5vw,64px)}
+.pagina-a-emcomjunto .regra-lista{display:grid}
+.pagina-a-emcomjunto .regra{position:relative;width:100%;text-align:left;padding:22px 24px 22px 0;
+  border-top:1px solid var(--n-200);transition:padding-left .4s var(--ease)}
+.pagina-a-emcomjunto .regra-lista .regra:last-child{border-bottom:1px solid var(--n-200)}
+.pagina-a-emcomjunto .regra::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:0;
+  background:var(--marca-600);transition:width .5s var(--ease)}
+.pagina-a-emcomjunto .regra .n{font-family:var(--acento-f);font-style:italic;font-weight:600;font-size:22px;
+  line-height:1;color:var(--n-300);transition:color .4s var(--ease)}
+.pagina-a-emcomjunto .regra .t{display:block;margin-top:8px;font-weight:400;font-size:clamp(19px,1.74vw,23px);
+  line-height:1.25;letter-spacing:-.02em;color:var(--n-500);transition:color .4s var(--ease)}
+.pagina-a-emcomjunto .regra .d{display:grid;grid-template-rows:0fr;opacity:0;
+  transition:grid-template-rows .45s var(--ease),opacity .35s var(--ease)}
+.pagina-a-emcomjunto .regra .d > span{overflow:hidden;display:block;font-size:15px;line-height:1.6;color:var(--n-600);max-width:44ch}
+.pagina-a-emcomjunto .regra:hover .t{color:var(--n-900)}
+.pagina-a-emcomjunto .regra[aria-selected="true"]{padding-left:20px}
+.pagina-a-emcomjunto .regra[aria-selected="true"]::before{width:100%}
+.pagina-a-emcomjunto .regra[aria-selected="true"] .n{color:var(--marca-700)}
+.pagina-a-emcomjunto .regra[aria-selected="true"] .t{color:var(--n-900)}
+.pagina-a-emcomjunto .regra[aria-selected="true"] .d{grid-template-rows:1fr;opacity:1;margin-top:12px}
+
+.pagina-a-emcomjunto .regra-palco{position:relative;aspect-ratio:1/.82;border:1px solid var(--n-200);border-radius:var(--r-lg);
+  background:radial-gradient(120% 100% at 70% 15%,var(--marca-50),#fff 70%);overflow:hidden}
+.pagina-a-emcomjunto .desenho{position:absolute;inset:0;width:100%;height:100%;opacity:0;
+  transition:opacity .45s var(--ease)}
+.pagina-a-emcomjunto .desenho.on{opacity:1}
+.pagina-a-emcomjunto .desenho .traco{fill:none;stroke:var(--marca-600);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.pagina-a-emcomjunto .desenho .fraco{fill:none;stroke:var(--n-300);stroke-width:1.4;stroke-linecap:round}
+.pagina-a-emcomjunto .desenho .ponto{fill:var(--marca-300)}
+.pagina-a-emcomjunto .desenho .cheio{fill:var(--marca-600)}
+.pagina-a-emcomjunto .desenho .terra{fill:var(--terra-400)}
+.pagina-a-emcomjunto .desenho .rot{font-family:var(--display);font-size:11px;font-weight:500;letter-spacing:.08em;fill:var(--n-500)}
+
+/* 01 — varredura antes do arranque */
+.pagina-a-emcomjunto .desenho.on .varre{animation:varre 4.4s var(--ease) infinite}
+.pagina-a-emcomjunto .desenho.on .arranque{animation:arranque 4.4s var(--ease) infinite}
+@keyframes varre{0%{stroke-dashoffset:760;opacity:.2} 34%{stroke-dashoffset:0;opacity:1}
+  74%{stroke-dashoffset:0;opacity:1} 100%{stroke-dashoffset:0;opacity:0}}
+@keyframes arranque{0%,40%{transform:translateX(0);opacity:0} 58%{opacity:1}
+  86%{transform:translateX(120px);opacity:1} 100%{transform:translateX(120px);opacity:0}}
+/* 02 — quatro testes, um cresce */
+.pagina-a-emcomjunto .desenho.on .t1{animation:testa 5.2s var(--ease) infinite}
+.pagina-a-emcomjunto .desenho.on .t2{animation:testa 5.2s var(--ease) .28s infinite}
+.pagina-a-emcomjunto .desenho.on .t3{animation:vinga 5.2s var(--ease) .56s infinite}
+.pagina-a-emcomjunto .desenho.on .t4{animation:testa 5.2s var(--ease) .84s infinite}
+@keyframes testa{0%,8%{transform:scaleY(.18);opacity:.35} 26%,100%{transform:scaleY(.18);opacity:.35}
+  16%{transform:scaleY(.34);opacity:.7}}
+@keyframes vinga{0%,8%{transform:scaleY(.18)} 16%{transform:scaleY(.34)}
+  40%{transform:scaleY(1)} 88%{transform:scaleY(1)} 100%{transform:scaleY(.18)}}
+.pagina-a-emcomjunto .desenho .barra{transform-box:fill-box;transform-origin:bottom;transform:scaleY(.18);opacity:.35}
+/* 03 — do mesmo centro saem entregas diferentes */
+.pagina-a-emcomjunto .desenho.on .saida{animation:sai 5s var(--ease) infinite}
+.pagina-a-emcomjunto .desenho.on .s2{animation-delay:.35s} .pagina-a-emcomjunto .desenho.on .s3{animation-delay:.7s} .pagina-a-emcomjunto .desenho.on .s4{animation-delay:1.05s}
+@keyframes sai{0%,6%{opacity:0;transform:scale(.4)} 24%,84%{opacity:1;transform:scale(1)} 100%{opacity:0;transform:scale(.4)}}
+.pagina-a-emcomjunto .desenho .saida{transform-box:fill-box;transform-origin:center}
+.pagina-a-emcomjunto .desenho.on .raio{animation:raio 5s var(--ease) infinite}
+.pagina-a-emcomjunto .desenho.on .r2{animation-delay:.35s} .pagina-a-emcomjunto .desenho.on .r3{animation-delay:.7s} .pagina-a-emcomjunto .desenho.on .r4{animation-delay:1.05s}
+@keyframes raio{0%,4%{stroke-dashoffset:120} 22%,86%{stroke-dashoffset:0} 100%{stroke-dashoffset:120}}
+/* 04 — a curva sobe e a base fica */
+.pagina-a-emcomjunto .desenho.on .curva{animation:sobe 5.4s var(--ease) infinite}
+@keyframes sobe{0%{stroke-dashoffset:460} 40%,72%{stroke-dashoffset:0} 100%{stroke-dashoffset:460}}
+.pagina-a-emcomjunto .desenho.on .fica{animation:fica 5.4s var(--ease) infinite}
+@keyframes fica{0%,34%{transform:scaleX(0)} 62%,100%{transform:scaleX(1)}}
+.pagina-a-emcomjunto .desenho .fica{transform-box:fill-box;transform-origin:left}
+
+/* ==========================================================================
+   ∪ · TIME
+   ========================================================================== */
+.pagina-a-emcomjunto .pessoas{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:clamp(40px,5vw,64px)}
+.pagina-a-emcomjunto .pessoa{display:flex;flex-direction:column;background:#fff;border:1px solid var(--n-200);
+  border-radius:var(--r-lg);overflow:hidden;
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease)}
+.pagina-a-emcomjunto .pessoa:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(3,21,38,.09);border-color:var(--marca-300)}
+.pagina-a-emcomjunto .pessoa .retrato{position:relative;aspect-ratio:4/5;
+  background:radial-gradient(120% 100% at 30% 20%,var(--marca-100),var(--n-50) 74%);
+  border-bottom:1px solid var(--n-200);display:grid;place-items:center}
+.pagina-a-emcomjunto .pessoa .retrato span{font-family:var(--acento-f);font-style:italic;font-weight:600;
+  font-size:clamp(34px,3.4vw,46px);line-height:1;color:var(--marca-300)}
+.pagina-a-emcomjunto .pessoa .retrato img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pagina-a-emcomjunto .pessoa .dados{padding:20px 22px 24px;display:flex;flex-direction:column;flex:1}
+.pagina-a-emcomjunto .pessoa h3{font-weight:500;font-size:17.5px;line-height:1.25;letter-spacing:-.02em}
+.pagina-a-emcomjunto .pessoa .funcao{margin-top:6px;font-weight:500;font-size:11.5px;line-height:1.45;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--marca-700)}
+.pagina-a-emcomjunto .pessoa .frase{margin-top:auto;padding-top:var(--esp-4);font-size:14px;line-height:1.55;color:var(--n-600)}
+.pagina-a-emcomjunto .pessoa .frase::before{content:"";display:block;width:22px;height:1px;background:var(--marca-300);margin-bottom:var(--esp-3)}
+.pagina-a-emcomjunto .frase--vazia{color:var(--n-400);font-style:italic}
+.pagina-a-emcomjunto .frase--vazia::before{background:var(--n-300);border-top:1px dashed var(--n-300);height:0}
+.pagina-a-emcomjunto .pessoa--socio{border-color:var(--marca-200)}
+.pagina-a-emcomjunto .pessoa--socio .dados{background:linear-gradient(180deg,#fff,var(--marca-50))}
+.pagina-a-emcomjunto .pessoa--vago{border-style:dashed;background:var(--n-50)}
+.pagina-a-emcomjunto .pessoa--vago .retrato{background:var(--n-50);border-bottom-style:dashed}
+.pagina-a-emcomjunto .pessoa--vago .retrato span{color:var(--n-300)}
+.pagina-a-emcomjunto .pessoa--vago .funcao{color:var(--n-400)}
+
+/* ==========================================================================
+   ∈ · ESCRITÓRIO — onde a gente fica
+   ========================================================================== */
+.pagina-a-emcomjunto .escritorio{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:clamp(28px,4vw,56px);align-items:center;margin-top:clamp(32px,4vw,48px)}
+.pagina-a-emcomjunto .escritorio h2{max-width:16ch}
+.pagina-a-emcomjunto .escritorio .explica{margin-top:var(--esp-5);max-width:48ch}
+.pagina-a-emcomjunto .endereco{margin-top:clamp(24px,2.8vw,32px);padding-top:var(--esp-5);border-top:1px solid var(--n-200);
+  font-size:15.5px;line-height:1.7;color:var(--n-600)}
+.pagina-a-emcomjunto .endereco b{display:block;font-weight:500;color:var(--n-900)}
+.pagina-a-emcomjunto .local{margin:0;border:1px solid var(--n-200);border-radius:var(--r-lg);overflow:hidden;
+  aspect-ratio:4/3;background:var(--n-0);box-shadow:0 18px 44px rgba(3,21,38,.06)}
+.pagina-a-emcomjunto .local iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(.25) contrast(1.02)}
+.pagina-a-emcomjunto .escritorio-background{
+  background-image: url("/assets/images/background-escritorio.png") 0.4;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+    position: relative;
+  isolation: isolate;
+}
+.pagina-a-emcomjunto .escritorio-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/assets/images/background-escritorio.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+/* ==========================================================================
+   ∴ · PRÓXIMO PASSO + contato
+   ========================================================================== */
+.pagina-a-emcomjunto .proximo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:clamp(40px,5vw,72px);
+  align-items:start;margin-top:clamp(36px,4.4vw,60px)}
+.pagina-a-emcomjunto .proximo .explica{margin-top:var(--esp-6);max-width:52ch}
+.pagina-a-emcomjunto .atalhos{margin-top:clamp(28px,3.2vw,44px);border-top:1px solid var(--n-200)}
+.pagina-a-emcomjunto .atalhos a{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding-block:18px;border-bottom:1px solid var(--n-200);
+  font-weight:500;font-size:16px;color:var(--n-900);transition:color .3s var(--ease),padding .3s var(--ease)}
+.pagina-a-emcomjunto .atalhos a:hover{color:var(--marca-700);padding-left:6px}
+.pagina-a-emcomjunto .atalhos .seta{color:var(--marca-600)}
+.pagina-a-emcomjunto .atalhos small{display:block;margin-top:4px;font-weight:400;font-size:13.5px;color:var(--n-500)}
+.pagina-a-emcomjunto .atalhos a span.rot{flex:1}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width:1180px){
+  .pagina-a-emcomjunto .pessoas{grid-template-columns:1fr 1fr}
+  .pagina-a-emcomjunto .definicao-grade,
+.pagina-a-emcomjunto .proximo,
+.pagina-a-emcomjunto .escritorio{grid-template-columns:1fr}
+  .pagina-a-emcomjunto .regras{grid-template-columns:1fr;gap:clamp(28px,3.4vw,40px)}
+  .pagina-a-emcomjunto .regra-palco{max-width:520px;margin-inline:auto;width:100%}
+}
+@media (max-width:900px){
+  .pagina-a-emcomjunto .vertentes{aspect-ratio:1/.92}
+  .pagina-a-emcomjunto .escritorio h2{max-width:none}
+  .pagina-a-emcomjunto .camada:nth-child(2),
+.pagina-a-emcomjunto .camada:nth-child(3),
+.pagina-a-emcomjunto .camada:nth-child(4){margin-left:0}
+}
+@media (max-width:620px){
+  .pagina-a-emcomjunto .pessoas{grid-template-columns:1fr 1fr;gap:12px}
+  .pagina-a-emcomjunto .pessoa .dados{padding:16px 16px 20px}
+  .pagina-a-emcomjunto .local{aspect-ratio:16/11}
+  .pagina-a-emcomjunto .camada{grid-template-columns:1fr;gap:var(--esp-4)}
+  .pagina-a-emcomjunto .camada-n{font-size:44px}
+  .pagina-a-emcomjunto .pilha{margin-top:var(--esp-3)}
+}
+@media (prefers-reduced-motion:reduce){
+  .pagina-a-emcomjunto .venn .conjunto circle{stroke-dashoffset:0}
+  .pagina-a-emcomjunto .venn text{opacity:1}
+  .pagina-a-emcomjunto .desenho .varre,
+.pagina-a-emcomjunto .desenho .curva,
+.pagina-a-emcomjunto .desenho .raio{stroke-dashoffset:0}
+  .pagina-a-emcomjunto .desenho .arranque,
+.pagina-a-emcomjunto .desenho .saida,
+.pagina-a-emcomjunto .desenho .fica{opacity:1;transform:none}
+  .pagina-a-emcomjunto .desenho .barra{opacity:.35;transform:scaleY(.34)}
+  .pagina-a-emcomjunto .desenho .t3{opacity:1;transform:scaleY(1)}
+}

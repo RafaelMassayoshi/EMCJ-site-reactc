@@ -1,0 +1,877 @@
+.pagina-pesquisa-clinica *,
+.pagina-pesquisa-clinica *::before,
+.pagina-pesquisa-clinica *::after{box-sizing:border-box}
+.pagina-pesquisa-clinica{scroll-behavior:smooth}
+.pagina-pesquisa-clinica{margin:0;background:var(--bg);color:var(--tx2);
+  font-family:var(--f-body);font-weight:400;font-size:16px;line-height:1.5;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+.pagina-pesquisa-clinica img,
+.pagina-pesquisa-clinica svg{display:block;max-width:100%}
+.pagina-pesquisa-clinica a{color:inherit;text-decoration:none}
+.pagina-pesquisa-clinica h1,
+.pagina-pesquisa-clinica h2,
+.pagina-pesquisa-clinica h3,
+.pagina-pesquisa-clinica h4,
+.pagina-pesquisa-clinica p,
+.pagina-pesquisa-clinica dl,
+.pagina-pesquisa-clinica dd,
+.pagina-pesquisa-clinica figure,
+.pagina-pesquisa-clinica blockquote{margin:0}
+.pagina-pesquisa-clinica ul,
+.pagina-pesquisa-clinica ol{margin:0;padding:0;list-style:none}
+.pagina-pesquisa-clinica button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.pagina-pesquisa-clinica :focus-visible{outline:2px solid var(--rx-purple);outline-offset:3px;border-radius:var(--r-sm)}
+.pagina-pesquisa-clinica .pular{position:absolute;left:-9999px}
+.pagina-pesquisa-clinica .pular:focus{left:16px;top:16px;z-index:300;background:var(--rx-purple);color:#fff;padding:10px 16px;border-radius:var(--r-sm)}
+.pagina-pesquisa-clinica .shell{max-width:calc(var(--shell) + 2*var(--gutter));margin-inline:auto;padding-inline:var(--gutter);position:relative;z-index:2}
+
+/* ---------- Escala tipográfica ---------- */
+.pagina-pesquisa-clinica .d112{font-family:var(--f-display);font-weight:800;font-size:clamp(46px,7.8vw,112px);line-height:.93;letter-spacing:-.02em;overflow-wrap:break-word}
+.pagina-pesquisa-clinica .d88{font-family:var(--f-display);font-weight:800;font-size:clamp(40px,6.1vw,88px);line-height:.95;letter-spacing:-.02em;overflow-wrap:break-word}
+.pagina-pesquisa-clinica .h64{font-family:var(--f-head);font-weight:500;font-size:clamp(31px,4.4vw,64px);line-height:1.06;letter-spacing:-.01em}
+.pagina-pesquisa-clinica .h48{font-family:var(--f-head);font-weight:500;font-size:clamp(27px,3.3vw,48px);line-height:1.08;letter-spacing:-.01em}
+.pagina-pesquisa-clinica .h36{font-family:var(--f-head);font-weight:500;font-size:clamp(23px,2.5vw,36px);line-height:1.12}
+.pagina-pesquisa-clinica .h22{font-family:var(--f-head);font-weight:500;font-size:clamp(19px,1.5vw,22px);line-height:1.2}
+.pagina-pesquisa-clinica .lead{font-size:clamp(17px,1.4vw,20px);line-height:1.55}
+.pagina-pesquisa-clinica .sm{font-size:14px;line-height:1.5}
+.pagina-pesquisa-clinica .xs{font-size:12px;line-height:1.45}
+.pagina-pesquisa-clinica .kicker{font-family:var(--f-body);font-weight:600;font-size:12px;line-height:1.35;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--rx-purple)}
+
+/* acento: no sistema da Random o destaque é cromático, não tipográfico.
+   Roxo no claro, cyan no escuro. Uma cor por título. */
+.pagina-pesquisa-clinica .ac{color:var(--rx-purple)}
+.pagina-pesquisa-clinica .escuro .ac{color:var(--rx-cyan)}
+
+.pagina-pesquisa-clinica .claro h1,
+.pagina-pesquisa-clinica .claro h2,
+.pagina-pesquisa-clinica .claro h3,
+.pagina-pesquisa-clinica .claro h4{color:var(--tx)}
+.pagina-pesquisa-clinica .claro p{color:var(--tx2)}
+.pagina-pesquisa-clinica .escuro{color:rgba(255,255,255,.78)}
+.pagina-pesquisa-clinica .escuro h1,
+.pagina-pesquisa-clinica .escuro h2,
+.pagina-pesquisa-clinica .escuro h3,
+.pagina-pesquisa-clinica .escuro h4{color:#fff}
+.pagina-pesquisa-clinica .escuro p{color:rgba(255,255,255,.78)}
+.pagina-pesquisa-clinica .escuro .kicker{color:var(--rx-cyan)}
+
+/* ---------- Blocos e fundos ---------- */
+.pagina-pesquisa-clinica .secao{position:relative}
+.pagina-pesquisa-clinica .bloco{padding-block:clamp(72px,8vw,128px)}
+.pagina-pesquisa-clinica .fundo-branco{background:var(--bg)}
+.pagina-pesquisa-clinica .fundo-cinza{background:var(--surface)}
+.pagina-pesquisa-clinica .fundo-escuro{background:var(--ink);position:relative;overflow:hidden}
+/* SOFT GLOW do design system: atmosfera, não ruído. */
+.pagina-pesquisa-clinica .fundo-escuro::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(58% 62% at 78% 12%,rgba(169,45,243,.42),transparent 68%),
+             radial-gradient(46% 50% at 8% 96%,rgba(93,12,141,.5),transparent 70%)}
+
+/* ---------- Cabeçalho de seção ---------- */
+.pagina-pesquisa-clinica .cab{margin-bottom:clamp(40px,4.6vw,64px)}
+.pagina-pesquisa-clinica .cab .kicker{margin-bottom:14px}
+.pagina-pesquisa-clinica .cab .h48{max-width:20ch}
+.pagina-pesquisa-clinica .cab .lead{margin-top:18px;max-width:78ch}
+.pagina-pesquisa-clinica .cab--duplo{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:clamp(28px,4vw,72px);align-items:end}
+.pagina-pesquisa-clinica .cab--duplo .lead{margin-top:0}
+
+/* ---------- Botões (Random/Button: pílula, 22/14, Poppins 600 14) ---------- */
+.pagina-pesquisa-clinica .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px 26px;border-radius:var(--r-full);font-weight:600;font-size:14px;
+  border:1.5px solid transparent;white-space:nowrap;
+  transition:background .28s var(--ease),border-color .28s var(--ease),
+             transform .28s var(--ease),box-shadow .28s var(--ease),color .28s var(--ease)}
+.pagina-pesquisa-clinica .btn:hover{transform:translateY(-2px)}
+.pagina-pesquisa-clinica .btn--primario{background:var(--rx-purple);color:#fff}
+.pagina-pesquisa-clinica .btn--primario:hover{background:var(--px-500);box-shadow:0 12px 30px rgba(157,56,238,.34)}
+.pagina-pesquisa-clinica .btn--secundario{background:transparent;border-color:var(--rx-purple);color:var(--rx-purple)}
+.pagina-pesquisa-clinica .btn--secundario:hover{background:rgba(157,56,238,.08)}
+.pagina-pesquisa-clinica .escuro .btn--secundario{border-color:rgba(255,255,255,.42);color:#fff}
+.pagina-pesquisa-clinica .escuro .btn--secundario:hover{background:rgba(255,255,255,.1)}
+.pagina-pesquisa-clinica .seta{display:inline-block;transition:transform .28s var(--ease)}
+.pagina-pesquisa-clinica .btn:hover .seta,
+.pagina-pesquisa-clinica .link-seta:hover .seta{transform:translateX(5px)}
+.pagina-pesquisa-clinica .acoes{display:flex;flex-wrap:wrap;gap:14px}
+.pagina-pesquisa-clinica .link-seta{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13px;color:var(--rx-purple)}
+.pagina-pesquisa-clinica .escuro .link-seta{color:var(--rx-cyan)}
+
+/* ---------- Cartão (Random/Card) ---------- */
+.pagina-pesquisa-clinica .card{background:var(--surface);border-radius:var(--r-lg);padding:26px 28px;
+  display:flex;flex-direction:column;gap:12px}
+.pagina-pesquisa-clinica .card .fio{width:40px;height:3px;border-radius:2px;background:var(--rx-purple);flex:none}
+.pagina-pesquisa-clinica .card--escuro{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12)}
+.pagina-pesquisa-clinica .card--escuro .kicker{color:var(--rx-cyan)}
+.pagina-pesquisa-clinica .card--escuro h3{color:#fff}
+.pagina-pesquisa-clinica .card--escuro p{color:rgba(255,255,255,.76)}
+
+/* ---------- Grades ---------- */
+.pagina-pesquisa-clinica .grade{display:grid;gap:20px;align-items:start}
+.pagina-pesquisa-clinica .g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.pagina-pesquisa-clinica .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.pagina-pesquisa-clinica .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+/* comparacao lado a lado pede altura igual: sem isso a linha de fonte e o rodape
+   de cada cartao param em alturas diferentes e a leitura em coluna se perde */
+.pagina-pesquisa-clinica .grade--iguais{align-items:stretch;grid-auto-rows:1fr}
+
+/* ---------- Revelação ---------- */
+.pagina-pesquisa-clinica .rv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--suave),transform .8s var(--suave)}
+.pagina-pesquisa-clinica .rv.on{opacity:1;transform:none}
+.pagina-pesquisa-clinica .esc>*{opacity:0;transform:translateY(18px);transition:opacity .7s var(--suave),transform .7s var(--suave)}
+.pagina-pesquisa-clinica .esc.on>*{opacity:1;transform:none}
+.pagina-pesquisa-clinica .esc.on>*:nth-child(2){transition-delay:.07s}
+.pagina-pesquisa-clinica .esc.on>*:nth-child(3){transition-delay:.14s}
+.pagina-pesquisa-clinica .esc.on>*:nth-child(4){transition-delay:.21s}
+.pagina-pesquisa-clinica .esc.on>*:nth-child(5){transition-delay:.28s}
+.pagina-pesquisa-clinica .esc.on>*:nth-child(6){transition-delay:.35s}
+.pagina-pesquisa-clinica .esc.on>*:nth-child(7){transition-delay:.42s}
+.pagina-pesquisa-clinica .esc.on>*:nth-child(8){transition-delay:.49s}
+.pagina-pesquisa-clinica .esc.on>*:nth-child(9){transition-delay:.56s}
+
+/* ==========================================================================
+   NAV — estrutura do site da EMCJ, cores da Random
+   ========================================================================== */
+.pagina-pesquisa-clinica .progresso{position:fixed;top:0;left:0;right:0;height:2px;z-index:200;background:transparent}
+.pagina-pesquisa-clinica .progresso i{display:block;height:100%;width:0;background:var(--g-signal)}
+.pagina-pesquisa-clinica .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:84px;display:flex;align-items:center;
+  transition:background .4s var(--ease),height .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease);
+  border-bottom:1px solid transparent}
+.pagina-pesquisa-clinica .nav.solida{background:rgba(255,255,255,.94);backdrop-filter:blur(16px);height:70px;
+  border-bottom-color:var(--bd);box-shadow:0 1px 24px rgba(18,16,62,.07)}
+.pagina-pesquisa-clinica .nav .shell{display:flex;align-items:center;gap:var(--e5);width:100%}
+.pagina-pesquisa-clinica .logo{display:flex;align-items:center;gap:12px}
+.pagina-pesquisa-clinica .logo svg{height:34px;width:auto;transition:height .4s var(--ease)}
+.pagina-pesquisa-clinica .nav.solida .logo svg{height:30px}
+.pagina-pesquisa-clinica .logo .unidade{font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);padding-left:12px;border-left:1px solid rgba(255,255,255,.3);
+  transition:color .4s var(--ease),border-color .4s var(--ease)}
+.pagina-pesquisa-clinica .nav.solida .logo .unidade{color:var(--tx2);border-left-color:var(--bd)}
+.pagina-pesquisa-clinica .nav-links{display:flex;align-items:center;gap:26px;margin-left:auto}
+.pagina-pesquisa-clinica .nav-links a{position:relative;font-size:14px;color:#fff;opacity:.84;padding-block:6px;
+  transition:opacity .25s var(--ease),color .4s var(--ease)}
+.pagina-pesquisa-clinica .nav-links a:hover{opacity:1}
+.pagina-pesquisa-clinica .nav.solida .nav-links a{color:var(--tx2)}
+/* Mesmo comportamento de hover do Varejo (opacidade + sublinhado que desliza,
+   sem trocar a cor do texto) — só a cor do sublinhado muda entre as páginas.
+   .nav-links a::after vem do componente compartilhado (nav.css) e usa
+   --luminoso-500 (azul) por padrão; varejo.css remapeia essa variável para
+   laranja, aqui o sublinhado vira o roxo da marca Random. */
+.pagina-pesquisa-clinica .nav-links a::after{background:var(--rx-purple)}
+.pagina-pesquisa-clinica .nav-btn{display:none;width:40px;height:40px;margin-left:auto;position:relative}
+.pagina-pesquisa-clinica .nav-btn i,
+.pagina-pesquisa-clinica .nav-btn::before,
+.pagina-pesquisa-clinica .nav-btn::after{content:"";position:absolute;left:9px;right:9px;height:2px;
+  background:#fff;transition:transform .3s var(--ease),opacity .3s var(--ease),background .4s var(--ease)}
+.pagina-pesquisa-clinica .nav-btn::before{top:13px}.pagina-pesquisa-clinica .nav-btn i{top:19px}.pagina-pesquisa-clinica .nav-btn::after{top:25px}
+.pagina-pesquisa-clinica .nav.solida .nav-btn i,
+.pagina-pesquisa-clinica .nav.solida .nav-btn::before,
+.pagina-pesquisa-clinica .nav.solida .nav-btn::after{background:var(--tx)}
+.pagina-pesquisa-clinica .nav-btn[aria-expanded="true"]::before{transform:translateY(6px) rotate(45deg)}
+.pagina-pesquisa-clinica .nav-btn[aria-expanded="true"] i{opacity:0}
+.pagina-pesquisa-clinica .nav-btn[aria-expanded="true"]::after{transform:translateY(-6px) rotate(-45deg)}
+.pagina-pesquisa-clinica .nav .btn{padding:12px 22px}
+.pagina-pesquisa-clinica .nav .btn--primario{background:#fff;color:var(--px-700)}
+.pagina-pesquisa-clinica .nav .btn--primario:hover{background:var(--px-50);box-shadow:none}
+.pagina-pesquisa-clinica .nav.solida .btn--primario{background:var(--rx-purple);color:#fff}
+
+/* ---------- Dropdown "Quem assessoramos" ----------
+   Mesmo mecanismo do resto do site (:hover/:focus-within, sem JS), só que
+   com as cores da Random em vez das cores azuis do EMCJ. */
+.pagina-pesquisa-clinica .nav-item{position:relative;display:flex;align-items:center;gap:7px}
+.pagina-pesquisa-clinica .nav-item>.chev{width:10px;height:10px;flex:none;color:#fff;opacity:.7;
+  transition:transform .3s var(--ease),color .4s var(--ease)}
+.pagina-pesquisa-clinica .nav.solida .nav-item>.chev{color:var(--tx2);opacity:.6}
+.pagina-pesquisa-clinica .nav-item:hover>.chev,
+.pagina-pesquisa-clinica .nav-item:focus-within>.chev{transform:rotate(180deg);opacity:1}
+.pagina-pesquisa-clinica .nav-sub{position:absolute;top:calc(100% + 14px);left:-16px;min-width:250px;padding:8px;
+  background:#0A070F;backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.14);border-radius:var(--r-md);
+  box-shadow:0 20px 44px rgba(18,16,62,.44);
+  opacity:0;visibility:hidden;transform:translateY(-8px);
+  transition:opacity .28s var(--ease),transform .28s var(--ease),visibility .28s}
+.pagina-pesquisa-clinica .nav-item:hover>.nav-sub,
+.pagina-pesquisa-clinica .nav-item:focus-within>.nav-sub{opacity:1;visibility:visible;transform:none}
+.pagina-pesquisa-clinica .nav-sub a,
+.pagina-pesquisa-clinica .nav.solida .nav-sub a{display:block;padding:11px 14px;border-radius:8px;
+  font-size:15px;color:rgba(255,255,255,.86);opacity:1}
+.pagina-pesquisa-clinica .nav-sub a:hover,
+.pagina-pesquisa-clinica .nav.solida .nav-sub a:hover{background:rgba(255,255,255,.09);color:#fff}
+.pagina-pesquisa-clinica .nav-sub small{display:block;margin-top:3px;font-size:12px;line-height:1.4;/*color:var(--px-300)*/color:#A3A3A3}
+
+/* ==========================================================================
+   HERO — gradiente DEEP BRAND
+   ========================================================================== */
+.pagina-pesquisa-clinica .hero{position:relative;background:var(--g-deep);overflow:hidden;
+  padding-top:clamp(140px,15vw,190px);padding-bottom:clamp(64px,7vw,96px);color:#fff}
+.pagina-pesquisa-clinica .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(48% 46% at 82% 22%,rgba(234,51,247,.3),transparent 70%)}
+.pagina-pesquisa-clinica .hero .shell{position:relative;z-index:3}
+.pagina-pesquisa-clinica .hero-grade{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);
+  gap:clamp(32px,5vw,80px);align-items:center}
+.pagina-pesquisa-clinica .hero h1{color:#fff;max-width:15ch}
+.pagina-pesquisa-clinica .hero h1 .ac{color:var(--rx-cyan)}
+.pagina-pesquisa-clinica .hero .kicker{color:var(--rx-cyan);margin-bottom:18px}
+.pagina-pesquisa-clinica .hero-sub{margin-top:26px;max-width:60ch;color:rgba(255,255,255,.82);font-size:clamp(16px,1.3vw,19px);line-height:1.6}
+.pagina-pesquisa-clinica .hero .acoes{margin-top:34px}
+.pagina-pesquisa-clinica .hero .btn--primario{background:#fff;color:var(--px-700)}
+.pagina-pesquisa-clinica .hero .btn--primario:hover{background:var(--px-50);box-shadow:0 14px 34px rgba(0,0,0,.28)}
+
+/* marca no hero */
+.pagina-pesquisa-clinica .hero-marca{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.pagina-pesquisa-clinica .hero-simbolo{width:clamp(120px,13vw,180px);opacity:.96;color:#fff}
+.pagina-pesquisa-clinica .hero-assinatura{font-size:13px;line-height:1.6;color:rgba(255,255,255,.72);max-width:32ch}
+.pagina-pesquisa-clinica .hero-assinatura b{color:#fff;font-weight:600}
+
+/* ---------- Título que se redigita ----------
+   O molde invisível carrega a variante mais longa e reserva a altura, então a
+   troca de frase não empurra o resto do hero. Nunca calcular altura por índice. */
+.pagina-pesquisa-clinica .so-leitor{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;
+  overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.pagina-pesquisa-clinica .h1-visual,
+.pagina-pesquisa-clinica .h1-fixo{display:block}
+.pagina-pesquisa-clinica .troca{display:grid}
+.pagina-pesquisa-clinica .troca>*{grid-area:1/1}
+.pagina-pesquisa-clinica .troca-molde{visibility:hidden}
+.pagina-pesquisa-clinica .tv-a{color:var(--rx-cyan)}
+.pagina-pesquisa-clinica .tv-b{color:#fff}
+.pagina-pesquisa-clinica .cursor{display:inline-block;width:.055em;height:.72em;background:var(--rx-cyan);
+  vertical-align:-.02em;margin-left:.05em;border-radius:1px}
+.pagina-pesquisa-clinica .titulo-anim .cursor{animation:pisca 1.05s steps(1) infinite}
+/* enquanto digita, o cursor fica sólido: piscar durante a digitação atrapalha a leitura */
+.pagina-pesquisa-clinica .titulo-anim.escrevendo .cursor{animation:none;opacity:1}
+@keyframes pisca{0%,49%{opacity:1}50%,100%{opacity:0}}
+
+/* ---------- Entrada do símbolo: uma perna desce, a outra sobe ----------
+   O translate está em unidades do viewBox, não em %, então independe do tamanho
+   renderizado. O SVG recorta por padrão, e é isso que faz a perna "entrar". */
+.pagina-pesquisa-clinica .hero-simbolo .perna{opacity:0;
+  transition:transform 1.15s var(--suave),opacity .8s var(--ease)}
+.pagina-pesquisa-clinica .hero-simbolo .perna--alta{transform:translateY(-118px)}
+.pagina-pesquisa-clinica .hero-simbolo .perna--baixa{transform:translateY(118px);transition-delay:.14s}
+.pagina-pesquisa-clinica .hero-simbolo.pronto .perna{opacity:1;transform:none}
+
+/* faixa de números do hero */
+.pagina-pesquisa-clinica .faixa{margin-top:clamp(48px,5.5vw,76px);display:grid;grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:1px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.16);border-radius:var(--r-md);overflow:hidden}
+.pagina-pesquisa-clinica .faixa div{background:rgba(10,7,15,.34);padding:22px 20px;display:flex;flex-direction:column;gap:6px}
+.pagina-pesquisa-clinica .faixa .n{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,3.1vw,44px);
+  line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.pagina-pesquisa-clinica .faixa .n em{font-style:normal;font-size:.5em;margin-left:4px;color:var(--rx-cyan)}
+.pagina-pesquisa-clinica .faixa .r{font-size:11px;line-height:1.35;color:rgba(255,255,255,.66)}
+.pagina-pesquisa-clinica .faixa .r b{color:var(--rx-cyan);font-weight:600}
+.pagina-pesquisa-clinica .nota-fonte{margin-top:18px;font-size:11px;color:rgba(255,255,255,.5);max-width:88ch}
+
+/* ==========================================================================
+   Componentes de conteúdo
+   ========================================================================== */
+/* gargalos numerados */
+.pagina-pesquisa-clinica .gargalo{background:var(--surface);border-radius:var(--r-lg);padding:26px 28px;display:flex;flex-direction:column;gap:10px}
+.pagina-pesquisa-clinica .gargalo .num{font-family:var(--f-display);font-weight:800;font-size:34px;line-height:1;color:var(--rx-purple)}
+.pagina-pesquisa-clinica .gargalo:nth-child(3n+2) .num{color:var(--cy-700)}
+.pagina-pesquisa-clinica .gargalo:nth-child(3n+3) .num{color:var(--mg-500)}
+.pagina-pesquisa-clinica .gargalo h3{font-family:var(--f-head);font-weight:500;font-size:19px;line-height:1.25;color:var(--tx)}
+.pagina-pesquisa-clinica .gargalo p{font-size:14px;line-height:1.55}
+
+/* declaração destacada */
+.pagina-pesquisa-clinica .declaracao{margin-top:clamp(40px,4.4vw,64px);border-radius:var(--r-lg);
+  background:var(--g-primary);padding:clamp(32px,4vw,52px);color:#fff;
+  position:relative;overflow:hidden;isolation:isolate}
+/* o gradiente PRIMARY chega em magenta puro na direita; sem veu o texto branco
+   perderia contraste se a linha crescer. O veu resolve por construcao. */
+.pagina-pesquisa-clinica .declaracao::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(100deg,rgba(10,7,15,.62) 0%,rgba(10,7,15,.34) 42%,rgba(10,7,15,.05) 74%,transparent 100%)}
+.pagina-pesquisa-clinica .declaracao .kicker{color:rgba(255,255,255,.86)}
+.pagina-pesquisa-clinica .declaracao h3{color:#fff;margin-top:12px;max-width:24ch}
+.pagina-pesquisa-clinica .declaracao p{color:rgba(255,255,255,.86);margin-top:16px;max-width:70ch}
+
+/* ---------- Cadeia de etapas: pulverizado x coordenado ----------
+   Elemento estrutural de propósito. Nenhum número aqui, porque não temos
+   taxa de perda por etapa publicável — o que se compara é a ligação, não o volume. */
+.pagina-pesquisa-clinica .declaracao--dupla{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);
+  gap:clamp(28px,4vw,56px);align-items:center}
+.pagina-pesquisa-clinica .declaracao--dupla h3{max-width:18ch}
+.pagina-pesquisa-clinica .declaracao--dupla p{max-width:52ch}
+
+.pagina-pesquisa-clinica .cadeia-caixa{background:rgba(10,7,15,.42);border:1px solid rgba(255,255,255,.2);
+  border-radius:var(--r-md);padding:clamp(20px,2.4vw,28px)}
+.pagina-pesquisa-clinica .cadeia-controle{display:inline-flex;gap:4px;padding:4px;border-radius:var(--r-full);
+  background:rgba(255,255,255,.12);margin-bottom:22px}
+.pagina-pesquisa-clinica .cad-btn{padding:8px 17px;border-radius:var(--r-full);font-weight:600;font-size:12px;
+  color:rgba(255,255,255,.72);transition:background .3s var(--ease),color .3s var(--ease)}
+.pagina-pesquisa-clinica .cad-btn:hover{color:#fff}
+.pagina-pesquisa-clinica .cad-btn[aria-pressed="true"]{background:#fff;color:var(--px-700)}
+
+.pagina-pesquisa-clinica .cadeia{position:relative;display:flex;flex-direction:column;gap:11px;padding-left:30px;padding-right:52px}
+/* a espinha tracejada é a operação partida; sólida, a operação única */
+.pagina-pesquisa-clinica .cadeia::before{content:"";position:absolute;left:8px;top:7px;bottom:7px;width:2px;border-radius:1px;
+  background:repeating-linear-gradient(180deg,rgba(255,255,255,.42) 0 5px,transparent 5px 13px);
+  transition:background .5s var(--ease)}
+.pagina-pesquisa-clinica .cadeia.unida::before{background:linear-gradient(180deg,var(--rx-cyan),var(--rx-purple-grad))}
+.pagina-pesquisa-clinica .cadeia li{position:relative;font-size:13px;line-height:1.3;color:rgba(255,255,255,.68);
+  transition:color .35s var(--ease)}
+.pagina-pesquisa-clinica .cadeia li::before{content:"";position:absolute;left:-26px;top:3px;width:9px;height:9px;border-radius:50%;
+  border:2px solid rgba(255,255,255,.42);background:transparent;
+  transition:background .35s var(--ease),border-color .35s var(--ease)}
+.pagina-pesquisa-clinica .cadeia.unida li{color:#fff}
+.pagina-pesquisa-clinica .cadeia.unida li::before{background:var(--rx-cyan);border-color:var(--rx-cyan)}
+
+/* o colchete fecha o circuito: da ultima etapa de volta para a primeira.
+   Fica sempre no fluxo, so muda de opacidade, entao a caixa nunca salta de altura. */
+.pagina-pesquisa-clinica .cadeia-volta{position:absolute;right:8px;top:5px;bottom:5px;width:30px;
+  border:2px solid var(--rx-cyan);border-left:0;border-radius:0 14px 14px 0;
+  opacity:0;transition:opacity .5s var(--ease)}
+.pagina-pesquisa-clinica .cadeia-volta::before{content:"";position:absolute;left:-7px;top:-5px;width:0;height:0;
+  border-top:6px solid transparent;border-bottom:6px solid transparent;
+  border-right:8px solid var(--rx-cyan)}
+.pagina-pesquisa-clinica .cadeia.unida .cadeia-volta{opacity:1}
+
+.pagina-pesquisa-clinica .cadeia-retorno{margin-top:16px;font-size:12px;font-weight:600;color:var(--rx-cyan);
+  opacity:0;transition:opacity .45s var(--ease)}
+.pagina-pesquisa-clinica .cadeia-caixa.coordenado .cadeia-retorno{opacity:1}
+.pagina-pesquisa-clinica .cadeia-nota{margin-top:12px;font-size:12px;line-height:1.5;
+  color:rgba(255,255,255,.72);min-height:5.4em}
+
+/* ---------- Ponte paciente / centro ----------
+   As quatro barreiras são qualitativas, não taxas. Nenhum número aqui:
+   a distância que a seção descreve é de descoberta e acesso, não de volume. */
+.pagina-pesquisa-clinica .ponte{background:rgba(10,7,15,.42);border:1px solid rgba(255,255,255,.18);
+  border-radius:var(--r-md);padding:clamp(20px,2.4vw,28px)}
+.pagina-pesquisa-clinica .ponte-trilho{display:flex;align-items:center;gap:10px;
+  padding-inline:calc(var(--p) * 0.15%);transition:padding .12s linear}
+.pagina-pesquisa-clinica .ponte-no{flex:none;padding:9px 15px;border-radius:var(--r-full);white-space:nowrap;
+  font-size:12px;font-weight:600;color:rgba(255,255,255,.8);
+  border:1px solid rgba(255,255,255,.28);
+  transition:border-color .45s var(--ease),color .45s var(--ease),background .45s var(--ease)}
+.pagina-pesquisa-clinica .ponte.perto .ponte-no{border-color:var(--rx-cyan);color:#fff;background:rgba(117,251,253,.16)}
+.pagina-pesquisa-clinica .ponte-fio{position:relative;flex:1;height:2px;border-radius:1px;background:rgba(255,255,255,.2)}
+.pagina-pesquisa-clinica .ponte-fio i{position:absolute;left:0;top:0;bottom:0;border-radius:1px;
+  width:calc(var(--p) * 1%);background:var(--rx-cyan)}
+
+.pagina-pesquisa-clinica .ponte-barreiras{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+.pagina-pesquisa-clinica .ponte-barreiras li{display:flex;align-items:center;gap:10px;font-size:12.5px;line-height:1.35;
+  color:rgba(255,255,255,.74);transition:color .4s var(--ease),opacity .4s var(--ease)}
+.pagina-pesquisa-clinica .ponte-barreiras li::before{content:"";flex:none;width:9px;height:9px;border-radius:2px;
+  background:rgba(255,255,255,.38);transition:background .4s var(--ease)}
+.pagina-pesquisa-clinica .ponte-barreiras li.caiu{opacity:.4;color:rgba(255,255,255,.55);text-decoration:line-through}
+.pagina-pesquisa-clinica .ponte-barreiras li.caiu::before{background:var(--rx-cyan)}
+
+.pagina-pesquisa-clinica .ponte-ctrl{display:block;margin-top:22px}
+.pagina-pesquisa-clinica .ponte-rot{display:block;margin-bottom:11px;font-size:11px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.58)}
+.pagina-pesquisa-clinica .ponte-ctrl input{-webkit-appearance:none;appearance:none;width:100%;height:4px;
+  border-radius:2px;background:rgba(255,255,255,.22);outline:none}
+.pagina-pesquisa-clinica .ponte-ctrl input::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;
+  border-radius:50%;background:#fff;border:3px solid var(--rx-cyan);cursor:grab}
+.pagina-pesquisa-clinica .ponte-ctrl input::-moz-range-thumb{width:20px;height:20px;border:3px solid var(--rx-cyan);
+  border-radius:50%;background:#fff;cursor:grab}
+.pagina-pesquisa-clinica .ponte-ctrl input:focus-visible{outline:2px solid var(--rx-cyan);outline-offset:4px}
+.pagina-pesquisa-clinica .ponte-status{margin-top:15px;font-size:12px;line-height:1.5;
+  color:rgba(255,255,255,.74);min-height:3em}
+
+/* ---------- Cartões que respondem ao ponteiro ---------- */
+.pagina-pesquisa-clinica .card--vivo{border:1px solid transparent;
+  transition:transform .35s var(--ease),background .35s var(--ease),
+             border-color .35s var(--ease),box-shadow .35s var(--ease)}
+.pagina-pesquisa-clinica .card--vivo:hover{transform:translateY(-6px);background:#fff;
+  border-color:var(--bd);box-shadow:0 18px 42px rgba(18,16,62,.13)}
+.pagina-pesquisa-clinica .card--vivo .fio{transition:width .35s var(--ease)}
+.pagina-pesquisa-clinica .card--vivo:hover .fio{width:76px}
+
+/* evidências */
+.pagina-pesquisa-clinica .evid{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r-lg);padding:26px;display:flex;flex-direction:column;gap:12px}
+.pagina-pesquisa-clinica .evid .v{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,3.4vw,48px);
+  line-height:1;color:var(--px-300);letter-spacing:-.01em}
+.pagina-pesquisa-clinica .evid:nth-child(4n+2) .v{color:var(--rx-cyan)}
+.pagina-pesquisa-clinica .evid:nth-child(4n+3) .v{color:var(--mg-300)}
+.pagina-pesquisa-clinica .evid .r{font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+.pagina-pesquisa-clinica .evid p{font-size:14px;line-height:1.55;flex:1}
+.pagina-pesquisa-clinica .evid .fonte{flex:none;font-size:11px;line-height:1.4;color:rgba(255,255,255,.5);
+  padding-top:12px;border-top:1px solid rgba(255,255,255,.12);margin-top:auto}
+
+/* trilho: lista + painel */
+.pagina-pesquisa-clinica .trilho{display:grid;grid-template-columns:minmax(0,.46fr) minmax(0,.54fr);gap:clamp(24px,3vw,48px);align-items:start}
+.pagina-pesquisa-clinica .trilho-lista{display:flex;flex-direction:column;border-top:1px solid var(--bd)}
+.pagina-pesquisa-clinica .trilho-lista button{display:flex;align-items:baseline;gap:16px;padding:17px 6px;text-align:left;
+  border-bottom:1px solid var(--bd);transition:color .25s var(--ease),padding .25s var(--ease)}
+.pagina-pesquisa-clinica .trilho-lista button .n{font-family:var(--f-display);font-weight:800;font-size:19px;color:var(--bd);
+  transition:color .25s var(--ease);flex:none;width:26px}
+.pagina-pesquisa-clinica .trilho-lista button .t{font-family:var(--f-head);font-weight:500;font-size:18px;line-height:1.25;color:var(--tx2)}
+.pagina-pesquisa-clinica .trilho-lista button:hover{padding-left:12px}
+.pagina-pesquisa-clinica .trilho-lista button:hover .t{color:var(--tx)}
+.pagina-pesquisa-clinica .trilho-lista button[aria-selected="true"] .n{color:var(--rx-purple)}
+.pagina-pesquisa-clinica .trilho-lista button[aria-selected="true"] .t{color:var(--rx-purple)}
+.pagina-pesquisa-clinica .trilho-painel[hidden]{display:none}
+.pagina-pesquisa-clinica .trilho-painel{background:var(--surface);border-radius:var(--r-lg);padding:clamp(26px,3vw,40px);
+  display:flex;flex-direction:column;gap:14px;min-height:280px}
+.pagina-pesquisa-clinica .trilho-painel .kicker{color:var(--rx-purple)}
+.pagina-pesquisa-clinica .trilho-painel h3{font-family:var(--f-head);font-weight:500;font-size:clamp(21px,1.9vw,27px);line-height:1.2;color:var(--tx)}
+.pagina-pesquisa-clinica .trilho-painel p{font-size:15px;line-height:1.6}
+.pagina-pesquisa-clinica .trilho-painel ul{display:flex;flex-direction:column;gap:9px;margin-top:2px}
+.pagina-pesquisa-clinica .trilho-painel li{position:relative;padding-left:20px;font-size:14px;line-height:1.5;color:var(--tx2)}
+.pagina-pesquisa-clinica .trilho-painel li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;
+  border-radius:50%;background:var(--rx-purple)}
+
+/* percurso de etapas */
+.pagina-pesquisa-clinica .percurso{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.pagina-pesquisa-clinica .etapa{display:flex;flex-direction:column;gap:12px;transition:transform .35s var(--ease)}
+.pagina-pesquisa-clinica .etapa:hover{transform:translateY(-5px)}
+.pagina-pesquisa-clinica .etapa .barra{height:5px;border-radius:3px;background:var(--bd);position:relative;overflow:hidden}
+.pagina-pesquisa-clinica .etapa .barra i{position:absolute;inset:0;width:0;background:var(--rx-purple);
+  transition:width .9s var(--suave),background .4s var(--ease),box-shadow .4s var(--ease)}
+/* a barra acende no hover sem mudar de altura: crescer aqui empurraria o texto abaixo */
+.pagina-pesquisa-clinica .etapa:hover .barra i,
+.pagina-pesquisa-clinica .etapa:focus-within .barra i{background:var(--g-signal);
+  box-shadow:0 0 14px rgba(117,251,253,.6)}
+.pagina-pesquisa-clinica .etapa .num,
+.pagina-pesquisa-clinica .etapa h3{transition:color .35s var(--ease)}
+.pagina-pesquisa-clinica .etapa:hover .num{color:var(--cy-700)}
+.pagina-pesquisa-clinica .percurso.on .etapa .barra i{width:100%}
+.pagina-pesquisa-clinica .percurso.on .etapa:nth-child(2) .barra i{transition-delay:.12s}
+.pagina-pesquisa-clinica .percurso.on .etapa:nth-child(3) .barra i{transition-delay:.24s}
+.pagina-pesquisa-clinica .percurso.on .etapa:nth-child(4) .barra i{transition-delay:.36s}
+.pagina-pesquisa-clinica .percurso.on .etapa:nth-child(5) .barra i{transition-delay:.48s}
+.pagina-pesquisa-clinica .percurso.on .etapa:nth-child(6) .barra i{transition-delay:.6s}
+.pagina-pesquisa-clinica .etapa:nth-child(2) .barra i,
+.pagina-pesquisa-clinica .etapa:nth-child(5) .barra i{background:var(--cy-700)}
+.pagina-pesquisa-clinica .etapa:nth-child(3) .barra i,
+.pagina-pesquisa-clinica .etapa:nth-child(6) .barra i{background:var(--mg-500)}
+.pagina-pesquisa-clinica .etapa .num{font-family:var(--f-display);font-weight:800;font-size:26px;line-height:1;color:var(--rx-purple)}
+.pagina-pesquisa-clinica .etapa h3{font-family:var(--f-head);font-weight:500;font-size:16px;line-height:1.25;color:var(--tx)}
+.pagina-pesquisa-clinica .etapa p{font-size:13px;line-height:1.5}
+
+/* fluxo de dados */
+.pagina-pesquisa-clinica .fluxo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.pagina-pesquisa-clinica .fluxo-col{display:flex;flex-direction:column;gap:12px}
+.pagina-pesquisa-clinica .fluxo-col>.kicker{margin-bottom:2px}
+.pagina-pesquisa-clinica .no{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--r-md);padding:15px 18px;font-size:14px;color:#fff}
+.pagina-pesquisa-clinica .no small{display:block;font-size:12px;color:rgba(255,255,255,.62);margin-top:3px;line-height:1.4}
+.pagina-pesquisa-clinica .no--destaque{background:rgba(169,45,243,.26);border-color:rgba(169,45,243,.72);
+  box-shadow:0 0 0 1px rgba(169,45,243,.28),0 0 22px rgba(169,45,243,.4)}
+.pagina-pesquisa-clinica .no--centro{background:rgba(117,251,253,.16);border-color:rgba(117,251,253,.7);
+  box-shadow:0 0 0 1px rgba(117,251,253,.24),0 0 22px rgba(117,251,253,.36)}
+/* Conteúdo é o nó de conversa: canal próprio, não mídia comprada. Ciano, com o mesmo peso do destino. */
+.pagina-pesquisa-clinica .no--proprio{background:rgba(117,251,253,.16);border-color:rgba(117,251,253,.7);
+  box-shadow:0 0 0 1px rgba(117,251,253,.24),0 0 22px rgba(117,251,253,.36)}
+.pagina-pesquisa-clinica .no--proprio small{color:rgba(255,255,255,.8)}
+
+/* case principal */
+.pagina-pesquisa-clinica .case-alvo{border-radius:var(--r-lg);background:var(--g-tech);padding:clamp(32px,4vw,52px);color:#fff;
+  position:relative;overflow:hidden;isolation:isolate}
+.pagina-pesquisa-clinica .case-alvo::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(100deg,rgba(10,7,15,.6) 0%,rgba(10,7,15,.3) 44%,rgba(10,7,15,.06) 76%,transparent 100%)}
+.pagina-pesquisa-clinica .case-alvo .kicker{color:rgba(255,255,255,.9)}
+.pagina-pesquisa-clinica .case-alvo h3{color:#fff;margin-top:12px;max-width:22ch}
+.pagina-pesquisa-clinica .case-alvo p{color:rgba(255,255,255,.86);margin-top:16px;max-width:66ch;font-size:15px;line-height:1.6}
+.pagina-pesquisa-clinica .case-alvo .placar{margin-top:clamp(28px,3vw,42px);display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.24);
+  border:1px solid rgba(255,255,255,.24);border-radius:var(--r-md);overflow:hidden}
+.pagina-pesquisa-clinica .case-alvo .placar div{background:rgba(10,7,15,.36);padding:20px 16px;display:flex;flex-direction:column;gap:5px}
+.pagina-pesquisa-clinica .case-alvo .placar .n{font-family:var(--f-display);font-weight:800;font-size:clamp(24px,2.4vw,34px);
+  line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.pagina-pesquisa-clinica .case-alvo .placar .r{font-size:11px;line-height:1.35;color:rgba(255,255,255,.7)}
+/* placar agregado, 4 colunas, fora do case principal */
+.pagina-pesquisa-clinica .placar4{margin-top:28px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:rgba(255,255,255,.24);border:1px solid rgba(255,255,255,.24);
+  border-radius:var(--r-md);overflow:hidden}
+.pagina-pesquisa-clinica .placar4 div{background:rgba(10,7,15,.32);padding:20px 16px;display:flex;flex-direction:column;gap:5px}
+.pagina-pesquisa-clinica .placar4 .n{font-family:var(--f-display);font-weight:800;font-size:clamp(24px,2.4vw,34px);
+  line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.pagina-pesquisa-clinica .placar4 .r{font-size:11px;line-height:1.35;color:rgba(255,255,255,.72)}
+
+.pagina-pesquisa-clinica .case-alvo .case-rodape{margin-top:22px}
+.pagina-pesquisa-clinica .case-alvo .fonte{font-size:11px;color:rgba(255,255,255,.6);max-width:60ch}
+.pagina-pesquisa-clinica .case-alvo .btn--secundario{border-color:rgba(255,255,255,.5);color:#fff}
+.pagina-pesquisa-clinica .case-alvo .btn--secundario:hover{background:rgba(255,255,255,.14)}
+
+/* cases por área */
+.pagina-pesquisa-clinica .case-area{background:var(--bg);border:1px solid var(--bd);border-radius:var(--r-lg);
+  padding:26px 28px;display:flex;flex-direction:column;gap:14px}
+.pagina-pesquisa-clinica .fundo-cinza .case-area{background:#fff}
+.pagina-pesquisa-clinica .case-area .topo{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:58px}
+.pagina-pesquisa-clinica .case-area h3{font-family:var(--f-head);font-weight:500;font-size:22px;line-height:1.15;color:var(--tx)}
+.pagina-pesquisa-clinica .case-area .tag{flex:none}
+.pagina-pesquisa-clinica .case-area .destaque{font-family:var(--f-display);font-weight:800;font-size:clamp(36px,3.6vw,52px);
+  line-height:1;color:var(--rx-purple);letter-spacing:-.01em}
+.pagina-pesquisa-clinica .case-area .destaque span{font-family:var(--f-body);font-weight:600;font-size:13px;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--tx2);display:block;margin-top:6px}
+.pagina-pesquisa-clinica .case-area--cyan .destaque{color:var(--cy-700)}
+.pagina-pesquisa-clinica .case-area--mg .destaque{color:var(--mg-500)}
+.pagina-pesquisa-clinica .case-area dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 18px;
+  padding-top:16px;border-top:1px solid var(--bd);margin-top:auto}
+.pagina-pesquisa-clinica .case-area dl div{display:flex;flex-direction:column;gap:1px}
+.pagina-pesquisa-clinica .case-area dt{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--tx2)}
+.pagina-pesquisa-clinica .case-area dd{font-family:var(--f-head);font-weight:500;font-size:17px;color:var(--tx);font-variant-numeric:tabular-nums}
+.pagina-pesquisa-clinica .case-area .leitura{font-size:13px;line-height:1.55;color:var(--tx2);margin-top:auto}
+
+/* ---------- Visor de navegador ---------- */
+.pagina-pesquisa-clinica .case-alvo-topo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.88fr);
+  gap:clamp(28px,4vw,56px);align-items:center}
+.pagina-pesquisa-clinica .visor{border-radius:12px;overflow:hidden;background:#fff;
+  border:1px solid rgba(255,255,255,.26);box-shadow:0 26px 60px rgba(0,0,0,.42)}
+.pagina-pesquisa-clinica .visor-barra{display:flex;align-items:center;gap:7px;padding:10px 12px;
+  background:#EDEDF3;border-bottom:1px solid #DCDCE4}
+.pagina-pesquisa-clinica .visor-barra i{flex:none;width:9px;height:9px;border-radius:50%;background:#C6C6D2}
+.pagina-pesquisa-clinica .visor-url{flex:1;margin-left:6px;padding:5px 12px;border-radius:var(--r-full);
+  background:#fff;font-size:11px;color:#55555f;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pagina-pesquisa-clinica .visor-abrir{flex:none;font-size:11px;font-weight:600;color:var(--px-600);
+  padding:5px 10px;border-radius:var(--r-full);
+  transition:background .25s var(--ease)}
+.pagina-pesquisa-clinica .visor-abrir:hover{background:rgba(157,56,238,.12)}
+.pagina-pesquisa-clinica .visor-tela{display:block;width:100%;aspect-ratio:16/10;border:0;background:#fff}
+
+/* ---------- Espaço de logo nos cards de operação ---------- */
+.pagina-pesquisa-clinica .caso-topo{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.pagina-pesquisa-clinica .marca-slot{flex:none;width:94px;height:34px;border:1px dashed var(--bd);border-radius:var(--r-sm);
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9b9b9b}
+.pagina-pesquisa-clinica .marca-slot img{max-width:82%;max-height:74%;object-fit:contain}
+
+/* tag (Random/Tag) */
+.pagina-pesquisa-clinica .tag{display:inline-flex;align-items:center;padding:7px 14px;border-radius:var(--r-full);
+  font-weight:600;font-size:12px;letter-spacing:.02em}
+.pagina-pesquisa-clinica .tag--brand{background:rgba(157,56,238,.12);color:var(--px-600)}
+.pagina-pesquisa-clinica .tag--tech{background:rgba(4,238,241,.16);color:var(--cy-700)}
+.pagina-pesquisa-clinica .tag--alert{background:rgba(221,9,236,.12);color:var(--mg-700)}
+.pagina-pesquisa-clinica .tag--neutro{background:#EAEAEA;color:var(--tx2)}
+.pagina-pesquisa-clinica .escuro .tag--brand{background:rgba(169,45,243,.26);color:#EAE0F5}
+.pagina-pesquisa-clinica .escuro .tag--tech{background:rgba(117,251,253,.18);color:var(--rx-cyan)}
+.pagina-pesquisa-clinica .escuro .tag--neutro{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8)}
+
+/* nuvem de áreas terapêuticas */
+.pagina-pesquisa-clinica .nuvem{display:flex;flex-wrap:wrap;gap:10px}
+.pagina-pesquisa-clinica .nuvem .tag{font-size:13px;padding:9px 16px}
+.pagina-pesquisa-clinica .legenda-nuvem{margin-top:18px;font-size:12px;color:rgba(255,255,255,.55)}
+
+/* slots de logo */
+.pagina-pesquisa-clinica .slots{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+.pagina-pesquisa-clinica .slot{aspect-ratio:16/7;border:1px dashed rgba(255,255,255,.3);border-radius:var(--r-md);
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;
+  font-weight:600;font-size:12px;letter-spacing:.03em;color:rgba(255,255,255,.72)}
+
+/* depoimentos */
+.pagina-pesquisa-clinica .depo{background:var(--surface);border-radius:var(--r-lg);padding:28px;display:flex;flex-direction:column;gap:18px;height:100%}
+.pagina-pesquisa-clinica .depo .aspas{font-family:var(--f-display);font-weight:800;font-size:46px;line-height:.6;color:var(--rx-purple)}
+.pagina-pesquisa-clinica .depo blockquote{font-family:var(--f-head);font-weight:400;font-size:18px;line-height:1.4;color:var(--tx)}
+.pagina-pesquisa-clinica .depo figcaption{padding-top:16px;border-top:1px solid var(--bd);margin-top:auto}
+.pagina-pesquisa-clinica .depo .nome{font-weight:600;font-size:14px;color:var(--tx)}
+.pagina-pesquisa-clinica .depo .cargo{font-size:12px;color:var(--tx2);margin-top:2px}
+
+/* aprendizados */
+.pagina-pesquisa-clinica .licoes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--bd);border:1px solid var(--bd);border-radius:var(--r-lg);overflow:hidden}
+.pagina-pesquisa-clinica .licoes li{background:var(--bg);padding:24px;display:flex;gap:14px;align-items:flex-start}
+.pagina-pesquisa-clinica .fundo-cinza .licoes li{background:#fff}
+.pagina-pesquisa-clinica .licoes .n{font-family:var(--f-display);font-weight:800;font-size:20px;line-height:1.2;color:var(--rx-purple);flex:none}
+.pagina-pesquisa-clinica .licoes p{font-size:14px;line-height:1.5}
+
+/* feasibility */
+.pagina-pesquisa-clinica .metricas-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.pagina-pesquisa-clinica .chip{display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:var(--r-full);
+  border:1px solid var(--bd);font-size:13px;color:var(--tx)}
+.pagina-pesquisa-clinica .chip b{font-family:var(--f-display);font-weight:800;font-size:15px;color:var(--rx-purple)}
+.pagina-pesquisa-clinica .perguntas{display:flex;flex-direction:column;border-top:1px solid var(--bd)}
+.pagina-pesquisa-clinica .perguntas li{padding:16px 0;border-bottom:1px solid var(--bd);display:flex;gap:16px;align-items:baseline}
+.pagina-pesquisa-clinica .perguntas .n{font-family:var(--f-display);font-weight:800;font-size:17px;color:var(--rx-purple);flex:none;width:26px}
+.pagina-pesquisa-clinica .perguntas p{font-family:var(--f-head);font-weight:400;font-size:17px;line-height:1.35;color:var(--tx)}
+
+/* compliance */
+.pagina-pesquisa-clinica .regra{background:var(--bg);border:1px solid var(--bd);border-radius:var(--r-lg);padding:24px 26px;
+  display:flex;flex-direction:column;gap:10px}
+.pagina-pesquisa-clinica .fundo-cinza .regra{background:#fff}
+.pagina-pesquisa-clinica .regra .marca{width:34px;height:4px;border-radius:2px;background:var(--rx-purple)}
+.pagina-pesquisa-clinica .regra:nth-child(2) .marca{background:var(--rx-cyan)}
+.pagina-pesquisa-clinica .regra:nth-child(3) .marca{background:var(--rx-magenta)}
+.pagina-pesquisa-clinica .regra:nth-child(4) .marca{background:var(--px-700)}
+.pagina-pesquisa-clinica .regra h3{font-family:var(--f-head);font-weight:500;font-size:18px;color:var(--tx)}
+.pagina-pesquisa-clinica .regra p{font-size:14px;line-height:1.55}
+
+/* ---------- Números que piscam em sequência ---------- */
+@keyframes piscaNum{0%,72%,100%{color:var(--rx-purple)}82%{color:#fff}}
+.pagina-pesquisa-clinica .licoes.viva .n{animation:piscaNum 4.2s ease-in-out infinite}
+.pagina-pesquisa-clinica .licoes.viva li:nth-child(2) .n{animation-delay:.26s}
+.pagina-pesquisa-clinica .licoes.viva li:nth-child(3) .n{animation-delay:.52s}
+.pagina-pesquisa-clinica .licoes.viva li:nth-child(4) .n{animation-delay:.78s}
+.pagina-pesquisa-clinica .licoes.viva li:nth-child(5) .n{animation-delay:1.04s}
+.pagina-pesquisa-clinica .licoes.viva li:nth-child(6) .n{animation-delay:1.3s}
+.pagina-pesquisa-clinica .licoes.viva li:nth-child(7) .n{animation-delay:1.56s}
+.pagina-pesquisa-clinica .licoes.viva li:nth-child(8) .n{animation-delay:1.82s}
+.pagina-pesquisa-clinica .licoes.viva li:nth-child(9) .n{animation-delay:2.08s}
+
+/* ---------- Pílulas que acendem em ordem aleatória ---------- */
+.pagina-pesquisa-clinica .nuvem .tag{transition:box-shadow .6s var(--ease),transform .6s var(--ease)}
+.pagina-pesquisa-clinica .nuvem .tag.brilha{transform:translateY(-2px);
+  box-shadow:0 0 0 1px rgba(255,255,255,.4),0 0 22px rgba(117,251,253,.5)}
+
+/* ---------- Símbolo que acompanha o ponteiro ----------
+   Duas camadas separadas: a de fora recebe o ponteiro, a de dentro flutua sozinha.
+   Nunca as duas no mesmo elemento. */
+.pagina-pesquisa-clinica .flutua{margin-top:clamp(32px,4vw,56px);width:clamp(150px,17vw,230px);
+  color:rgba(255,255,255,.16);
+  transform:translate3d(calc(var(--fx,0) * 1px),calc(var(--fy,0) * 1px),0);
+  transition:transform .5s cubic-bezier(.16,1,.3,1);will-change:transform}
+.pagina-pesquisa-clinica .flutua-in{animation:boia 7s ease-in-out infinite}
+.pagina-pesquisa-clinica .flutua svg{width:100%;height:auto;
+  filter:drop-shadow(0 18px 44px rgba(0,0,0,.35))}
+@keyframes boia{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+
+/* ---------- Newsletter ---------- */
+.pagina-pesquisa-clinica .news{padding-block:clamp(56px,6vw,88px)}
+.pagina-pesquisa-clinica .news-grade{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:clamp(28px,4vw,64px);align-items:center}
+.pagina-pesquisa-clinica .news h2{color:#fff;max-width:20ch}
+.pagina-pesquisa-clinica .news p{color:rgba(255,255,255,.76);margin-top:16px;max-width:52ch}
+.pagina-pesquisa-clinica .news-marca{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.pagina-pesquisa-clinica .news-marca svg{height:26px;width:auto;color:#fff;flex:none}
+.pagina-pesquisa-clinica .news-marca span{font-weight:600;font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--rx-cyan);
+  padding-left:14px;border-left:1px solid rgba(255,255,255,.24)}
+.pagina-pesquisa-clinica .news-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pagina-pesquisa-clinica .news-form .campo{gap:0}
+.pagina-pesquisa-clinica .news-enviar{grid-column:1/-1;justify-self:start}
+.pagina-pesquisa-clinica .news-form input{width:100%;font:inherit;font-size:14px;color:#fff;
+  background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.24);
+  border-radius:var(--r-full);padding:14px 20px;
+  transition:border-color .25s var(--ease),background .25s var(--ease)}
+.pagina-pesquisa-clinica .news-form input::placeholder{color:rgba(255,255,255,.45)}
+.pagina-pesquisa-clinica .news-form input:focus{outline:none;border-color:var(--rx-cyan);background:rgba(255,255,255,.16)}
+.pagina-pesquisa-clinica .news-form .btn--primario{background:var(--rx-cyan);color:#0A070F}
+.pagina-pesquisa-clinica .news-form .btn--primario:hover{background:#A9FDFE;box-shadow:0 12px 30px rgba(117,251,253,.28)}
+.pagina-pesquisa-clinica .news-nota{margin-top:14px;font-size:11px;line-height:1.5;color:rgba(255,255,255,.5);max-width:46ch}
+
+/* ---------- Formulário ---------- */
+.pagina-pesquisa-clinica .contato{color:#fff}
+/* Alcance, formulário e newsletter dividem o mesmo fundo. Um fio no topo mantém
+   a leitura de que são três seções, e não um bloco escuro só. */
+.pagina-pesquisa-clinica .fundo-escuro + .fundo-escuro{border-top:1px solid rgba(255,255,255,.09)}
+.pagina-pesquisa-clinica .contato-grade{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:clamp(32px,5vw,72px);align-items:start}
+.pagina-pesquisa-clinica .contato h2{color:#fff}
+.pagina-pesquisa-clinica .contato .kicker{color:rgba(255,255,255,.88)}
+.pagina-pesquisa-clinica .contato p{color:rgba(255,255,255,.86)}
+.pagina-pesquisa-clinica .form-caixa{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);
+  border-radius:var(--r-lg);padding:clamp(26px,3vw,38px);backdrop-filter:blur(12px)}
+.pagina-pesquisa-clinica .campos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.pagina-pesquisa-clinica .campo{display:flex;flex-direction:column;gap:7px}
+.pagina-pesquisa-clinica .campo--largo{grid-column:1/-1}
+.pagina-pesquisa-clinica .campo label{font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.pagina-pesquisa-clinica .campo input,
+.pagina-pesquisa-clinica .campo select,
+.pagina-pesquisa-clinica .campo textarea{width:100%;font:inherit;font-size:14px;color:#fff;
+  background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.24);
+  border-radius:var(--r-sm);padding:13px 14px;transition:border-color .25s var(--ease),background .25s var(--ease)}
+.pagina-pesquisa-clinica .campo textarea{min-height:104px;resize:vertical}
+.pagina-pesquisa-clinica .campo input::placeholder,
+.pagina-pesquisa-clinica .campo textarea::placeholder{color:rgba(255,255,255,.45)}
+.pagina-pesquisa-clinica .campo input:focus,
+.pagina-pesquisa-clinica .campo select:focus,
+.pagina-pesquisa-clinica .campo textarea:focus{outline:none;
+  border-color:var(--rx-cyan);background:rgba(255,255,255,.16)}
+.pagina-pesquisa-clinica .campo select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.pagina-pesquisa-clinica .campo select option{color:#000}
+.pagina-pesquisa-clinica .consenti{display:flex;gap:12px;align-items:flex-start;margin-top:18px;cursor:pointer}
+.pagina-pesquisa-clinica .consenti input{position:absolute;opacity:0;width:0;height:0}
+.pagina-pesquisa-clinica .marca-cx{flex:none;width:19px;height:19px;border-radius:5px;border:1.5px solid rgba(255,255,255,.45);
+  margin-top:2px;position:relative;transition:background .2s var(--ease),border-color .2s var(--ease)}
+.pagina-pesquisa-clinica .consenti input:checked+.marca-cx{background:var(--rx-cyan);border-color:var(--rx-cyan)}
+.pagina-pesquisa-clinica .consenti input:checked+.marca-cx::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
+  border:solid #0A070F;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.pagina-pesquisa-clinica .consenti input:focus-visible+.marca-cx{outline:2px solid var(--rx-cyan);outline-offset:3px}
+.pagina-pesquisa-clinica .consenti .txt{font-size:12px;line-height:1.5;color:rgba(255,255,255,.78)}
+.pagina-pesquisa-clinica .form-acoes{margin-top:22px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.pagina-pesquisa-clinica .form-caixa .btn--primario{background:#fff;color:var(--px-700)}
+.pagina-pesquisa-clinica .form-caixa .btn--primario:hover{background:var(--px-50)}
+.pagina-pesquisa-clinica .form-nota{font-size:11px;color:rgba(255,255,255,.6);max-width:36ch}
+
+/* contatos diretos */
+.pagina-pesquisa-clinica .contatos-diretos{margin-top:32px;display:flex;flex-direction:column;gap:12px}
+.pagina-pesquisa-clinica .contatos-diretos a{display:flex;align-items:center;gap:12px;font-size:15px;color:#fff}
+.pagina-pesquisa-clinica .contatos-diretos span{font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(255,255,255,.6);width:64px;flex:none}
+
+/* ==========================================================================
+   RODAPÉ
+   ========================================================================== */
+.pagina-pesquisa-clinica .rodape{background:#0A070F;color:rgba(255,255,255,.7);padding-block:clamp(56px,6vw,84px)}
+.pagina-pesquisa-clinica .rodape h2,
+.pagina-pesquisa-clinica .rodape h3{color:#fff}
+.pagina-pesquisa-clinica .rodape-grade{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));
+  gap:clamp(28px,4vw,56px);padding-top:clamp(36px,4vw,52px);border-top:1px solid rgba(255,255,255,.12)}
+.pagina-pesquisa-clinica .rodape-marca p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.62);margin-top:16px;max-width:38ch}
+.pagina-pesquisa-clinica .logo-pe{height:38px;width:auto;color:#fff}
+.pagina-pesquisa-clinica .rodape-col .kicker{color:var(--rx-cyan);margin-bottom:14px}
+.pagina-pesquisa-clinica .rodape-col li{margin-bottom:9px}
+.pagina-pesquisa-clinica .rodape-col a{font-size:14px;color:rgba(255,255,255,.7);transition:color .25s var(--ease)}
+.pagina-pesquisa-clinica .rodape-col a:hover{color:#fff}
+.pagina-pesquisa-clinica .sociais{display:flex;gap:10px;margin-top:20px}
+.pagina-pesquisa-clinica .social{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.22);
+  display:flex;align-items:center;justify-content:center;transition:border-color .25s var(--ease),background .25s var(--ease)}
+.pagina-pesquisa-clinica .social:hover{border-color:var(--rx-cyan);background:rgba(117,251,253,.12)}
+.pagina-pesquisa-clinica .social svg{width:17px;height:17px}
+.pagina-pesquisa-clinica .rodape-base{margin-top:clamp(32px,3.6vw,48px);padding-top:22px;border-top:1px solid rgba(255,255,255,.12);
+  font-size:12px;color:rgba(255,255,255,.45);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+@media (max-width:1180px){
+  .pagina-pesquisa-clinica{--gutter:48px}
+  .pagina-pesquisa-clinica .faixa,
+.pagina-pesquisa-clinica .case-alvo .placar,
+.pagina-pesquisa-clinica .percurso,
+.pagina-pesquisa-clinica .slots{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .pagina-pesquisa-clinica .placar4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pagina-pesquisa-clinica .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pagina-pesquisa-clinica .licoes{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:980px){
+  .pagina-pesquisa-clinica .hero-grade,
+.pagina-pesquisa-clinica .trilho,
+.pagina-pesquisa-clinica .contato-grade,
+.pagina-pesquisa-clinica .cab--duplo,
+.pagina-pesquisa-clinica .declaracao--dupla,
+.pagina-pesquisa-clinica .case-alvo-topo,
+.pagina-pesquisa-clinica .news-grade,
+.pagina-pesquisa-clinica .news-form{grid-template-columns:minmax(0,1fr)}
+  .pagina-pesquisa-clinica .declaracao--dupla h3,
+.pagina-pesquisa-clinica .declaracao--dupla p{max-width:none}
+  .pagina-pesquisa-clinica .cab--duplo{gap:20px;align-items:start}
+  .pagina-pesquisa-clinica .hero-marca{flex-direction:row;align-items:center;gap:24px}
+  .pagina-pesquisa-clinica .hero-simbolo{width:96px}
+  .pagina-pesquisa-clinica .g3,
+.pagina-pesquisa-clinica .fluxo{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pagina-pesquisa-clinica .rodape-grade{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pagina-pesquisa-clinica .trilho-lista button .t{font-size:16px}
+}
+@media (max-width:900px){
+  .pagina-pesquisa-clinica .nav-btn{display:block}
+  .pagina-pesquisa-clinica .nav .btn{display:none}
+  .pagina-pesquisa-clinica .nav-links{position:fixed;inset:84px 0 auto 0;flex-direction:column;align-items:flex-start;
+    gap:0;background:#0A070F;padding:8px var(--gutter) 28px;margin:0;
+    transform:translateY(-12px);opacity:0;pointer-events:none;
+    transition:opacity .3s var(--ease),transform .3s var(--ease)}
+  .pagina-pesquisa-clinica .nav-links.aberto{opacity:1;transform:none;pointer-events:auto}
+  .pagina-pesquisa-clinica .nav-links a{width:100%;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;opacity:1}
+  .pagina-pesquisa-clinica .nav.solida .nav-links a{color:#fff}
+  .pagina-pesquisa-clinica .logo .unidade{display:none}
+  .pagina-pesquisa-clinica .nav-item{flex-direction:column;align-items:flex-start;gap:0;width:100%}
+  .pagina-pesquisa-clinica .nav-item>.chev{display:none}
+  .pagina-pesquisa-clinica .nav-sub{position:static;min-width:0;opacity:1;visibility:visible;transform:none;
+    padding:0 0 0 20px;background:none;border:0;box-shadow:none;backdrop-filter:none}
+  .pagina-pesquisa-clinica .nav-sub a,
+.pagina-pesquisa-clinica .nav.solida .nav-sub a{font-size:16px;opacity:.8;padding:10px 0;border-bottom:0}
+  .pagina-pesquisa-clinica .nav-sub small{display:none}
+}
+@media (max-width:720px){
+  .pagina-pesquisa-clinica{--gutter:22px}
+  .pagina-pesquisa-clinica .grade,
+.pagina-pesquisa-clinica .g2,
+.pagina-pesquisa-clinica .g3,
+.pagina-pesquisa-clinica .g4,
+.pagina-pesquisa-clinica .fluxo,
+.pagina-pesquisa-clinica .licoes,
+.pagina-pesquisa-clinica .rodape-grade{grid-template-columns:minmax(0,1fr)}
+  .pagina-pesquisa-clinica .faixa,
+.pagina-pesquisa-clinica .case-alvo .placar,
+.pagina-pesquisa-clinica .placar4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pagina-pesquisa-clinica .percurso{grid-template-columns:minmax(0,1fr);gap:22px}
+  .pagina-pesquisa-clinica .slots{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .pagina-pesquisa-clinica .campos{grid-template-columns:minmax(0,1fr)}
+  .pagina-pesquisa-clinica .case-area dl{grid-template-columns:minmax(0,1fr)}
+  .pagina-pesquisa-clinica .licoes{border-radius:var(--r-md)}
+}
+@media (max-width:420px){
+  .pagina-pesquisa-clinica .faixa,
+.pagina-pesquisa-clinica .case-alvo .placar,
+.pagina-pesquisa-clinica .placar4,
+.pagina-pesquisa-clinica .slots{grid-template-columns:minmax(0,1fr)}
+  .pagina-pesquisa-clinica .slots{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .pagina-pesquisa-clinica{scroll-behavior:auto}
+  .pagina-pesquisa-clinica *,
+.pagina-pesquisa-clinica *::before,
+.pagina-pesquisa-clinica *::after{animation:none!important;transition-duration:.01ms!important}
+  .pagina-pesquisa-clinica .rv,
+.pagina-pesquisa-clinica .esc>*{opacity:1;transform:none}
+  .pagina-pesquisa-clinica .licoes.viva .n,
+.pagina-pesquisa-clinica .flutua-in{animation:none}
+  .pagina-pesquisa-clinica .flutua{transform:none}
+  .pagina-pesquisa-clinica .percurso .etapa .barra i{width:100%}
+  .pagina-pesquisa-clinica .hero-simbolo .perna{opacity:1;transform:none}
+  .pagina-pesquisa-clinica .titulo-anim .cursor{display:none}
+}
+
+/* ==========================================================================
+   LOGO DO HEADER
+   ========================================================================== */
+
+.pagina-pesquisa-clinica .logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.pagina-pesquisa-clinica .logo-header {
+  display: block;
+  width: auto;
+  height: 55px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Logo azul fica escondido inicialmente */
+.pagina-pesquisa-clinica .logo-header--blue {
+  display: none;
+}
+
+
+/* ==========================================================================
+   HEADER APÓS ROLAGEM
+   ========================================================================== */
+
+/* O seu JS adiciona .solida ao #nav quando rola mais de 60px */
+
+.pagina-pesquisa-clinica .nav.solida .logo-header--white {
+  display: none;
+}
+
+.pagina-pesquisa-clinica .nav.solida .logo-header--blue {
+  display: block;
+}
+
+
+/* ==========================================================================
+   TRANSIÇÃO
+   ========================================================================== */
+
+.pagina-pesquisa-clinica .logo-header {
+  transition: opacity 0.2s ease;
+}
+
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+
+@media (max-width: 900px) {
+
+  .pagina-pesquisa-clinica .logo-header {
+    height: 36px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .pagina-pesquisa-clinica .logo-header {
+    height: 32px;
+  }
+
+}

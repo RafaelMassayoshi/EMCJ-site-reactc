@@ -1,0 +1,273 @@
+/* ==========================================================================
+   BLOG · portal
+   Tudo desta seção é novo e não existe na home. No Elementor entra como folha
+   complementar, enfileirada só no slug /blog (e nos arquivos de editoria).
+   ========================================================================== */
+
+/* Altura da nav do site. No WordPress o header vem do tema: se ele não for fixo
+   e transparente como no HTML, ajustar estes dois números e todo o resto segue. */
+.pagina-blog{--nav-h:88px;--nav-h-fixa:72px}
+
+/* O menu de editorias é sticky. `overflow-x:hidden` no body cria contexto de
+   rolagem e quebra o sticky em alguns navegadores; `clip` não cria. A regra do
+   base fica como fallback para navegador antigo. */
+.pagina-blog{overflow-x:clip}
+
+/* --------------------------------------------------------------------------
+   Corredor de notícias — a faixa que corre no topo, como em telejornal
+   -------------------------------------------------------------------------- */
+.pagina-blog .corredor-topo{position:relative;z-index:3;padding-top:var(--nav-h);
+  background:linear-gradient(180deg,var(--profundo-900) 0%,#04192E 100%)}
+.pagina-blog .corredor{display:flex;align-items:stretch;height:52px;
+  border-top:1px solid rgba(255,255,255,.10);border-bottom:1px solid rgba(255,255,255,.10)}
+.pagina-blog .corredor-rotulo{flex:none;display:flex;align-items:center;gap:9px;
+  padding-inline:var(--gutter) 22px;
+  font-weight:500;font-size:12px;line-height:1;letter-spacing:.08em;text-transform:uppercase;color:#fff;
+  background:linear-gradient(90deg,rgba(166,61,37,.60),rgba(166,61,37,0))}
+.pagina-blog .corredor-ponto{width:7px;height:7px;border-radius:50%;flex:none;background:var(--terra-400);
+  box-shadow:0 0 0 4px rgba(196,126,110,.18);animation:pulso-corredor 2.4s ease-in-out infinite}
+@keyframes pulso-corredor{0%,100%{opacity:1} 50%{opacity:.3}}
+
+.pagina-blog .corredor-janela{position:relative;flex:1;min-width:0;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 72px),transparent);
+  mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 72px),transparent)}
+.pagina-blog .corredor-fita{display:flex;align-items:center;height:100%;width:max-content;
+  animation:corre-corredor 52s linear infinite;will-change:transform}
+.pagina-blog .corredor-janela:hover .corredor-fita,
+.pagina-blog .corredor-fita:focus-within{animation-play-state:paused}
+@keyframes corre-corredor{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+.pagina-blog .corredor-grupo{display:flex;align-items:center}
+.pagina-blog .corredor-item{display:inline-flex;align-items:center;gap:10px;height:52px;padding-inline:18px;
+  font-size:14px;line-height:1;color:var(--n-300);white-space:nowrap;transition:color .25s var(--ease)}
+.pagina-blog .corredor-item:hover{color:#fff}
+.pagina-blog .corredor-item .ed-nome{font-weight:500;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--tema,var(--luminoso-500))}
+.pagina-blog .corredor-item::after{content:"";flex:none;width:4px;height:4px;border-radius:50%;
+  background:rgba(255,255,255,.22);margin-left:18px}
+
+/* --------------------------------------------------------------------------
+   Menu do blog — editorias + busca, gruda abaixo da nav
+   -------------------------------------------------------------------------- */
+.pagina-blog .blog-nav{position:sticky;top:var(--nav-h-fixa);z-index:90;
+  background:rgba(255,255,255,.94);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--n-200)}
+.pagina-blog .blog-nav-in{display:flex;align-items:center;gap:var(--esp-5);min-height:64px}
+.pagina-blog .editorias{display:flex;align-items:center;gap:6px;flex:1;min-width:0;
+  overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.pagina-blog .editorias::-webkit-scrollbar{display:none}
+.pagina-blog .editorias li{flex:none}
+.pagina-blog .ed{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:var(--r-full);
+  font-size:14px;line-height:1;color:var(--n-600);white-space:nowrap;border:1px solid transparent;
+  transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease)}
+.pagina-blog .ed::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--tema,var(--n-300))}
+.pagina-blog .ed:hover{background:var(--n-50);color:var(--n-900);border-color:var(--n-200)}
+.pagina-blog .ed[aria-current="page"],
+.pagina-blog .ed--on{background:rgba(31,136,214,.09);border-color:var(--marca-300);color:var(--n-900);font-weight:500}
+/* a nav fixa (72) e o menu do blog (64) cobrem o topo: a ancora precisa parar abaixo deles */
+.pagina-blog #topo,
+.pagina-blog #quente,
+.pagina-blog #mercados,
+.pagina-blog #arquivo,
+.pagina-blog .faixa{scroll-margin-top:calc(var(--nav-h-fixa) + 78px)}
+
+.pagina-blog .busca{position:relative;flex:none;width:min(300px,32vw)}
+.pagina-blog .busca input{width:100%;font-family:var(--display);font-size:14px;color:var(--n-900);background:var(--n-50);
+  border:1px solid var(--n-200);border-radius:var(--r-full);padding:11px 44px 11px 18px;
+  transition:border-color .25s var(--ease),background .25s var(--ease),box-shadow .25s var(--ease)}
+.pagina-blog .busca input::placeholder{color:var(--n-400)}
+.pagina-blog .busca input:focus{outline:none;background:#fff;border-color:var(--marca-500);box-shadow:0 0 0 3px rgba(64,160,231,.16)}
+.pagina-blog .busca button{position:absolute;right:5px;top:50%;transform:translateY(-50%);
+  width:32px;height:32px;display:grid;place-items:center;border-radius:50%;color:var(--n-500);
+  transition:color .25s var(--ease),background .25s var(--ease)}
+.pagina-blog .busca button:hover{color:var(--marca-700);background:var(--n-200)}
+
+/* --------------------------------------------------------------------------
+   Peças compartilhadas: slot de arte e linha de metadados
+   -------------------------------------------------------------------------- */
+/* A arte nasce como slot, igual ao slot de logo dos cases: moldura tracejada
+   com a proporção certa. O dev troca o conteúdo por <img> da imagem destacada. */
+.pagina-blog .arte{position:relative;aspect-ratio:16/9;display:grid;place-items:center;overflow:hidden;flex:none;
+  background:linear-gradient(135deg,rgba(65,175,255,.20),rgba(3,21,38,.60) 72%)}
+.pagina-blog .arte .sinal{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(closest-side,var(--tema,var(--luminoso-500)),transparent 72%);
+  opacity:.34;filter:blur(34px)}
+.pagina-blog .arte .marcador-img{position:relative;z-index:1;
+  font-weight:500;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.62);border:1px dashed rgba(255,255,255,.32);
+  border-radius:var(--r-md);padding:8px 14px}
+.pagina-blog .arte img{width:100%;height:100%;object-fit:cover}
+.pagina-blog .arte--claro{background:linear-gradient(135deg,var(--n-50),rgba(181,219,248,.5) 74%)}
+.pagina-blog .arte--claro .sinal{opacity:.22}
+.pagina-blog .arte--claro .marcador-img{color:var(--n-500);border-color:var(--n-300)}
+.pagina-blog .arte--alta{aspect-ratio:21/9}
+
+.pagina-blog .post-meta{display:flex;flex-wrap:wrap;align-items:center;gap:9px;font-size:12px;line-height:1.4;color:var(--n-400)}
+.pagina-blog .post-meta .ed-nome{font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--tema,var(--luminoso-500))}
+.pagina-blog .post-meta .ponto{width:3px;height:3px;border-radius:50%;background:currentColor;opacity:.55;flex:none}
+.pagina-blog .claro .post-meta{color:var(--n-500)}
+.pagina-blog .claro .post-meta .ed-nome{color:var(--tema,var(--marca-700))}
+
+/* --------------------------------------------------------------------------
+   Hero do portal + manchete da semana
+   -------------------------------------------------------------------------- */
+.pagina-blog .hero--blog{min-height:auto;align-items:stretch;padding-block:clamp(40px,5vw,64px) clamp(60px,7vw,92px)}
+.pagina-blog .hero--blog .hero-conteudo{padding-top:0}
+.pagina-blog .hero--blog .hero-conteudo>*{max-width:none}
+.pagina-blog .hero--blog .hero-scrim{background:linear-gradient(180deg,rgba(3,21,38,.62),rgba(3,21,38,.16) 46%,rgba(3,21,38,.58))}
+.pagina-blog .hero--blog h1{max-width:21ch}
+.pagina-blog .blog-cab{max-width:760px}
+.pagina-blog .blog-cab .hero-lead{max-width:660px}
+
+.pagina-blog .destaque{display:grid;grid-template-columns:minmax(0,1.52fr) minmax(0,1fr);
+  gap:clamp(26px,3.2vw,44px);align-items:start;margin-top:clamp(40px,5vw,64px)}
+
+.pagina-blog .manchete{display:block;position:relative;overflow:hidden;border-radius:24px;
+  border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);backdrop-filter:blur(14px);
+  transition:border-color .45s var(--ease),background .45s var(--ease),transform .45s var(--ease)}
+.pagina-blog .manchete:hover{border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.075);transform:translateY(-4px)}
+.pagina-blog .manchete .arte{border-bottom:1px solid rgba(255,255,255,.10)}
+.pagina-blog .manchete-corpo{padding:clamp(24px,2.6vw,36px);display:flex;flex-direction:column;gap:var(--esp-4)}
+.pagina-blog .manchete .selo{display:inline-flex;align-items:center;gap:9px;align-self:flex-start;
+  padding:7px 14px;border-radius:var(--r-full);
+  background:rgba(196,126,110,.16);border:1px solid rgba(196,126,110,.42);
+  font-weight:500;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra-300)}
+.pagina-blog .manchete h2{font-weight:300;font-size:clamp(27px,3vw,44px);line-height:1.08;letter-spacing:-.03em;
+  color:#fff;max-width:19ch}
+.pagina-blog .manchete .resumo{font-size:clamp(15px,1.25vw,17px);line-height:1.6;color:var(--n-300);max-width:60ch}
+.pagina-blog .manchete .blog-link{display:inline-flex;align-items:center;gap:8px;
+  font-weight:500;font-size:15px;color:var(--luminoso-500)}
+.pagina-blog .manchete:hover .blog-link .seta{transform:translateX(5px)}
+
+.pagina-blog .maislidos{border:1px solid rgba(255,255,255,.14);border-radius:24px;
+  background:rgba(3,21,38,.52);backdrop-filter:blur(14px);padding:clamp(22px,2.3vw,30px)}
+.pagina-blog .maislidos h2{font-weight:400;font-size:clamp(18px,1.53vw,22px);line-height:1.25;letter-spacing:-.02em;
+  margin-top:var(--esp-3)}
+.pagina-blog .ml-lista{margin-top:clamp(20px,2.2vw,28px)}
+.pagina-blog .ml-item{display:flex;gap:16px;padding-block:16px;border-top:1px solid rgba(255,255,255,.10)}
+.pagina-blog .ml-item:first-child{border-top:0;padding-top:0}
+.pagina-blog .ml-item .n{flex:none;width:32px;font-family:var(--acento-f);font-style:italic;font-weight:600;
+  font-size:30px;line-height:.9;color:var(--luminoso-300);opacity:.75}
+.pagina-blog .ml-item a{display:block;font-size:15.5px;line-height:1.42;color:#fff;opacity:.86;
+  transition:opacity .25s var(--ease)}
+.pagina-blog .ml-item a:hover{opacity:1}
+.pagina-blog .ml-item .post-meta{margin-top:7px}
+
+/* --------------------------------------------------------------------------
+   → Enquanto está quente
+   -------------------------------------------------------------------------- */
+/* cabecalho de seção sem texto de apoio: a grade de duas colunas do .cab2 deixaria
+   metade da largura vazia e quebrava o título cedo demais */
+.pagina-blog .cab-solo{max-width:min(100%,1000px)}
+.pagina-blog #quente{padding-top:clamp(36px,4vw,56px)}
+.pagina-blog .quente{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,330px);
+  gap:clamp(22px,2.6vw,32px);align-items:stretch;margin-top:clamp(40px,5vw,64px)}
+.pagina-blog .quente .ultimas{align-self:start}
+.pagina-blog .post-card{display:flex;flex-direction:column;overflow:hidden;border-radius:20px;
+  background:#fff;border:1px solid var(--n-200);
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease)}
+.pagina-blog .post-card:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(3,21,38,.09);border-color:var(--marca-300)}
+.pagina-blog .post-card-corpo{flex:1;display:flex;flex-direction:column;gap:var(--esp-3);
+  padding:clamp(20px,2.2vw,28px)}
+.pagina-blog .post-card h3{font-weight:400;font-size:clamp(19px,1.7vw,24px);line-height:1.2;letter-spacing:-.02em;
+  color:var(--n-900)}
+.pagina-blog .post-card .resumo{font-size:15px;line-height:1.6;color:var(--n-600)}
+.pagina-blog .post-card .post-meta{margin-top:auto;padding-top:var(--esp-3);border-top:1px solid var(--n-200)}
+
+.pagina-blog .ultimas{border-top:2px solid var(--n-900);padding-top:16px}
+.pagina-blog .ultimas h3{font-weight:500;font-size:12px;line-height:1;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--n-900)}
+.pagina-blog .ultimas ol{margin-top:var(--esp-3)}
+.pagina-blog .ultimas li{border-top:1px solid var(--n-200);padding-block:14px}
+.pagina-blog .ultimas li:first-child{border-top:0}
+.pagina-blog .ultimas li a{display:block;font-size:15.5px;line-height:1.42;color:var(--n-900);
+  transition:color .25s var(--ease)}
+.pagina-blog .ultimas li a:hover{color:var(--marca-700)}
+.pagina-blog .ultimas .post-meta{margin-top:7px}
+.pagina-blog .ultimas .blog-link{display:inline-flex;align-items:center;gap:8px;margin-top:var(--esp-4);
+  font-weight:500;font-size:14px;color:var(--marca-700)}
+.pagina-blog .ultimas .blog-link:hover .seta{transform:translateX(5px)}
+
+/* --------------------------------------------------------------------------
+   ∪ Por mercado — quatro faixas, uma cor-tema cada
+   -------------------------------------------------------------------------- */
+.pagina-blog .faixas{margin-top:clamp(40px,5vw,64px);display:grid;gap:clamp(38px,4.4vw,60px)}
+.pagina-blog .faixa{position:relative;padding-top:clamp(26px,3vw,36px);border-top:1px solid rgba(255,255,255,.14)}
+.pagina-blog .faixa::before{content:"";position:absolute;left:0;top:-1px;width:132px;height:2px;background:var(--tema)}
+.pagina-blog .faixa-cab{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:var(--esp-4)}
+.pagina-blog .faixa-cab h3{font-weight:400;font-size:clamp(22px,2.08vw,30px);line-height:1.15;letter-spacing:-.025em}
+.pagina-blog .faixa-sub{margin-top:8px;font-size:14px;line-height:1.55;color:var(--n-400);max-width:54ch}
+.pagina-blog .faixa-cab .blog-link{display:inline-flex;align-items:center;gap:8px;flex:none;
+  font-weight:500;font-size:14px;color:var(--tema)}
+.pagina-blog .faixa-cab .blog-link:hover .seta{transform:translateX(5px)}
+.pagina-blog .faixa-grade{margin-top:clamp(22px,2.6vw,32px);display:grid;
+  grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:clamp(22px,2.8vw,36px);align-items:start}
+
+/* herda .cartao (borrão que segue o ponteiro) e zera o padding para a arte sangrar */
+.pagina-blog .post-fx{padding:0;border-radius:20px}
+.pagina-blog .post-fx .arte{border-bottom:1px solid rgba(255,255,255,.10)}
+.pagina-blog .post-fx-corpo{position:relative;z-index:1;display:flex;flex-direction:column;gap:var(--esp-3);
+  padding:clamp(20px,2.2vw,28px)}
+.pagina-blog .post-fx h4{margin:0;font-weight:400;font-size:clamp(19px,1.6vw,23px);line-height:1.2;letter-spacing:-.02em;color:#fff}
+.pagina-blog .post-fx .resumo{font-size:15px;line-height:1.6;color:var(--n-300)}
+
+.pagina-blog .faixa-lista li{border-top:1px solid rgba(255,255,255,.10)}
+.pagina-blog .faixa-lista li:first-child{border-top:0}
+.pagina-blog .faixa-lista li a{display:block;padding-block:15px;font-size:16px;line-height:1.42;color:#fff;opacity:.84;
+  transition:opacity .25s var(--ease),padding-left .3s var(--ease)}
+.pagina-blog .faixa-lista li:first-child a{padding-top:0}
+.pagina-blog .faixa-lista li a:hover{opacity:1;padding-left:7px}
+.pagina-blog .faixa-lista .post-meta{margin-top:7px}
+
+/* --------------------------------------------------------------------------
+   ƒ Arquivo — temas e navegação por mês
+   -------------------------------------------------------------------------- */
+.pagina-blog .temas{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(32px,3.6vw,48px)}
+.pagina-blog .tema{display:inline-flex;align-items:center;padding:10px 17px;border-radius:var(--r-full);
+  background:#fff;border:1px solid var(--n-300);font-size:14px;line-height:1;color:var(--n-600);
+  transition:border-color .3s var(--ease),color .3s var(--ease),transform .3s var(--ease)}
+.pagina-blog .tema:hover{border-color:var(--marca-300);color:var(--n-900);transform:translateY(-2px)}
+.pagina-blog .arquivo-pe{display:flex;flex-wrap:wrap;align-items:center;gap:var(--esp-4);
+  margin-top:clamp(32px,3.6vw,48px);padding-top:clamp(24px,2.6vw,32px);border-top:1px solid var(--n-200)}
+.pagina-blog .arquivo-mes{display:flex;align-items:center;gap:10px}
+.pagina-blog .arquivo-mes label{font-weight:500;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--n-500)}
+.pagina-blog .arquivo-mes select{font-family:var(--display);font-size:14px;color:var(--n-900);background:#fff;
+  border:1px solid var(--n-300);border-radius:var(--r-md);padding:11px 38px 11px 14px;appearance:none;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--n-500) 50%),linear-gradient(135deg,var(--n-500) 50%,transparent 50%);
+  background-position:calc(100% - 19px) 19px, calc(100% - 14px) 19px;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.pagina-blog .arquivo-mes select:focus{outline:none;border-color:var(--marca-500);box-shadow:0 0 0 3px rgba(64,160,231,.16)}
+.pagina-blog .btn-mes{padding:11px 18px;border-radius:var(--r-md);border:1px solid var(--n-300);background:#fff;
+  font-weight:500;font-size:14px;line-height:1;color:var(--n-600);
+  transition:border-color .3s var(--ease),color .3s var(--ease)}
+.pagina-blog .btn-mes:hover{border-color:var(--marca-300);color:var(--n-900)}
+
+/* --------------------------------------------------------------------------
+   Responsivo do blog
+   -------------------------------------------------------------------------- */
+@media (max-width:1180px){
+  .pagina-blog .destaque{grid-template-columns:1fr}
+  .pagina-blog .quente{grid-template-columns:1fr 1fr}
+  .pagina-blog .quente .ultimas{grid-column:1/-1}
+  .pagina-blog .faixa-grade{grid-template-columns:1fr}
+  .pagina-blog .faixa-lista li:first-child a{padding-top:15px}
+}
+@media (max-width:900px){
+  .pagina-blog{--nav-h:72px}
+  /* a base empurra o hero em 120px para livrar a nav; aqui quem livra é o corredor */
+  .pagina-blog .hero--blog{padding-block:clamp(36px,5vw,56px) clamp(48px,7vw,72px)}
+  .pagina-blog .blog-nav-in{flex-wrap:wrap;padding-block:12px;gap:12px}
+  .pagina-blog .busca{width:100%;order:-1}
+  .pagina-blog .quente{grid-template-columns:1fr}
+  .pagina-blog .manchete h2{max-width:none}
+}
+@media (max-width:620px){
+  .pagina-blog .corredor-rotulo{padding-inline:var(--gutter) 16px;font-size:11px}
+  .pagina-blog .corredor-item{font-size:13px;padding-inline:14px}
+  .pagina-blog .corredor-item::after{margin-left:14px}
+  .pagina-blog .ml-item .n{width:26px;font-size:25px}
+  .pagina-blog .faixa-cab{align-items:start}
+}
+@media (prefers-reduced-motion:reduce){
+  /* sem movimento a fita para de correr, então ela vira uma faixa rolável */
+  .pagina-blog .corredor-janela{overflow-x:auto;-webkit-mask-image:none;mask-image:none}
+  .pagina-blog .corredor-fita{animation:none}
+}

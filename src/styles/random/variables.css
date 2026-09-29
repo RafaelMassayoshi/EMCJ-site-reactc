@@ -1,0 +1,45 @@
+
+
+/* ==========================================================================
+   TOKENS — Random_Design-System (fileKey WUHdIjNOWu7hFrjvpXbVkZ).
+   Valores lidos das variáveis reais, não estimados.
+   ATENÇÃO: esta página roda no sistema da Random, não no da EMCJ.
+   Nada de petróleo #083251, Space Grotesk ou Cormorant aqui.
+   ========================================================================== */
+.pagina-pesquisa-clinica{
+  /* marca */
+  --rx-purple:#9D38EE; --rx-magenta:#EA33F7; --rx-cyan:#75FBFD;
+  /* Divergência: o design system define brand/purple #9D38EE, mas todos os
+     gradientes do arquivo usam #A92DF3. Mantido isolado, como a EMCJ fez com
+     os dois azuis. Não resolver por conta própria. */
+  --rx-purple-grad:#A92DF3;
+
+  --px-50:#F7F4FB; --px-100:#EAE0F5; --px-200:#D6BDEF; --px-300:#B789E6;
+  --px-400:#9853DF; --px-500:#791DD8; --px-600:#6017AB; --px-700:#4C1683;
+  --px-800:#38145C; --px-900:#230F38;
+  --mg-300:#E87FF0; --mg-500:#DD09EC; --mg-700:#860A8F; --mg-800:#5E0C64;
+  --cy-300:#7DF1F3; --cy-500:#04EEF1; --cy-700:#079092; --cy-900:#0A3D3E;
+
+  /* semântica */
+  --bg:#FFFFFF; --surface:#F5F5F5; --ink:#12103E;
+  --tx:#000000; --tx2:#444444; --tx-inv:#FFFFFF;
+  --bd:#D3D3D3; --bd-strong:#000000;
+
+  /* gradientes de marca */
+  --g-primary:linear-gradient(133deg,#2A0C3C 7%,#A92DF3 48%,#FF00FF 92%);
+  --g-tech:linear-gradient(116deg,#2A0C3C 7%,#A92DF3 50%,#00FFFF 92%);
+  --g-signal:linear-gradient(116deg,#00FFFF 7%,#A92DF3 51%,#FF00FF 92%);
+  --g-deep:linear-gradient(116deg,#0A070F 7%,#2A0C3C 37%,#5D0C8D 68%,#A92DF3 92%);
+
+  /* medidas */
+  --e1:4px; --e2:8px; --e3:16px; --e4:24px; --e5:32px; --e6:48px;
+  --r-sm:8px; --r-md:16px; --r-lg:24px; --r-full:999px;
+
+  --f-display:'Darker Grotesque','Oswald','Arial Narrow',system-ui,sans-serif;
+  --f-head:'Oswald','Arial Narrow',system-ui,sans-serif;
+  --f-body:'Poppins',system-ui,-apple-system,sans-serif;
+
+  --shell:1280px; --gutter:80px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --suave:cubic-bezier(.16,1,.3,1);
+}
