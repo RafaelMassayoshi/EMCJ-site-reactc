@@ -203,6 +203,12 @@
    ========================================================================== */
 .pagina-pesquisa-clinica .hero{position:relative;background:var(--g-deep);overflow:hidden;
   padding-top:clamp(140px,15vw,190px);padding-bottom:clamp(64px,7vw,96px);color:#fff}
+.pagina-pesquisa-clinica .hero-pesquisa-clinica{
+  background-image: url("/assets/images/background-hero-pesquisa-clinica.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .pagina-pesquisa-clinica .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(48% 46% at 82% 22%,rgba(234,51,247,.3),transparent 70%)}
 .pagina-pesquisa-clinica .hero .shell{position:relative;z-index:3}

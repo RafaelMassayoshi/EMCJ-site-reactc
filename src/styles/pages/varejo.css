@@ -468,6 +468,12 @@
   radial-gradient(56% 48% at 96% 88%, rgba(196,126,110,.18) 0%, transparent 72%),
   radial-gradient(60% 50% at 8% 6%, rgba(78,29,18,.60) 0%, transparent 70%),
   linear-gradient(140deg, #200C08 0%, #3B1A12 58%, #4E1D12 100%)}
+.pagina-varejo .hero-varejo{
+  background-image: url("/assets/images/background-hero-varejo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .pagina-varejo .hero-brilho{background:radial-gradient(closest-side,rgba(245,182,149,.22),rgba(240,131,79,.08) 46%,transparent 100%)}
 .pagina-varejo .hero-scrim{background:linear-gradient(90deg,rgba(28,11,7,.88) 0%,rgba(28,11,7,.52) 44%,rgba(28,11,7,0) 78%)}
 .pagina-varejo .vertente{border-color:rgba(240,131,79,.36);box-shadow:0 18px 44px rgba(28,11,7,.38)}

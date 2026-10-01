@@ -194,7 +194,7 @@ export default function Varejo() {
       extraHidden: { name: 'pagina-origem', value: 'varejo' },
     }}>
       {/* ============================= HERO ============================= */}
-      <section className="hero secao" id="topo">
+      <section className="hero hero-varejo secao" id="topo">
         <div className="hero-brilho" id="heroBrilho" aria-hidden="true"></div>
         <div className="hero-scrim" aria-hidden="true"></div>
 

@@ -447,7 +447,6 @@
 .pagina-home .parceiros-cab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:clamp(28px,5vw,80px);align-items:end}
 .pagina-home .slot-logo{background:var(--n-0);border:1px solid var(--n-200)}
 .pagina-home .slot-logo:hover{border-color:var(--marca-300);box-shadow:0 16px 34px rgba(3,21,38,.08)}
-.pagina-home .slot-logo span{color:var(--n-400)}
 
 /* ---------- ∈ · DECISÃO — layout com comparativo + formulário ---------- */
 .pagina-home .decisao{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:clamp(40px,5vw,72px);

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import CLIENTES from '../data/clientesLogos.js'
 
 /* ==========================================================================
    Barra logo abaixo do hero da home, subindo sobre a borda inferior dele:
@@ -6,17 +7,6 @@ import { useEffect, useState } from 'react'
    em loop + números da EMCJ se revezando. Estilos em styles/pages/home.css
    (prefixo .barra-clientes).
    ========================================================================== */
-
-const CLIENTES = [
-  { nome: 'Deiton', arquivo: 'Logo-3.png' },
-  { nome: 'BR Trials', arquivo: 'Logo-BR-Trials-colorido-sem-fundo.png' },
-  { nome: 'CEPHO', arquivo: 'cepho-logo.png' },
-  { nome: 'IEP São Lucas', arquivo: 'cropped-logo-header-iep.png' },
-  { nome: 'Gmar Ambiental', arquivo: 'logo-gmar-att.png' },
-  { nome: 'MMC Saúde', arquivo: 'logo-mmc.png' },
-  { nome: 'CEON+', arquivo: 'logo.png.webp' },
-  { nome: 'Neoband', arquivo: 'logoNeoband2026.png' },
-]
 
 /* Só números de operação real, com fonte no posicionamento da EMCJ:
    800/mês = volume médio da operação (mesmo número do bloco Combinação);

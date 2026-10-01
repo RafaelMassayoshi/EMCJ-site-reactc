@@ -1,22 +1,20 @@
+import CLIENTES from '../data/clientesLogos.js'
+
 /* Porta de js/components/esteira.js: gera os slots de logo e duplica a
    fita para o loop sem emenda. Usada em A Emcomjunto ("Empresas clientes")
    e na home ("Empresas parceiras"); varejo não usa esteira. */
-export default function Esteira({ count = 9, label = 'Empresas parceiras' }) {
-  const slots = Array.from({ length: count }, (_, i) => (
-    <div className="slot-logo" key={i}>
-      <span>Logo {i + 1}</span>
+export default function Esteira({ label = 'Empresas parceiras' }) {
+  const slot = (c, key) => (
+    <div className="slot-logo" key={key}>
+      <img src={'/assets/images/clientes/' + c.arquivo} alt={c.nome} loading="lazy" />
     </div>
-  ))
+  )
 
   return (
     <div className="esteira" aria-label={label}>
       <div className="esteira-fita" id="fitaLogos" aria-hidden="true">
-        {slots}
-        {slots.map((s, i) => (
-          <div className="slot-logo" key={'dup-' + i}>
-            <span>Logo {i + 1}</span>
-          </div>
-        ))}
+        {CLIENTES.map((c) => slot(c, c.nome))}
+        {CLIENTES.map((c) => slot(c, 'dup-' + c.nome))}
       </div>
     </div>
   )

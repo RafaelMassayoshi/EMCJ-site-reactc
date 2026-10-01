@@ -476,7 +476,7 @@ export default function PesquisaClinica() {
 
       <main id="conteudo">
         {/* ============================= HERO ============================= */}
-        <section className="hero secao escuro" id="topo" ref={heroRef}>
+        <section className="hero hero-pesquisa-clinica secao escuro" id="topo" ref={heroRef}>
           <div className="shell">
             <div className="hero-grade">
               <div>

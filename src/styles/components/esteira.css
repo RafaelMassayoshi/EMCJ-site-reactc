@@ -15,7 +15,8 @@
   display:grid;place-items:center;
   transition:border-color .35s var(--ease),transform .35s var(--ease),box-shadow .35s var(--ease),background .35s var(--ease)}
 .slot-logo:hover{transform:translateY(-4px)}
-.slot-logo span{font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.slot-logo img{box-sizing:border-box;width:68%;height:68%;object-fit:contain;
+  background:#fff;border-radius:50%;padding:8px}
 
 @media (prefers-reduced-motion:reduce){
   .esteira-fita{animation:none}
