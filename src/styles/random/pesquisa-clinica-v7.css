@@ -516,8 +516,6 @@
 
 /* ---------- Responsivo ---------- */
 @media (max-width:1180px){
-  .pagina-pesquisa-clinica .nav-links a{font-size:13px}
-  .pagina-pesquisa-clinica .nav-links{gap:16px}
   .pagina-pesquisa-clinica .time7{grid-template-columns:repeat(2,minmax(0,1fr))}
   .pagina-pesquisa-clinica .canais7{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
@@ -545,8 +543,11 @@
 .pagina-pesquisa-clinica .nav-links a{white-space:nowrap}
 .pagina-pesquisa-clinica .nav .btn{white-space:nowrap}
 @media (max-width:1500px){.pagina-pesquisa-clinica .nav .logo .unidade{display:none}}
-/* com 7 âncoras o menu vira hambúrguer mais cedo (1180px, não 900px) */
-@media (max-width:1180px){
+/* com 8 âncoras (7 + Emcomjunto) o menu vira hambúrguer mais cedo ainda
+   (1340px, não 1180px nem 900px) */
+@media (max-width:1340px){
+  .pagina-pesquisa-clinica .nav-links a{font-size:13px}
+  .pagina-pesquisa-clinica .nav-links{gap:16px}
   .pagina-pesquisa-clinica .nav-btn{display:block}
   .pagina-pesquisa-clinica .nav .btn{display:none}
   .pagina-pesquisa-clinica .nav-links{position:fixed;inset:84px 0 auto 0;flex-direction:column;align-items:flex-start;
@@ -557,6 +558,7 @@
   .pagina-pesquisa-clinica .nav-links.aberto{opacity:1;transform:none;pointer-events:auto}
   .pagina-pesquisa-clinica .nav-links a{width:100%;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;opacity:1;font-size:15px}
   .pagina-pesquisa-clinica .nav.solida .nav-links a{color:#fff}
+  .pagina-pesquisa-clinica .nav-emcj{padding-left:0!important;margin-left:0;border-left:0}
 }
 /* opções do formulário: o rótulo herdaria o caixa-alta de .campo label */
 .pagina-pesquisa-clinica .campo label.escolha{text-transform:none;letter-spacing:normal;font-weight:400;font-size:13px;color:inherit}
@@ -579,8 +581,8 @@
 .pagina-pesquisa-clinica .idioma:hover{opacity:1;transform:translateY(-1px)}
 .pagina-pesquisa-clinica .idioma.on{opacity:1;outline-color:var(--rx-cyan)}
 .pagina-pesquisa-clinica .nav.solida .idioma.on{outline-color:var(--rx-purple)}
-@media (max-width:1180px){.pagina-pesquisa-clinica .idiomas{margin-left:auto;margin-right:12px}.pagina-pesquisa-clinica .nav-btn{margin-left:0}}
-@media (min-width:1181px) and (max-width:1320px){.pagina-pesquisa-clinica .nav-links{gap:16px}.pagina-pesquisa-clinica .idiomas{margin-left:12px;margin-right:8px}}
+@media (max-width:1340px){.pagina-pesquisa-clinica .idiomas{margin-left:auto;margin-right:12px}.pagina-pesquisa-clinica .nav-btn{margin-left:0}}
+@media (min-width:1341px) and (max-width:1480px){.pagina-pesquisa-clinica .nav-links{gap:16px}.pagina-pesquisa-clinica .idiomas{margin-left:12px;margin-right:8px}}
 /* esconde a barra e os balões do Google Tradutor */
 body{top:0 !important}
 .goog-te-banner-frame,.skiptranslate > iframe,#goog-gt-tt,.goog-te-balloon-frame,.VIpgJd-ZVi9od-ORHb-OEVmcd,.VIpgJd-ZVi9od-aZ2wEe-wOHMyf{display:none !important}

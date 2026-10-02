@@ -310,6 +310,7 @@ export default function PesquisaClinica() {
             if (e.target.tagName === 'A') setMenuAberto(false)
           }}>
             {NAV.map(([h, t]) => <a key={h} href={h}>{t}</a>)}
+            <a className="nav-emcj" href="https://emcomjunto.com.br">Emcomjunto ↗</a>
           </nav>
           <SeletorIdioma />
           <button className="nav-btn" id="navBtn" aria-expanded={menuAberto} aria-controls="navLinks" aria-label={menuAberto ? 'Fechar menu' : 'Abrir menu'} onClick={() => setMenuAberto((a) => !a)}>

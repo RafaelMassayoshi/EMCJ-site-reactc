@@ -173,6 +173,12 @@
 .pagina-pesquisa-clinica .nav .btn--primario{background:#fff;color:var(--px-700)}
 .pagina-pesquisa-clinica .nav .btn--primario:hover{background:var(--px-50);box-shadow:none}
 .pagina-pesquisa-clinica .nav.solida .btn--primario{background:var(--rx-purple);color:#fff}
+/* Redirecionamento para o site institucional (emcomjunto.com.br): mais um
+   item da nav-links, só com um traço à esquerda para marcar que ele sai da
+   página (os outros são âncoras internas). Sem padding/pílula: não some
+   nem empurra os botões como um btn faria na barra já cheia. */
+.pagina-pesquisa-clinica .nav-emcj{padding-left:16px!important;margin-left:4px;border-left:1px solid rgba(255,255,255,.3)}
+.pagina-pesquisa-clinica .nav.solida .nav-emcj{border-left-color:var(--bd)}
 
 /* ---------- Dropdown "Quem assessoramos" ----------
    Mesmo mecanismo do resto do site (:hover/:focus-within, sem JS), só que
@@ -762,6 +768,7 @@
   .pagina-pesquisa-clinica .nav-links.aberto{opacity:1;transform:none;pointer-events:auto}
   .pagina-pesquisa-clinica .nav-links a{width:100%;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;opacity:1}
   .pagina-pesquisa-clinica .nav.solida .nav-links a{color:#fff}
+  .pagina-pesquisa-clinica .nav-emcj{padding-left:0!important;margin-left:0;border-left:0}
   .pagina-pesquisa-clinica .logo .unidade{display:none}
   .pagina-pesquisa-clinica .nav-item{flex-direction:column;align-items:flex-start;gap:0;width:100%}
   .pagina-pesquisa-clinica .nav-item>.chev{display:none}
