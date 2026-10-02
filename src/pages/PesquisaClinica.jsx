@@ -321,7 +321,7 @@ export default function PesquisaClinica() {
 
       <main id="conteudo">
         {/* ============================= HERO · SOBRE A RANDOM ============================= */}
-        <section className="hero secao escuro" id="sobre-random" ref={heroRef}>
+        <section className="hero hero-pesquisa-clinica secao escuro" id="sobre-random" ref={heroRef}>
           <div className="shell">
             <div className="hero7">
               <div className="hero7-texto">
