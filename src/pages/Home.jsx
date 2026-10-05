@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import MainLayout from '../layouts/MainLayout.jsx'
 import CountUp from '../components/CountUp.jsx'
 import Esteira from '../components/Esteira.jsx'
@@ -9,6 +10,8 @@ import SecaoPilares from '../components/SecaoPilares.jsx'
 import SecaoDoisLados from '../components/SecaoDoisLados.jsx'
 import MercadoArte, { MercadoNumeros } from '../components/MercadoArte.jsx'
 import UltimasNoticias from '../components/UltimasNoticias.jsx'
+import PontosFaixa from '../components/PontosFaixa.jsx'
+import useMedia from '../hooks/useMedia.js'
 import SecaoNewsletter from '../components/SecaoNewsletter.jsx'
 import FormStatus from '../components/FormStatus.jsx'
 import useDocumentMeta from '../hooks/useDocumentMeta.js'
@@ -73,6 +76,8 @@ function mascaraCnpj(e) {
 const MOSTRAR_COMBINACAO = false
 
 export default function Home() {
+  const celular = useMedia('(max-width: 900px)')
+  const mercadosRef = useRef(null)
   useDocumentMeta({
     title: 'Emcomjunto — Assessoria Comercial Criativa',
     description: 'Onde demanda e oferta se cruzam. Marketing, tecnologia e vendas dentro do mesmo plano comercial.',
@@ -179,7 +184,7 @@ export default function Home() {
             <p className="lead apoio">Cada mercado tem um decisor, um argumento e um tempo de decisão diferentes. Por isso a estratégia é montada por segmento, aplicação e momento comercial.</p>
           </div>
 
-          <div className="mercados esc">
+          <div className="mercados esc" ref={mercadosRef}>
             <a className="cartao cartao--mercado" href="/varejo" style={{ '--glow': '#1F88D6' }}>
               <span className="borrao deriva-3" aria-hidden="true"><i></i></span>
               <MercadoArte tipo="varejo" />
@@ -207,6 +212,8 @@ export default function Home() {
               <span className="card-link">Ver pesquisa clínica <span className="seta">→</span></span>
             </a>
           </div>
+
+          {celular && <PontosFaixa alvo={mercadosRef} total={3} rotulo="Mercados" />}
 
           <div className="mercados-acoes rv">
             <a className="btn btn--contorno" href="/o-que-fazemos#cases">Ver todos os cases <span className="seta">→</span></a>

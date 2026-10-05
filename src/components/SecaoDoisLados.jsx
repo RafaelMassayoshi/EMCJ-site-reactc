@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import useMedia from '../hooks/useMedia.js'
 
 /* ==========================================================================
    Seção ⊂ · Recorte da home: "Resultados comerciais de um lado. Tudo o que
@@ -45,6 +46,17 @@ export default function SecaoDoisLados() {
   const [fios, setFios] = useState({ w: 0, h: 0, d: [] })
 
   const r = RESULTADOS[ativo]
+  const celular = useMedia('(max-width: 900px)')
+  const chipsRef = useRef(null)
+
+  /* celular: mantém o resultado ativo visível na faixa de etiquetas (rola
+     só a faixa, não a página) */
+  useEffect(() => {
+    const faixa = chipsRef.current
+    const chip = faixa && faixa.children[ativo]
+    if (!chip) return
+    faixa.scrollTo({ left: chip.offsetLeft - faixa.clientWidth / 2 + chip.clientWidth / 2, behavior: 'smooth' })
+  }, [ativo, celular])
 
   /* desenha os fios do resultado ativo até cada frente ligada */
   const medir = useCallback(() => {
@@ -124,6 +136,36 @@ export default function SecaoDoisLados() {
             {fios.d.map((d, i) => d && <path key={ativo + '-' + i} d={d} style={{ '--i': i }} />)}
           </svg>
 
+          {celular ? (
+            /* celular: resultados numa faixa de etiquetas e, logo abaixo, só
+               as frentes do resultado escolhido (causa e efeito na mesma tela) */
+            <div className="lados2-movel">
+              <p className="lados2-rotulo">De um lado <b>Resultados</b></p>
+              <div className="lados2-chips" ref={chipsRef} role="tablist" aria-label="Resultados">
+                {RESULTADOS.map((res, i) => (
+                  <button key={res.t} type="button" role="tab" aria-selected={i === ativo}
+                    className={'lados2-chip' + (i === ativo ? ' ativo' : '')}
+                    onClick={() => { setAtivo(i); setPausado(true) }}>
+                    {res.t}
+                  </button>
+                ))}
+              </div>
+              <div className="lados2-painel-m" role="tabpanel" key={ativo}>
+                <p className="lados2-painel-d">{r.d}</p>
+                <p className="lados2-rotulo">Do outro <b>O que entregamos para isso</b></p>
+                <ul className="lados2-ent lados2-ent--m">
+                  {r.frentes.map((k) => (
+                    <li key={k} className="liga">
+                      <span className="lados2-ent-n">{String(k + 1).padStart(2, '0')}</span>
+                      <span className="lados2-ent-t">{ENTREGAS[k]}</span>
+                      <span className="lados2-ent-ponto" aria-hidden="true" />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <>
           <div className="lados2-col">
             <p className="lados2-rotulo">De um lado <b>Resultados</b></p>
             <ul className="lados2-res">
@@ -162,6 +204,8 @@ export default function SecaoDoisLados() {
             </ul>
             <p className="lados2-legenda">Para <b>{r.t.toLowerCase()}</b>, combinamos {r.frentes.length} frentes.</p>
           </div>
+            </>
+          )}
         </div>
       </div>
     </section>

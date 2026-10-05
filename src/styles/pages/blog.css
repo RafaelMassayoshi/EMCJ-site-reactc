@@ -271,3 +271,14 @@
   .pagina-blog .corredor-janela{overflow-x:auto;-webkit-mask-image:none;mask-image:none}
   .pagina-blog .corredor-fita{animation:none}
 }
+
+/* ==========================================================================
+   AUDITORIA MOBILE (out/2026): ajustes só até 900px. O desktop não muda.
+   ========================================================================== */
+@media (max-width:900px){
+  .pagina-blog .corredor-rotulo,.pagina-blog .arquivo-mes label{font-size:12px}
+}
+@media (max-width:900px){
+  .pagina-blog .ed{min-height:44px}
+  .pagina-blog button[aria-label="Buscar"]{min-width:44px;min-height:44px}
+}

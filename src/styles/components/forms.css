@@ -55,3 +55,10 @@
 @media (max-width:620px){
   .campos{grid-template-columns:1fr}
 }
+
+/* ==========================================================================
+   AUDITORIA MOBILE (out/2026): ajustes só até 900px. O desktop não muda.
+   ========================================================================== */
+@media (max-width:900px){
+  .campo label{font-size:12px}
+}

@@ -514,3 +514,11 @@
    Só os neutros do texto acompanham a página. */
 .pagina-varejo .fundo-sunit .sunit-ponto p,
 .pagina-varejo .fundo-sunit .sunit-lead{color:#DFD3CD}
+
+/* ==========================================================================
+   AUDITORIA MOBILE (out/2026): ajustes só até 900px. O desktop não muda.
+   ========================================================================== */
+@media (max-width:900px){
+  .pagina-varejo .assim-rot,.pagina-varejo .caso-rot,.pagina-varejo label{font-size:12px}
+  .pagina-varejo .sunit-link{min-height:44px}
+}

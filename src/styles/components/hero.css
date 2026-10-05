@@ -76,3 +76,11 @@
   .vertente{opacity:1}
   .vertentes .fios line{animation:none}
 }
+
+/* ==========================================================================
+   AUDITORIA MOBILE (out/2026): ajustes só até 900px. O desktop não muda.
+   ========================================================================== */
+@media (max-width:900px){
+  /* o desenho lateral do hero herdava left:53% do desktop e saía da tela */
+  .vertentes{left:auto;right:auto}
+}

@@ -57,3 +57,12 @@
 @media (max-width:620px){
   .news-campos{grid-template-columns:1fr}
 }
+
+/* ==========================================================================
+   AUDITORIA MOBILE (out/2026): ajustes só até 900px. O desktop não muda.
+   ========================================================================== */
+@media (max-width:900px){
+  /* links do rodapé com área de toque de 44px */
+  .rodape-col li{margin-bottom:0}
+  .rodape-col a{display:inline-flex;align-items:center;min-height:44px}
+}

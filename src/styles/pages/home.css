@@ -628,3 +628,63 @@
   .pagina-home .fx-flutua,.pagina-home .fx-anel,.pagina-home .fx-coroa,.pagina-home .fx-seta line,.pagina-home .bc-fita{animation:none}
   .pagina-home .bc-num{transition:none}
 }
+
+/* ==========================================================================
+   AUDITORIA MOBILE (out/2026): ajustes só até 900px. O desktop não muda.
+   ========================================================================== */
+@media (max-width:900px){
+  /* rodapé: título, texto e botão empilhados (o botão saía da tela) */
+  .pagina-home .rodape-topo{grid-template-columns:minmax(0,1fr);align-items:start}
+  .pagina-home .rodape-topo .btn--primario{width:100%;justify-content:center}
+
+  /* Encaixe: os três mercados viram faixa deslizante */
+  .pagina-home .mercados{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;
+    margin-inline:calc(-1 * var(--gutter));padding:4px var(--gutter) 10px;scrollbar-width:none}
+  .pagina-home .mercados::-webkit-scrollbar{display:none}
+  .pagina-home .mercados > *{flex:0 0 86%;scroll-snap-align:center}
+
+  /* Recorte: etiquetas de resultado + só as frentes do resultado escolhido */
+  .pagina-home .lados2-chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;
+    margin-inline:calc(-1 * var(--gutter));padding:4px var(--gutter) 12px}
+  .pagina-home .lados2-chips::-webkit-scrollbar{display:none}
+  .pagina-home .lados2-chip{flex:none;min-height:44px;padding:10px 16px;border-radius:var(--r-full);font:inherit;font-size:14px;font-weight:500;
+    white-space:nowrap;color:var(--n-200);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);
+    transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease)}
+  .pagina-home .lados2-chip.ativo{background:var(--luminoso-500);border-color:var(--luminoso-500);color:var(--profundo-900)}
+  .pagina-home .lados2-painel-m{margin-top:6px;padding:18px 16px;border-radius:var(--r-lg);background:rgba(255,255,255,.05);
+    border:1px solid rgba(65,175,255,.32);animation:lados2-entra .4s var(--ease) both}
+  @keyframes lados2-entra{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .pagina-home .lados2-painel-d{font-size:15.5px;line-height:1.55;color:#fff;margin-bottom:16px}
+  .pagina-home .lados2-ent--m li{opacity:1}
+
+  /* News: opções compactas (descrição só na marcada) e prévia logo abaixo */
+  .pagina-home .news-lista-txt > span{display:none}
+  .pagina-home .news-lista.marcada .news-lista-txt > span{display:block}
+  .pagina-home .news-inbox--m{margin-top:16px;max-width:none;background:var(--n-50);border-color:var(--n-200)}
+  .pagina-home .news-inbox--m .news-inbox-topo{color:var(--n-500);border-bottom-color:var(--n-200)}
+  .pagina-home .news-inbox--m .news-inbox-pontos i{background:var(--n-300)}
+  .pagina-home .news-inbox--m .news-inbox-vazio{color:var(--n-500)}
+  .pagina-home .news-inbox--m .news-email{border-top-color:var(--n-200)}
+  .pagina-home .news-inbox--m .news-email-de{color:var(--n-600)}
+  .pagina-home .news-inbox--m .news-email-de b{color:var(--n-900)}
+  .pagina-home .news-inbox--m .news-email-resumo{color:var(--n-500)}
+
+  /* textos mínimos de 12px */
+  .pagina-home .fx-m.fx-rotulo{font-size:14px}
+  .pagina-home .fx-m.fx-sub{font-size:14px}
+  .pagina-home .bc-rotulo,.pagina-home .rota-rotulo,.pagina-home .lados2-rotulo,.pagina-home .news-letreiro-rotulo,
+  .pagina-home .campo-news legend{font-size:12px}
+}
+/* pontinhos das faixas (só aparecem no celular) */
+.pagina-home .pontos-faixa{display:flex;justify-content:center;gap:4px;margin-top:12px}
+.pagina-home .pontos-faixa button{width:28px;height:28px;padding:0;display:grid;place-items:center;background:none;border:0;cursor:pointer}
+.pagina-home .pontos-faixa button::before{content:"";width:8px;height:8px;border-radius:4px;background:rgba(255,255,255,.3);transition:width .3s var(--ease),background .3s var(--ease)}
+.pagina-home .pontos-faixa button.on::before{width:22px;background:var(--luminoso-500)}
+@media (max-width:900px){
+  .pagina-home .news-campo > span{font-size:12px}
+}
+@media (max-width:900px){
+  /* a faixa de etiquetas não pode alargar a coluna */
+  .pagina-home .lados2{grid-template-columns:minmax(0,1fr)}
+  .pagina-home .lados2-movel{min-width:0}
+}

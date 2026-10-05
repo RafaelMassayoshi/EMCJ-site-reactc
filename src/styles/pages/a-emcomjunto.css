@@ -292,3 +292,15 @@
   .pagina-a-emcomjunto .desenho .barra{opacity:.35;transform:scaleY(.34)}
   .pagina-a-emcomjunto .desenho .t3{opacity:1;transform:scaleY(1)}
 }
+
+/* ==========================================================================
+   AUDITORIA MOBILE (out/2026): ajustes só até 900px. O desktop não muda.
+   ========================================================================== */
+@media (max-width:900px){
+  /* time oculto no celular por enquanto (16 cards ainda sem as frases) */
+  .pagina-a-emcomjunto #time{display:none}
+  .pagina-a-emcomjunto .rot{font-size:12px}
+}
+@media (max-width:900px){
+  .pagina-a-emcomjunto .rot{font-size:12px !important}
+}

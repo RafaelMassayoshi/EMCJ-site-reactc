@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import useMedia from '../hooks/useMedia.js'
+import PontosFaixa from './PontosFaixa.jsx'
 
 /* ==========================================================================
    Blocos da seção Cases da página Pesquisa clínica (Random).
@@ -141,8 +143,11 @@ const ANIM = ['asma', 'enxaqueca', 'cardio', 'metabolico', 'funil']
 
 export function EstudosAcordeao({ casos, funis }) {
   const [ativo, setAtivo] = useState(0)
+  const celular = useMedia('(max-width: 900px)')
+  const faixaRef = useRef(null)
   return (
-    <div className="acord rv">
+    <>
+    <div className="acord rv" ref={faixaRef}>
       {casos.map((c, i) => {
         const f = funis[c.funil]
         const aberto = ativo === i
@@ -163,6 +168,8 @@ export function EstudosAcordeao({ casos, funis }) {
         )
       })}
     </div>
+    {celular && <PontosFaixa alvo={faixaRef} total={casos.length} rotulo="Estudos de caso" />}
+    </>
   )
 }
 

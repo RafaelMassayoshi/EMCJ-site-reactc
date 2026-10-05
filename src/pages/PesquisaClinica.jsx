@@ -7,6 +7,8 @@ import { EsteiraFunis, TeiaDepoimentos, EstudosAcordeao, AreasPiscando } from '.
 import useDocumentMeta from '../hooks/useDocumentMeta.js'
 import useCoreScrollEffects from '../hooks/useCoreScrollEffects.js'
 import useFormWebhook from '../hooks/useFormWebhook.js'
+import useMedia from '../hooks/useMedia.js'
+import PontosFaixa from '../components/PontosFaixa.jsx'
 import {
   NAV, MISSAO, PROBLEMAS, EVIDENCIAS, PRATICA, VITRINE,
   NUMEROS_PRINCIPAIS, NUMEROS_SECUNDARIOS, CLIENTES, FUNIS, DEPOIMENTOS, ESTUDOS_CASO,
@@ -262,6 +264,10 @@ export default function PesquisaClinica() {
   useRevelacaoEContadores(setContando)
 
   const [solucao, setSolucao] = useState(0)
+  const celular = useMedia('(max-width: 900px)')
+  const solGradeRef = useRef(null)
+  /* celular: os 8 itens do "O porquê" viram sanfona (um aberto por vez) */
+  const [probAberto, setProbAberto] = useState(0)
   const abasRef = useRef([])
   function tecladoAbas(e, i) {
     let n = null
@@ -362,16 +368,21 @@ export default function PesquisaClinica() {
             <div className="problema7">
               <ol className="problema7-lista">
                 {PROBLEMAS.map((pr, i) => (
-                  <li className="rv" key={pr.t}>
+                  <li className={'rv' + (probAberto === i ? ' aberto' : '')} key={pr.t}>
                     <span className="problema7-n">{String(i + 1).padStart(2, '0')}</span>
                     <div>
-                      <h3>{pr.t}</h3>
+                      {celular ? (
+                        <h3><button type="button" className="problema7-gatilho" aria-expanded={probAberto === i}
+                          onClick={() => setProbAberto(probAberto === i ? -1 : i)}>{pr.t}</button></h3>
+                      ) : <h3>{pr.t}</h3>}
+                      <div className="problema7-corpo">
                       <p><Texto partes={pr.p} /></p>
                       <p className="fontes">
                         {pr.fontes.map(([rot, url]) => (
                           <a key={rot} href={url} target="_blank" rel="noopener">Fonte: {rot} ↗</a>
                         ))}
                       </p>
+                      </div>
                     </div>
                   </li>
                 ))}
@@ -572,7 +583,7 @@ export default function PesquisaClinica() {
                 <h3 className="h36">{s.titulo}</h3>
                 <p>{s.texto}</p>
               </div>
-              <div className="sol-grade">
+              <div className="sol-grade" ref={solGradeRef}>
                 {s.cards.map(([t, p], i) => (
                   <article className="sol-card" key={t} style={{ '--i': i }}>
                     <span className="sol-n">{String(i + 1).padStart(2, '0')}</span>
@@ -581,6 +592,7 @@ export default function PesquisaClinica() {
                   </article>
                 ))}
               </div>
+              {celular && <PontosFaixa key={s.id} alvo={solGradeRef} total={s.cards.length} rotulo="Soluções" />}
             </div>
 
             <div className="sol-fecho rv">

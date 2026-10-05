@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import useFormWebhook from '../hooks/useFormWebhook.js'
 import FormStatus from './FormStatus.jsx'
+import useMedia from '../hooks/useMedia.js'
 
 /* ==========================================================================
    Seção News da home (entre o formulário de contato e as últimas notícias).
@@ -60,6 +61,33 @@ export default function SecaoNewsletter() {
 
   const caixa = LISTAS.filter((l) => escolhidas.includes(l.nome))
 
+  const celular = useMedia('(max-width: 900px)')
+  /* No celular a prévia da caixa de entrada vem logo abaixo das opções,
+     para a pessoa ver a reação ao marcar (no desktop fica na coluna do texto). */
+  const caixaEntrada = (
+    <div className={'news-inbox' + (celular ? ' news-inbox--m' : ' rv')} aria-hidden="true">
+      <div className="news-inbox-topo">
+        <span className="news-inbox-pontos"><i /><i /><i /></span>
+        <span>Sua caixa de entrada</span>
+        <span className="news-inbox-cont">{caixa.length ? caixa.length + (caixa.length > 1 ? ' novas' : ' nova') : ''}</span>
+      </div>
+      <ul className="news-inbox-lista">
+        {caixa.length === 0 && (
+          <li className="news-inbox-vazio">Escolha uma newsletter e veja como ela chega para você.</li>
+        )}
+        {caixa.map((l) => (
+          <li key={l.nome} className="news-email" style={{ '--cor': l.cor }}>
+            <span className="news-email-avatar">EM</span>
+            <span className="news-email-corpo">
+              <span className="news-email-de">Emcomjunto News · <b>{l.nome}</b></span>
+              <span className="news-email-resumo">{l.desc}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+
   return (
     <section className="secao bloco escuro fundo-escuro news" id="news" aria-labelledby="tit-news">
       <div className="news-letreiro">
@@ -82,27 +110,7 @@ export default function SecaoNewsletter() {
             <p className="lead rv"><b>Conteúdo feito de profissional para profissional, de graça e com muito carinho.</b> Compartilhamos aquilo que estudamos, testamos, observamos e aprendemos no dia a dia sobre marketing, vendas, tecnologia, comunicação e geração de demanda, sempre buscando traduzir isso para a realidade dos mercados em que atuamos.</p>
             <p className="lead rv">Preencha o formulário e escolha os assuntos que quer acompanhar. Receba nossas análises, cases, referências, ferramentas, tendências e descobertas direto no seu e-mail.</p>
 
-            <div className="news-inbox rv" aria-hidden="true">
-              <div className="news-inbox-topo">
-                <span className="news-inbox-pontos"><i /><i /><i /></span>
-                <span>Sua caixa de entrada</span>
-                <span className="news-inbox-cont">{caixa.length ? caixa.length + (caixa.length > 1 ? ' novas' : ' nova') : ''}</span>
-              </div>
-              <ul className="news-inbox-lista">
-                {caixa.length === 0 && (
-                  <li className="news-inbox-vazio">Escolha uma newsletter e veja como ela chega para você.</li>
-                )}
-                {caixa.map((l) => (
-                  <li key={l.nome} className="news-email" style={{ '--cor': l.cor }}>
-                    <span className="news-email-avatar">EM</span>
-                    <span className="news-email-corpo">
-                      <span className="news-email-de">Emcomjunto News · <b>{l.nome}</b></span>
-                      <span className="news-email-resumo">{l.desc}</span>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {!celular && caixaEntrada}
           </div>
 
           <form className="news-form rv" name="newsletter-home" method="POST" data-netlify="true" netlify-honeypot="bot-news-home" onSubmit={enviar}>
@@ -131,6 +139,8 @@ export default function SecaoNewsletter() {
                 )
               })}
             </fieldset>
+
+            {celular && caixaEntrada}
 
             <div className="news-campos">
               <label className="news-campo">

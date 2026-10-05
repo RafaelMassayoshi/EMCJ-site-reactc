@@ -587,3 +587,94 @@
 body{top:0 !important}
 .goog-te-banner-frame,.skiptranslate > iframe,#goog-gt-tt,.goog-te-balloon-frame,.VIpgJd-ZVi9od-ORHb-OEVmcd,.VIpgJd-ZVi9od-aZ2wEe-wOHMyf{display:none !important}
 .goog-text-highlight{background:none !important;box-shadow:none !important}
+
+/* ==========================================================================
+   AUDITORIA MOBILE (out/2026): ajustes só até 900px. O desktop não muda.
+   ========================================================================== */
+@media (max-width:900px){
+  /* hero: véu escuro atrás do texto para dar contraste sobre o fundo colorido */
+  .pagina-pesquisa-clinica .hero-pesquisa-clinica::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(10,7,15,.62) 0%,rgba(10,7,15,.45) 55%,rgba(10,7,15,.7) 100%)}
+  .pagina-pesquisa-clinica .hero-pesquisa-clinica > .shell{position:relative;z-index:2}
+
+  /* O porquê: sanfona, um item aberto por vez */
+  .pagina-pesquisa-clinica .problema7-lista li{padding:14px 0}
+  .pagina-pesquisa-clinica .problema7-gatilho{display:block;width:100%;position:relative;padding:4px 34px 4px 0;text-align:left;
+    font:inherit;color:inherit;background:none;border:0;cursor:pointer;min-height:44px}
+  .pagina-pesquisa-clinica .problema7-gatilho::after{content:"+";position:absolute;right:0;top:2px;width:28px;height:28px;border-radius:50%;
+    display:grid;place-items:center;font-size:18px;line-height:1;color:var(--rx-purple);border:1px solid var(--bd);transition:transform .3s var(--ease)}
+  .pagina-pesquisa-clinica .problema7-gatilho[aria-expanded="true"]::after{content:"−";background:var(--rx-purple);color:#fff;border-color:var(--rx-purple)}
+  .pagina-pesquisa-clinica .problema7-lista li:not(.aberto) .problema7-corpo{display:none}
+  .pagina-pesquisa-clinica .problema7-lista li.aberto .problema7-corpo{animation:sol-entra .35s var(--ease) both}
+
+  /* Como fazemos: a mesa vira faixa de capas (conteúdo vivo só ao tocar) */
+  .pagina-pesquisa-clinica .mesa.mesa--celular{display:block;height:auto}
+  .pagina-pesquisa-clinica .vit-faixa{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+    margin-inline:calc(-1 * var(--gutter));padding:6px var(--gutter) 16px}
+  .pagina-pesquisa-clinica .vit-faixa::-webkit-scrollbar{display:none}
+  .pagina-pesquisa-clinica .vit-cartao-m{flex:0 0 78%;scroll-snap-align:center;display:flex;flex-direction:column;text-align:left;
+    border-radius:16px;overflow:hidden;background:#fff;border:1px solid var(--bd);box-shadow:0 14px 34px rgba(18,16,62,.1);padding:0;font:inherit;color:inherit}
+  .pagina-pesquisa-clinica .capa-m{position:relative;display:flex;flex-direction:column;aspect-ratio:4/3;overflow:hidden;background:var(--g-deep);color:#fff}
+  .pagina-pesquisa-clinica .capa-m--lp{background:var(--g-tech)}
+  .pagina-pesquisa-clinica .capa-m--plano{background:#0E1A12}
+  .pagina-pesquisa-clinica .capa-m--video,.pagina-pesquisa-clinica .capa-m--reel{background:var(--g-signal)}
+  .pagina-pesquisa-clinica .capa-m img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .pagina-pesquisa-clinica .capa-m--lp img{object-fit:contain;padding:16% 8% 6%}
+  .pagina-pesquisa-clinica .capa-m-nav{position:relative;z-index:2;display:flex;align-items:center;gap:5px;padding:9px 12px;background:rgba(255,255,255,.14)}
+  .pagina-pesquisa-clinica .capa-m-nav i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55)}
+  .pagina-pesquisa-clinica .capa-m-nav em{margin-left:6px;font-style:normal;font-size:12px;opacity:.85}
+  .pagina-pesquisa-clinica .capa-m-nome{flex:1;display:grid;place-items:center;padding:0 18px;text-align:center;
+    font-family:var(--f-display);font-weight:800;font-size:26px;line-height:1.05;text-transform:uppercase}
+  .pagina-pesquisa-clinica .capa-m-play{position:absolute;left:50%;top:50%;width:58px;height:58px;translate:-50% -50%;border-radius:50%;
+    background:rgba(255,255,255,.92);box-shadow:0 10px 30px rgba(0,0,0,.35);z-index:2}
+  .pagina-pesquisa-clinica .capa-m-play::after{content:"";position:absolute;left:52%;top:50%;translate:-40% -50%;border-style:solid;
+    border-width:10px 0 10px 16px;border-color:transparent transparent transparent var(--rx-purple)}
+  .pagina-pesquisa-clinica .vit-cartao-m-info{display:flex;flex-direction:column;gap:3px;padding:14px 16px 16px}
+  .pagina-pesquisa-clinica .vit-cartao-m-info small{font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--rx-purple)}
+  .pagina-pesquisa-clinica .vit-cartao-m-info b{font-family:var(--f-head);font-weight:500;font-size:18px;color:var(--tx)}
+  .pagina-pesquisa-clinica .vit-cartao-m-info span{font-weight:600;font-size:13px;color:var(--rx-purple)}
+  .pagina-pesquisa-clinica .mesa--celular .mesa-dica{position:static;margin-top:8px;text-align:center}
+
+  /* Soluções: os 6 cards da aba viram faixa deslizante */
+  .pagina-pesquisa-clinica .sol-grade{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+    margin-inline:calc(-1 * clamp(24px,3vw,40px));padding:4px clamp(24px,3vw,40px) 10px}
+  .pagina-pesquisa-clinica .sol-grade::-webkit-scrollbar{display:none}
+  .pagina-pesquisa-clinica .sol-card{flex:0 0 84%;scroll-snap-align:center}
+
+  /* Estudos de caso: faixa deslizante, um case por vez */
+  .pagina-pesquisa-clinica .acord{flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+    margin-inline:calc(-1 * var(--gutter));padding:0 var(--gutter) 6px;gap:12px}
+  .pagina-pesquisa-clinica .acord::-webkit-scrollbar{display:none}
+  .pagina-pesquisa-clinica .acord-item,.pagina-pesquisa-clinica .acord-item.aberto{flex:0 0 86%;scroll-snap-align:center}
+
+  /* rodapé: área de toque de 44px */
+  .pagina-pesquisa-clinica .rodape-col li{margin-bottom:0}
+  .pagina-pesquisa-clinica .rodape-col a{display:inline-flex;align-items:center;min-height:44px}
+
+  /* bandeiras: mesmo desenho, área de toque maior */
+  .pagina-pesquisa-clinica .idiomas{gap:2px}
+  .pagina-pesquisa-clinica .idioma{width:40px;height:40px;border-radius:10px;outline:0}
+  .pagina-pesquisa-clinica .idioma svg{width:30px;height:22px}
+  .pagina-pesquisa-clinica .idioma.on{box-shadow:inset 0 0 0 2px var(--rx-cyan)}
+  .pagina-pesquisa-clinica .nav.solida .idioma.on{box-shadow:inset 0 0 0 2px var(--rx-purple)}
+
+  /* textos mínimos de 12px */
+  .pagina-pesquisa-clinica .missao7-ponto-t,.pagina-pesquisa-clinica .evid7-tipo,.pagina-pesquisa-clinica .evid7-limite,
+  .pagina-pesquisa-clinica .funil7-area,.pagina-pesquisa-clinica .funil7-linhas dt,.pagina-pesquisa-clinica .funil7-destaque span,
+  .pagina-pesquisa-clinica .escolhas legend,.pagina-pesquisa-clinica .campo label{font-size:12px !important}
+  .pagina-pesquisa-clinica .missao7-aro-txt{font-size:14px}
+}
+/* pontinhos das faixas (só renderizados no celular) */
+.pagina-pesquisa-clinica .pontos-faixa{display:flex;justify-content:center;gap:4px;margin-top:10px}
+.pagina-pesquisa-clinica .pontos-faixa button{width:28px;height:28px;padding:0;display:grid;place-items:center;background:none;border:0;cursor:pointer}
+.pagina-pesquisa-clinica .pontos-faixa button::before{content:"";width:8px;height:8px;border-radius:4px;background:var(--px-200);transition:width .3s var(--ease),background .3s var(--ease)}
+.pagina-pesquisa-clinica .pontos-faixa button.on::before{width:22px;background:var(--rx-purple)}
+@media (max-width:900px){
+  .pagina-pesquisa-clinica .acord-tag,.pagina-pesquisa-clinica .estudo7-tipo,.pagina-pesquisa-clinica .estudo7-tipo span{font-size:12px !important}
+  /* toque: botão do menu e links de fonte/estudo */
+  .pagina-pesquisa-clinica .nav-btn{min-width:44px;min-height:44px}
+  .pagina-pesquisa-clinica .fontes a,.pagina-pesquisa-clinica .evid7-rodape a,.pagina-pesquisa-clinica .estudo7-links a{display:inline-flex;align-items:center;min-height:40px}
+}
+@media (max-width:900px){
+  .pagina-pesquisa-clinica .acord-arte{height:140px;margin-bottom:18px}
+}

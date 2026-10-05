@@ -14,3 +14,11 @@
 /* Botão contornado para fundo claro — usado por o-que-fazemos (fita de cases) */
 .btn--contorno{background:#fff;color:var(--n-900);border:1px solid var(--n-200)}
 .btn--contorno:hover{border-color:var(--marca-600);color:var(--marca-700);background:var(--marca-50)}
+
+/* ==========================================================================
+   AUDITORIA MOBILE (out/2026): ajustes só até 900px. O desktop não muda.
+   ========================================================================== */
+@media (max-width:900px){
+  /* botões de texto ("Conheça…", "Ver todas…") com área de toque de 44px */
+  .btn--texto{min-height:44px;display:inline-flex;align-items:center}
+}

@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import useMedia from '../hooks/useMedia.js'
+import PontosFaixa from './PontosFaixa.jsx'
 
 /* ==========================================================================
    Vitrine de cases da página Pesquisa clínica (Random): uma "mesa"
@@ -122,7 +124,26 @@ function Tela({ item, carregar, ativa }) {
   )
 }
 
+/* Capa estática para o celular: no telefone a mesa vira uma faixa de capas
+   (sem iframes carregando) e o conteúdo vivo abre só no visualizador. */
+function CapaMovel({ item }) {
+  const [erro, setErro] = useState(false)
+  const img = item.paginas ? item.paginas[0] : item.capa
+  return (
+    <span className={'capa-m capa-m--' + item.tipo}>
+      {(item.tipo === 'site' || item.tipo === 'lp') && (
+        <span className="capa-m-nav" aria-hidden="true"><i /><i /><i /><em>{item.dominio}</em></span>
+      )}
+      <span className="capa-m-nome" aria-hidden="true">{item.titulo}</span>
+      {img && !erro && <img src={img} alt="" loading="lazy" onError={() => setErro(true)} />}
+      {(item.tipo === 'video' || item.tipo === 'reel') && <span className="capa-m-play" aria-hidden="true" />}
+    </span>
+  )
+}
+
 export default function VitrineCases({ itens }) {
+  const celular = useMedia('(max-width: 900px)')
+  const faixaRef = useRef(null)
   const mesaRef = useRef(null)
   const [carregar, setCarregar] = useState(false)
   const [ordem, setOrdem] = useState(() => itens.map((it) => it.id))
@@ -138,13 +159,14 @@ export default function VitrineCases({ itens }) {
   useEffect(() => {
     const el = mesaRef.current
     if (!el) return undefined
+    if (celular) return undefined
     if (!('IntersectionObserver' in window)) { setCarregar(true); return undefined }
     const ob = new IntersectionObserver((es) => {
       if (es.some((e) => e.isIntersecting)) { setCarregar(true); ob.disconnect() }
     }, { rootMargin: '600px 0px' })
     ob.observe(el)
     return () => ob.disconnect()
-  }, [])
+  }, [celular])
 
   const paraFrente = useCallback((id) => {
     setOrdem((o) => (o[o.length - 1] === id ? o : [...o.filter((x) => x !== id), id]))
@@ -197,7 +219,26 @@ export default function VitrineCases({ itens }) {
   }, [ativa])
 
   return (
-    <div className="mesa" ref={mesaRef}>
+    <div className={'mesa' + (celular ? ' mesa--celular' : '')} ref={mesaRef}>
+      {celular ? (
+        <>
+          <div className="vit-faixa" ref={faixaRef}>
+            {itens.map((it, i) => (
+              <button key={it.id} type="button" className="vit-cartao-m" onClick={(e) => { origemRef.current = e.currentTarget; setAberto(i) }}
+                aria-label={`Abrir ${TIPO[it.tipo].rot}: ${it.titulo}`}>
+                <CapaMovel item={it} />
+                <span className="vit-cartao-m-info">
+                  <small>{TIPO[it.tipo].rot}</small>
+                  <b>{it.titulo}</b>
+                  <span>Toque para abrir ↗</span>
+                </span>
+              </button>
+            ))}
+          </div>
+          <PontosFaixa alvo={faixaRef} total={itens.length} rotulo="Trabalhos" />
+        </>
+      ) : (
+        <>
       {itens.map((it, i) => {
         const lay = LAYOUT[it.id] || { l: (i % 3) * 33, t: Math.floor(i / 3) * 30, w: 30, r: 0 }
         const d = desloc[it.id] || { x: 0, y: 0 }
@@ -243,8 +284,10 @@ export default function VitrineCases({ itens }) {
           </article>
         )
       })}
+        </>
+      )}
 
-      <p className="mesa-dica" aria-hidden="true">Arraste as janelas pela barra · clique para navegar · ⤢ tela cheia</p>
+      <p className="mesa-dica" aria-hidden="true">{celular ? 'Deslize para o lado e toque para abrir cada trabalho' : 'Arraste as janelas pela barra · clique para navegar · ⤢ tela cheia'}</p>
 
       {atualVisor && createPortal(
         <div className="visor7" role="dialog" aria-modal="true" aria-labelledby="visor7-tit" onClick={(e) => { if (e.target === e.currentTarget) fechar() }}>
